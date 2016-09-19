@@ -1,0 +1,5272 @@
+2006-10-09	fez
+	* Documentation/txt/DlgForms.txt 1.7:
+		Добавлено описание 24-го параметра на форме
+
+2006-08-21	adirks
+	* scripts/correct_dlg/correct_dlg.pl 1.5:
+		[-] сдвигать контролы вверх  не нужно
+
+2006-07-26	fez
+	* DLL/GComp.rc 1.19:
+		Изменен номер версии (2.2.15.prerelease)
+
+	* DLL/GComp.cpp 1.29:
+	* DLL/GComp.h 1.13:
+	* Rights.cpp 1.12:
+	* Task.cpp 1.30:
+	* TaskHelp.cpp 1.18:
+		Выгрузка единого файла с правами сделана опциональной (ключ --
+		save-all-rights, по умолчанию выключено)
+
+2006-07-14	adirks
+	* scripts/code_beautifier/code_beautifier.pl 1.7:
+		[-]  форматирование многострочного условия вида:
+		   Если (Условие1>0) и
+		   (Условие2<0) и
+		   //(Условие3="++") Тогда
+		   (Условие3="+") Тогда
+		   КонецЕсли;
+		приводило к разрушению кода
+
+2006-03-06	fez
+	* DLL/GComp.rc 1.18:
+		Обновлен номер версии: 2.2.14
+
+2006-01-26	adirks
+	* DLL/GComp.cpp 1.28:
+	* Storage.cpp 1.11:
+	* Storage.h 1.7:
+		[*] Объект для работы с zLibEngine сделан статическим, и инициали
+		зируется только один раз - скорость слегка повысилась.
+
+	* Storage.cpp 1.10:
+		[*] иногда в реестре вместо V75.zLibEngine бывает прописано 
+		V77.zLibEngine, поэтому при создании COM-объекта проверяем оба ва
+		рианта
+
+2005-12-26	adirks
+	* Documentation/txt/DlgForms.txt 1.6:
+		[*] Дополнения от maskin'а по стилям контролов. Не все проверены
+		.
+
+	* DLL/GComp.cpp 1.27:
+	* DLL/GComp.h 1.12:
+	* Lexer.cpp 1.14:
+		[*] анализ ошибок.
+
+	* Declarations.h 1.14:
+	* NameTable.cpp 1.11:
+	* Rights.cpp 1.11:
+	* Rights.h 1.7:
+		[+] При декомпиляции прав создаётся один общий csv-файл. При комп
+		иляции он игнорируется.
+
+2005-12-13	adirks
+	* DLL/GComp.cpp 1.26:
+	* DLL/GComp.h 1.11:
+	* MMS.h 1.35:
+		[+] добавлен метод GComp_AssembleMainMetadataStream()
+
+	* MMS_Decompile.cpp 1.35:
+		[-] функция ничего не возвращала
+
+2005-12-04	adirks
+	* DLL/GComp.cpp 1.25:
+	* DLL/GComp.h 1.10:
+	* MMS.h 1.34:
+	* MMS_Compile.cpp 1.25:
+	* MMS_Decompile.cpp 1.34:
+		[+] По просьбе maskin'а добавлены методы для преобразования форма
+		тов диалоговых форм.
+
+2005-11-09	adirks
+	* scripts/auto_add/auto_add.pl 1.3:
+		[+] добавлено определение формата файла (text/binary) по расширен
+		ию.  Почему-то cvsnt 2.0.58d не хочет воспринимать файл 
+		cvswrappers.
+
+2005-11-04	adirks
+	* DLL/GComp.cpp 1.24:
+		[-] Не обнулялся счётчик прогресса.
+
+	* vgcomp/vgc_MainForm.dfm 1.4:
+	* vgcomp/vgc_MainForm.pas 1.6:
+	* vgcomp/vgcomp.dof 1.3:
+	* vgcomp/vgcomp.dof 1.4:
+	* vgcomp/vgcomp.exe 1.4:
+		[-] Исправлено падение при компиляции.
+
+	* MMS.cpp 1.39:
+		[-] Прерывалась компиляция внешнего отчёта, если отсутствовал фай
+		л метаданных (т.е. отчёт был разобран с опцией --truncate-mms).
+
+2005-11-02	adirks
+	* scripts/Metadata_works/MetadataWorks.pm 1.5:
+		[*] Исправлен метод SetFieldAttr(): если нужного свойства вообще 
+		нет, то оно добавляется.
+
+	* scripts/Metadata_works/metadata.pl 1.3:
+		[+] пример изменения свойств полей ТЧ документов.
+
+2005-11-01	adirks
+	* scripts/code_beautifier/code_beautifier.pl 1.6:
+		[+] Возможность добавлять/удалять комментарий с имененм метода по
+		сле слова КонецПроцедуры или КонецФункции
+
+2005-10-24	adirks
+	* scripts/code_beautifier/test.bat 1.3:
+		[-] исправлен тестовый bat-файл (имя скрипта давно поменялось).
+
+	* DLL/GComp.cpp 1.23:
+		[-] Декомпиляция внешнего отчёта с параметром --truncate-mms прер
+		ывалась с ошибкой.
+
+	* MMS.cpp 1.38:
+		[-] При компиляции внешнего отчёта с параметром --truncate-mms сб
+		орка прерывалась, если отсутствовал файл ОбъектыМетаданных.txt
+
+2005-10-20	adirks
+	* scripts/Metadata_works/readme.txt 1.4:
+	* scripts/Metadata_works/unique_new_ids.pl 1.1:
+		[+] Скрипт для принудительной уникализации новых внутренних идент
+		ификаторов. Предназначен для работы в связке с CVS.
+
+	* scripts/Metadata_works/unique_new_ids.pl 1.3:
+		[*] Если были изменения идентификаторов, то возвращаем 1, чтобы в
+		 вызывающем скрипте можно было как-то отреагировать.
+
+	* scripts/Metadata_works/unique_new_ids.pl 1.2:
+		[-] Если ничего не менялось, то файл не нужно перезаписывать.
+
+2005-10-14	adirks
+	* scripts/code_beautifier/code_beautifier.pl 1.5:
+		[-] исправлена отработка унарного минуса (добавлялся пробел справа)
+		[*] удаляются пробелы между последним символом выражения и ';'
+
+2005-10-11	fez
+	* scripts/mms.view/mms.view.py 1.5:
+		Добавлена возможность передавать имя файла для парсинга через пар
+		аметр скрипта.
+
+2005-10-05	fez
+	* DLL/GComp.rc 1.17:
+		Изменен номер версии 2.2.13
+
+	* gcomp_bin.lst 1.12:
+	* makedistr.bat 1.7:
+		vgcomp.exe перенесен в папку Release
+
+	* gcomp.lst 1.11:
+	* gcomp_bin.lst 1.11:
+		Списки скриптов отсортированы по алфавиту
+
+2005-10-04	fez
+	* gcomp.lst 1.10:
+	* gcomp_bin.lst 1.10:
+		Изменены списки файлов, добавляемых  в архивы, в связи с изменени
+		ем структуры каталогов.
+
+	* Documentation/html/colours.html 1.1:
+	* Documentation/html/colours.txt 1.1:
+	* Documentation/html/dialogstream.html 1.1:
+	* Documentation/html/gnu_fdl.html 1.1:
+	* Documentation/html/index.html 1.1:
+	* Documentation/html/interface.html 1.1:
+	* Documentation/html/moxcel.html 1.1:
+	* Documentation/html/mxl_bg.png 1.1:
+	* Documentation/html/mxl_bgc.png 1.1:
+	* Documentation/html/mxl_stl.png 1.1:
+	* Documentation/html/rights.html 1.1:
+		Добавлена html документация по структуре MD
+
+2005-10-04	adirks
+	* MMS_Buh.cpp 1.25:
+	* MMS_Buh.h 1.15:
+		[-] Исправлена ошибка при компиляции внешних отчётов:   формы спи
+		ска счетов, проводок, и UnknownListForms выделены отдельными клас
+		сами, со своими строковыми идентификаторами.
+
+	* scripts/Metadata_works/available_IDs.pl 1.1:
+		Скрипт, показывающий список "дыр" в числовых идентификаторах.
+
+2005-09-01	fez
+	* DLL/GComp.rc 1.16:
+		Изменен номер версии: 2.2.12
+
+2005-08-31	adirks
+	* scripts/Metadata_works/MetadataWorks.pm 1.4:
+		[*] Восстановлены методы MakeIDsUnique(), CheckTextIDs(), 
+		SortObjectsByNumericIDs(), SortObjectsByTextualIDs() потерянные в
+		 результате не сделанного вовремя апдейта.
+
+2005-08-30	adirks
+	* DialogForm.h 1.17:
+		[*] Некоторые пояснения к полям CFormFont.
+
+	* DLL/GComp.cpp 1.22:
+		[-] Ошибка чтения параметров из ini-файла. Параметр no-parse-
+		forms читался в поле NoDefaults.
+
+	* DialogForm.cpp 1.23:
+		[-] Не совсем понятно для какой цели, но флаг шрифта "Полужирный"
+		 срасывался, если Param9 (charset?) был равен нулю. Врядли это им
+		еет какой-то смысл.
+
+2005-08-25	fez
+	* DLL/GComp.rc 1.15:
+		Изменен номер версии: 2.2.11
+
+2005-08-25	adirks
+	* MMS_Buh.cpp 1.24:
+		[-] У счёта не был проставлен тип идентификаторов, в результате ч
+		его счета не попадали в файл ОбъектыМетаданных.txt
+
+2005-08-24	adirks
+	* DLL/GComp.rc 1.14:
+		[*] Номер версии изменён на 2.2.10
+
+2005-08-23	adirks
+	* MMS_Basic.cpp 1.17:
+	* MMS_Decompile.cpp 1.33:
+		[+] При декомпиляции/компиляции проверяем объекты на наличие нуле
+		вых внутренних ID.  При декомпиляции просто ругаемся. При компиля
+		ции прерываем процесс, т.к. МДшник в результате всё равно получае
+		тся нерабочий.
+
+2005-08-20	fez
+	* scripts/mms.view/mms.view.py 1.4:
+		Перекодируем весь поток сразу после чтения. Так мы избавимся от н
+		ечитаемых ошибок.
+
+2005-08-04	adirks
+	* scripts/Code_works/CodeWorks.pm 1.21:
+		[-] При вставке кода с указанием процедуры за тело процедуры считался весь текс от начала процедуры до конца файла.
+		[-] При замене кода не учитывалося тот факт, что новый код м.б. многострочным, и неправильно расставлялись отступы.
+		[-] Метод trim() неправильно работал с многострочным текстом.
+
+2005-07-27	adirks
+	* scripts/Code_works/CodeWorks.pm 1.20:
+		[-] мелкие ошибки
+
+2005-07-26	adirks
+	* scripts/Code_works/CodeWorks.pm 1.19:
+	* scripts/Code_works/Code_Ins.pl 1.9:
+	* scripts/Code_works/readme.txt 1.7:
+	* scripts/Code_works/ФормаДокумента.pl 1.2:
+	* scripts/Code_works/ФормаЭлемента.pl 1.4:
+		[-] Исправления ошибок от Александра Кунташова aka a13x.
+		[+] Метод RemoveCode() - удаление кода, ограниченного маркерами определённого вида.
+
+2005-07-23	adirks
+	* DLL/GComp.cpp 1.21:
+		[*] параметр no-parse-forms записывается в ini-файл
+
+	* vgcomp/GComp.pas 1.2:
+	* vgcomp/SaveRestoreSettings.pas 1.2:
+	* vgcomp/vgc_MainForm.dfm 1.3:
+	* vgcomp/vgc_MainForm.pas 1.5:
+	* vgcomp/vgcomp.exe 1.3:
+		[*] Проект приведён в соответствие с gcomp 2.2.9.beta
+		[+] При нажатии Esc приложение завершается
+
+2005-07-22	adirks
+	* scripts/Metadata_works/MetadataWorks.pm 1.3:
+	* scripts/Metadata_works/del_attr.pl 1.1:
+	* scripts/Metadata_works/readme.txt 1.3:
+		[+] Удаление атрибутов метаданных.
+
+2005-07-21	adirks
+	* Lexer.cpp 1.13:
+	* MMS_Calculation.cpp 1.12:
+	* MMS_Decompile.cpp 1.32:
+	* MMS_Document.cpp 1.11:
+	* MMS_Filter.cpp 1.5:
+		[*] исправления для совместимости с VS .NET
+
+	* Rights.h 1.6:
+		[-] С ключом --no-broken-links удалялись объекты прав типа Докуме
+		нт, Справочник, Константа и т.д. - т.к. у них ID == 0, и естестве
+		нно он не находился.
+
+	* MMS_Buh.cpp 1.23:
+		[-] Заголовок в представлении вида субконто сделан строкой в кавы
+		чках - иначе пробелы обрезались.
+
+	* DLL/GComp.rc 1.13:
+		[*] Изменён номер версии
+
+	* TaskHelp.cpp 1.17:
+		[+] В help message добавлено описание --no-parse-dialogs
+
+	* DLL/GComp.cpp 1.20:
+	* DLL/GComp.h 1.9:
+		[+] В CGCompParameters добавлено NoBrokenLinks
+
+	* TaskHelp.cpp 1.16:
+		[+] В help message добавлено описание --no-broken-links
+
+2005-07-07	adirks
+	* MMS_BasicTypes.cpp 1.17:
+		[*] При парсинге файлов *.mdp,  *.frm в строчках вида
+		<ИмяПараметра> : <Значение>
+		из значения убираются правые пробелы
+
+	* FileParser.cpp 1.7:
+		[-] При парсинге файлов *.mdp,  *.frm в идентификаторах объектов не удалялись правые пробелы. Например, при компиляции формы, в которой есть
+		BUTTON: КнСортировать[ ]
+		идентификатор кнопки оказывался с пробелом на конце.
+
+	* MMS_Compile.cpp 1.24:
+	* MMS_Decompile.cpp 1.31:
+		[*] Для особо слабонервных товарищей восстановлен флаг 
+		NotParseForms.
+
+	* MMS.cpp 1.37:
+	* MMS.h 1.33:
+	* Rights.cpp 1.10:
+	* Rights.h 1.5:
+	* UI.CPP 1.8:
+	* UI.H 1.8:
+		[+] Флаг NoBrokenLinks.
+
+	* Task.cpp 1.29:
+		[*] Восстановлена опция --no-parse-dialogs
+		[*] Опция --no-broken-links.
+
+2005-05-06	fez
+	* DlgForms.txt 1.5:
+		Добавлено пропущенное описание 24-го бита контрола формы.
+
+2005-05-06	adirks
+	* scripts/Code_works/CodeWorks.pm 1.18:
+		[+] В методе  InsertCode() добавлен параметр - шаблон поиска, поз
+		воляющий вставлять код не в начало/конец процедуры, а в определён
+		ное место.
+
+2005-04-28	fez
+	* scripts/mms.view/mms.view.py 1.3:
+		Вместо использования модуля string используем одноименные методы 
+		строковых объектов.
+
+2005-04-27	fez
+	* scripts/mms.view/mms.view.py 1.2:
+		Добавлено немного комментариев в код
+
+2005-04-08	fez
+	* DLL/GComp.rc 1.12:
+		Изменен номер версии - 2.2.8
+
+2005-04-08	adirks
+	* Rights.cpp 1.9:
+	* Rights_Compile.cpp 1.7:
+		[-] Ошибка декомпиляции/компиляции юзерских прав при наличии мног
+		острочного описания набора прав.
+
+2005-04-07	fez
+	* DLL/GComp.rc 1.11:
+		Изменен номер версии - 2.2.7
+
+2005-04-07	adirks
+	* MMS_Compile.cpp 1.23:
+		[-] Исправлена ошибка выборочной компиляции
+		[-] Исправлена ошибка импорта порядка объектов
+
+2005-04-06	adirks
+	* UI.CPP 1.7:
+	* UI.H 1.7:
+	* UI_Compile.cpp 1.8:
+		[-] Неверно собирались меню и панели инструментов при наличии в них битых ссылок. В итоге 1С не могла прочитать полученный МДшник.
+		[*] При декомпиляции выдаются сообщения о битых ссылках в меню и панелях инструментов.
+
+2005-04-05	adirks
+	* DlgForm_Tables.cpp 1.10:
+	* Lexer.cpp 1.12:
+	* Lexer.h 1.9:
+	* MMS_Buh.cpp 1.22:
+	* UI_Compile.cpp 1.7:
+		[-] Потенциальная ошибка при сборке меню в случае когда обект, на
+		 который ссылается элемент меню, был удалён из конфигурации.
+
+2005-04-01	adirks
+	* scripts/Code_works/CodeWorks.pm 1.16:
+	* scripts/Code_works/readme.txt 1.6:
+		[+] Добавлен метод RemoveProc()
+
+	* scripts/Code_works/CodeWorks.pm 1.17:
+		[-] В RemoveProc() не удалялась последняя строка
+
+2005-03-30	adirks
+	* scripts/Code_works/CodeWorks.pm 1.15:
+		[-] При создании процедуры неверно обрабатывался параметр "вставить перед"
+		[*] Более интеллектуальная отработка комментариев при вставке кода
+
+	* scripts/code_beautifier/RunPerlScripts.vbs 1.4:
+		[*] Изменён способ запуска скрипта
+
+	* MMS.cpp 1.36:
+	* MMS.h 1.32:
+	* MMS_BasicTypes.h 1.19:
+		[-] При сборке искажался идентификатор конфигурации, если он соде
+		ржал в себе пробелы или двоеточия
+
+	* scripts/code_beautifier/code_beautifier.pl 1.4:
+		[*] Улучшена работа в составе OpenConf
+
+2005-03-26	adirks
+	* MMS_Decompile.cpp 1.30:
+		[*] При наличии неуникальных числовых идентификаторов декомпиляци
+		я не прерывается, выдаётся лишь сообщение об ошибке.
+
+2005-03-25	adirks
+	* scripts/Code_works/CodeWorks.pm 1.13:
+	* scripts/Code_works/CodeWorks.pm 1.14:
+	* scripts/Code_works/ФормаЭлемента.pl 1.3:
+		[*] В методе CreateProc() можно указывать несколько процедур, пер
+		ед которыми нужно вставлять новую. Имена процедур перечисляются ч
+		ерез запятую.
+
+2005-03-24	fez
+	* DLL/GComp.rc 1.10:
+		Изменен номер версии - 2.2.6
+
+2005-03-21	adirks
+	* scripts/Code_works/Code_Ins.pl 1.8:
+		[*] Приделаны режимы "quiet" - не сообщает об отсутствующих шабло
+		нах, и "real quiet" - вообще ничего не сообщает
+
+	* scripts/Code_works/CodeWorks.pm 1.12:
+		[-] Ошибка в определении типа формы группы справочника
+
+	* scripts/Code_works/CodeWorks.pm 1.11:
+		[*] В InsertCode() добавлена возможность вставлять код в конец процедуры
+		[+] Новый метод ReplaceCode()
+		[-] GetObjectName() не всегда верно определял тип объекта
+
+	* scripts/Code_works/readme.txt 1.5:
+		[+] Описание новых методов
+
+2005-03-20	adirks
+	* MMS_Compile.cpp 1.22:
+	* Storage.cpp 1.9:
+	* Storage.h 1.6:
+		[*] Ещё немного увеличена скорость компиляции за счёт всё тех же 
+		флушей.
+
+	* Storage.cpp 1.8:
+		[*] Значительно увеличена скорость (в 2 - 3 раза). Флушить буфера
+		 при каждом чихе - это было мягко говоря неумно.
+
+	* scripts/Code_works/CodeWorks.pm 1.10:
+	* scripts/Code_works/Code_Ins.pl 1.7:
+	* scripts/Code_works/ФормаЭлемента.pl 1.2:
+		[+] Методы RemoveVarDecl() и RenameObject()
+
+	* scripts/Code_works/CodeWorks.pm 1.8:
+		[-] Неверно определялись формы списка и формы группы
+
+	* scripts/Code_works/CodeWorks.pm 1.9:
+	* scripts/Code_works/readme.txt 1.4:
+		[*] Описание приведено в соответствие
+
+	* scripts/check_max_id/check_max_id.pl 1.3:
+	* scripts/check_max_id/check_max_id.py 1.3:
+		[*] Приведены в соответствие с новым форматом файлов
+
+	* vgcomp/vgc_MainForm.dfm 1.2:
+	* vgcomp/vgc_MainForm.pas 1.4:
+	* vgcomp/vgcomp.dof 1.2:
+	* vgcomp/vgcomp.exe 1.2:
+		[+] Анализ параметров командной строки. Допустимы ключи -D <dir> 
+		-F <file>
+
+2005-03-19	fez
+	* gcomp.lst 1.9:
+	* gcomp_bin.lst 1.9:
+		Переименовал папку в репозитории - переименуй и в скриптах сборки
+		 :)
+
+	* DLL/GComp.rc 1.9:
+		Изменен номер версии - 2.2.5
+
+2005-03-19	adirks
+	* scripts/Metadata_works/sort_objects.pl 1.1:
+		Скрипт для сортировки строк в файле ОбъектыМетаданных.txt
+
+	* scripts/Metadata_works/readme.txt 1.2:
+		[+] Описание новых методов и скриптов
+
+	* MMS_Compile.cpp 1.21:
+	* MMS_Decompile.cpp 1.28:
+	* Ordering.cpp 1.4:
+		[*] Удалены числовые идентификаторы объектов из файлов *.ord. Сов
+		местимость с предыдущими версиями сохранена.
+
+	* scripts/Code_works/Code_Ins.pl 1.6:
+	* scripts/Code_works/readme.txt 1.3:
+	* scripts/Code_works/ФормаДокумента.pl 1.1:
+	* scripts/Code_works/ФормаЭлемента.pl 1.1:
+		[*] Шаблоны для правки кода вынесены в самостоятельные файлы.
+
+	* scripts/Metadata_works/MetadataWorks.pm 1.2:
+		[+] Методы проверки и сортировки идентификаторов из файла Объекты
+		Метаданных.txt
+
+	* scripts/Metadata_works/unique_ids.bat 1.1:
+	* scripts/Metadata_works/unique_ids.pl 1.1:
+		[+] Скрипт для проверки уникальности идентификаторов метаданных
+
+	* MMS.h 1.31:
+	* MMS_Decompile.cpp 1.29:
+		[+] Проверка уникальности идентификаторов объектов метаданных.
+
+	* scripts/Code_works/CodeWorks.pm 1.7:
+		[+] При создании процедуры можно указать, перед какой процедурой 
+		нужно создавать.
+
+2005-03-15	adirks
+	* scripts/Code_works/CodeWorks.pm 1.6:
+		[*] Убрана отладочная печать
+		[*] Навёл немножко красоты
+
+2005-03-14	adirks
+	* scripts/Code_works/CodeWorks.pm 1.5:
+		[-] мелкие ошибки
+
+	* scripts/Code_works/CodeWorks.pm 1.4:
+	* scripts/Code_works/Code_Ins.pl 1.4:
+		[+] Добавлены методы для вставки кода и объявления переменных.
+
+	* scripts/Code_works/Code_Ins.pl 1.5:
+		[*] удалён лишний код
+
+2005-03-09	adirks
+	* scripts/readme.txt 1.5:
+		[+] Скрипты для работы с метаданными
+
+2005-03-06	adirks
+	* gcomp.lst 1.8:
+	* gcomp_bin.lst 1.8:
+	* scripts/Metadata_works/MetadataWorks.pm 1.1:
+	* scripts/Metadata_works/metadata.pl 1.1:
+	* scripts/Metadata_works/readme.txt 1.1:
+	* scripts/Metadata_works/set_migration.pl 1.1:
+	* scripts/readme.txt 1.4:
+		Добавлены скрипты для работы с метаданными
+
+2005-03-05	adirks
+	* scripts/Code_works/CodeWorks.pm 1.3:
+		[*] Начальная инициализация отрицательными значениями вместо нуле
+		й
+
+	* scripts/Code_works/Code_Ins.pl 1.3:
+		[+] Добавлен метод для вставки и инициализации переменной модуля
+		.
+
+2005-03-02	fez
+	* DLL/GComp.rc 1.8:
+		Изменен номер версии: 2.3.4
+
+	* gcomp.lst 1.7:
+	* gcomp_bin.lst 1.7:
+		Новый скрипт добавлен в дистрибутив
+
+2005-02-20	adirks
+	* Strings.cpp 1.7:
+	* Strings.h 1.6:
+	* UI.CPP 1.6:
+	* UI.H 1.6:
+	* UI_Compile.cpp 1.6:
+		[*] В пользовательских интерфейсах (файлы Меню.txt и Панели.txt) 
+		используются текстовые идентификаторы команд вместо числовых
+
+2005-02-18	adirks
+	* scripts/Code_works/CodeWorks.pm 1.2:
+	* scripts/Code_works/Code_Ins.pl 1.2:
+	* scripts/Code_works/readme.txt 1.2:
+		[*] Комментарии в коде и описание в ReadMe.txt
+
+2005-01-28	adirks
+	* scripts/Code_works/CodeWorks.pm 1.1:
+	* scripts/Code_works/Code_Ins.pl 1.1:
+	* scripts/Code_works/readme.txt 1.1:
+		Скрипты для массовой обработки кода модулей
+
+2005-01-21	fez
+	* DLL/GCompDLL.mak 1.7:
+		Сгенерирован новый mak файл
+
+	* gcomp.lst 1.6:
+	* gcomp_bin.lst 1.6:
+		Исправлен список файлов (был неверно указан каталог)
+
+	* gcomp.lst 1.5:
+	* gcomp_bin.lst 1.5:
+		Добавлены новые скрипты
+
+2005-01-21	adirks
+	* Lexer.cpp 1.11:
+	* MMS.cpp 1.35:
+	* MMS_Compile.cpp 1.20:
+	* MMS_Decompile.cpp 1.27:
+		[*] При декомпиляции внешних отчётов с ключом --truncate-mms не с
+		оздаются Структура.mdp и ОбъектыМетаданных.txt
+
+	* Task.cpp 1.28:
+	* Task.h 1.38:
+		[+] Добавлен ключ --no-ini
+
+	* Lexer.cpp 1.10:
+	* Lexer.h 1.8:
+	* MMS.cpp 1.34:
+	* MMS_Parser.cpp 1.19:
+	* gcomp.opt 1.38:
+		[-] Исправлена ошибка декомпиляции МДшника, собранного gcomp 
+		2.1.x
+
+2005-01-20	adirks
+	* DialogForm.cpp 1.22:
+		[*] Более мощная сортировка контролов в форме. Порядок теперь так
+		ой: Класс, Идентификатор, Заголовок, Формула, TabOrder.
+
+	* MMS_Buh.cpp 1.21:
+	* MMS_Buh.h 1.14:
+		[-] У планов счетов оказывается тоже бывают правила миграции.
+
+	* MMS_Compile.cpp 1.19:
+	* MMS_Decompile.cpp 1.26:
+		[-] Выгружались описания для объектов "Субконто счёта". Эти объек
+		ты не имеют описаний, но могут иметь неуникальные ID. Когда этот 
+		ID совпадал с ID нормального объекта, создавалось фиктивное описа
+		ние.
+
+2005-01-19	adirks
+	* Container.cpp 1.6:
+	* Container.h 1.7:
+	* MMS.h 1.30:
+	* MMS_Basic.h 1.12:
+	* MMS_Buh.cpp 1.20:
+	* MMS_Calculation.cpp 1.11:
+	* MMS_Compile.cpp 1.18:
+	* MMS_Document.cpp 1.10:
+	* gcomp.opt 1.37:
+		[-] Исправлена ошибка импорта описания задачи.
+		[-] Исправлена ошибка экспорта/импорта описания операции.
+
+	* DLL/GComp.cpp 1.19:
+	* DLL/GCompDLL.dsp 1.13:
+		[*] GComp_GetVersion() берёт версию из ресурсов.
+
+	* DLL/GComp.rc 1.7:
+		[*] Версия в ресурсах изменена на 2.2.3
+
+2005-01-18	adirks
+	* MMS_Buh.cpp 1.19:
+	* MMS_Buh.h 1.13:
+		[-] gcomp не мог разобрать собой же собранный МДшник. Ошибка была
+		 в параметрах бухгалтерии.
+
+	* DLL/GComp.cpp 1.18:
+	* DLL/GComp.rc 1.6:
+		[*] Изменён номер версии
+
+2005-01-17	fez
+	* scripts/moxcel-1b1/mxl2xml.py 1.1:
+	* scripts/moxcel-1b1/readme.txt 1.1:
+		Добавлен пример скрипта - конертора mxl -> xml
+
+	* scripts/mms.view/Main.MetaData.Stream 1.1:
+	* scripts/mms.view/Main.MetaData.Stream.empty 1.1:
+	* scripts/mms.view/Main.Metadata.Stream.3 1.1:
+	* scripts/mms.view/Main.Metadata.Stream.error.sample.1 1.1:
+	* scripts/mms.view/Main.Metadata.Stream.error.sample.2 1.1:
+	* scripts/mms.view/mms.view.py 1.1:
+	* scripts/mms.view/readme.txt 1.1:
+		В библиотеку скриптов добавлен парсер потока MMS.
+
+2005-01-10	adirks
+	* vgcomp/vgc_MainForm.pas 1.3:
+		[-] При некоторых условиях прогресс-бар и окно лога оказывались з
+		а нижней границей формы.
+
+	* vgcomp/vgc_MainForm.pas 1.2:
+		[-] При некоторых условиях кнопки выбора файов оказывались за пра
+		вой границей формы.
+
+	* CommonFunctions.cpp 1.9:
+	* CommonFunctions.h 1.8:
+	* MMS_Decompile.cpp 1.25:
+	* Ordering.h 1.4:
+	* Rights.cpp 1.8:
+	* Rights_Compile.cpp 1.6:
+	* Strings.cpp 1.6:
+	* UI.CPP 1.5:
+	* UI.H 1.5:
+	* UI_Compile.cpp 1.5:
+		[-] Учтён тот факт, что в названиях наборов прав и интерфейсов мо
+		гут использоваться любые символы, в т.ч. и ':', '\' и т.д. Для фо
+		рмирования корректных имён файлов такие символы заменяются на '_'
+		. Соответствия имен объектов и файлов хранятся в файлах *.ord
+
+2005-01-09	fez
+	* makedistr.bat 1.3:
+		Путь к бинарникам VC указан через переменную окружения, а не напр
+		ямую.
+
+	* makedistr.bat 1.5:
+		Добавлен поиск 7-Zip, установленного в %ProgramFiles%
+
+	* gcomp.lst 1.4:
+	* gcomp_bin.lst 1.4:
+		В списоке файлов дистрибутива обновлена библиотека скриптов.
+
+	* makedistr.bat 1.4:
+		Условия работы скрипта перенесены повыше и дополнены.
+
+	* makedistr.bat 1.6:
+		Скриптовый cvs update сделан а) более экономным, б) более толковы
+		м.
+
+2005-01-09	adirks
+	* DLL/GComp.h 1.8:
+		[+] Добавлен параметр CancelWork - если вызывающее приложение зап
+		ишет туда TRUE, то выполнение прервётся.
+
+	* gcomp.lst 1.3:
+	* gcomp_bin.lst 1.3:
+		Новая визуальная оболочка для gcomp.
+
+	* MMS_Calculation.cpp 1.10:
+	* MMS_Compile.cpp 1.17:
+	* Rights_Compile.cpp 1.5:
+	* UI_Compile.cpp 1.4:
+		[*] Добавлено информационных сообщений при компиляции
+
+	* vgcomp/build.bat 1.1:
+		Скрипт для сборки vgcomp.exe из командной строки
+
+	* vgcomp/GComp.pas 1.1:
+	* vgcomp/Go.bmp 1.1:
+	* vgcomp/Open.bmp 1.1:
+	* vgcomp/SaveRestoreSettings.pas 1.1:
+	* vgcomp/vgc_MainForm.dfm 1.1:
+	* vgcomp/vgc_MainForm.pas 1.1:
+	* vgcomp/vgcomp.dof 1.1:
+	* vgcomp/vgcomp.dpr 1.1:
+	* vgcomp/vgcomp.res 1.1:
+		Визуальная оболочка для gcomp
+
+2005-01-07	adirks
+	* DLL/GCompDLL.dsp 1.12:
+	* DLL/GCompDLL.mak 1.6:
+	* MMS.cpp 1.33:
+	* MMS.h 1.29:
+	* MMS_Basic.cpp 1.16:
+	* MMS_Basic.h 1.11:
+	* MMS_Buh.cpp 1.18:
+	* MMS_Calculation.cpp 1.9:
+	* MMS_Compile.cpp 1.16:
+	* MMS_Decompile.cpp 1.24:
+	* MMS_Document.cpp 1.9:
+	* MMS_Filter.cpp 1.4:
+	* MMS_Subconto.cpp 1.17:
+	* gcomp.opt 1.36:
+		[*] При компиляции с ключом -v выдаются имена компилируемых объек
+		тов.
+
+	* DLL/GComp.cpp 1.17:
+		[*] Слегка повышена устойчивость к неправильным значениям парамет
+		ров
+
+2005-01-04	adirks
+	* DialogForm.cpp 1.21:
+		[-] Не выводились параметры шрифта формы с ключом --no-defaults
+
+	* CommonFunctions.cpp 1.8:
+	* CommonFunctions.h 1.7:
+	* DLL/GComp.cpp 1.16:
+	* FileParser.cpp 1.6:
+	* MMS.cpp 1.32:
+	* MMS.h 1.28:
+	* MMS_Basic.cpp 1.15:
+	* MMS_Basic.h 1.10:
+	* MMS_Buh.cpp 1.17:
+	* MMS_Buh.h 1.12:
+	* MMS_Compile.cpp 1.15:
+	* MMS_Decompile.cpp 1.23:
+	* MMS_Parser.cpp 1.18:
+	* Rights.cpp 1.7:
+	* Strings.cpp 1.5:
+	* Strings.h 1.5:
+	* gcomp.opt 1.35:
+		[*] Восстановлена работа с внешними отчётами
+
+2004-12-30	adirks
+	* CommonFunctions.cpp 1.7:
+	* DLL/GComp.cpp 1.14:
+	* MMS.cpp 1.31:
+	* MMS.h 1.27:
+	* MMS_Assemble.cpp 1.9:
+	* MMS_Basic.cpp 1.14:
+	* MMS_Buh.cpp 1.16:
+	* MMS_Buh.h 1.11:
+	* MMS_Compile.cpp 1.14:
+	* MMS_Parser.cpp 1.17:
+	* NameTable.cpp 1.10:
+	* Storage.cpp 1.7:
+		[*] Структура данных приведена к виду, когда все метаданные могут быть в одном файле - это нужно для внешних отчётов.
+		[+] Добавлен параметр CancelWork - если вызывающее приложение запишет туда TRUE, то выполнение прервётся.
+
+	* Declarations.h 1.13:
+	* MMS.cpp 1.30:
+	* MMS_Basic.cpp 1.13:
+	* MMS_BasicTypes.h 1.18:
+	* MMS_Buh.cpp 1.15:
+	* MMS_Buh.h 1.10:
+	* NameTable.cpp 1.9:
+		[-] Некоторые числовые параметры бухгалтерии были объявлены как строковые.
+		[-] Идентификатор объекта "Бухгалтерия" не попадал в файл ОбъектыМетаданных.txt
+
+	* DLL/GComp.cpp 1.15:
+		[*] Удалена отладочная строчка
+
+2004-12-29	adirks
+	* ReadMe.txt 1.3:
+		[*] Изменились ключи командной строки
+
+	* CommonFunctions.cpp 1.6:
+	* CommonFunctions.h 1.6:
+	* DLL/GComp.cpp 1.13:
+	* DLL/GComp.h 1.7:
+	* Declarations.h 1.12:
+	* MMS.cpp 1.29:
+	* MMS.h 1.26:
+	* MMS_Basic.h 1.9:
+	* MMS_Compile.cpp 1.13:
+	* MMS_Decompile.cpp 1.22:
+	* MMS_Document.cpp 1.8:
+	* MMS_Subconto.cpp 1.16:
+	* gcomp.opt 1.33:
+	* scripts/repository_cvt/1c_vss2cvs.pl 1.4:
+		[+] Добавлена возможность отсылать сообщения вызывающему приложен
+		ию о ходе работы.
+
+	* MMS.cpp 1.28:
+	* MMS.h 1.25:
+	* MMS_Buh.cpp 1.14:
+	* MMS_Buh.h 1.9:
+	* MMS_Calculation.h 1.7:
+	* gcomp.opt 1.32:
+		[-] Вид параметров бухгалтерии и параметров расчётов приведён к о
+		бщему знаменателю.
+
+	* DLL/GComp.cpp 1.12:
+	* DLL/GComp.h 1.6:
+	* Declarations.h 1.11:
+	* MMS_Basic.cpp 1.12:
+	* MMS_Decompile.cpp 1.21:
+		[-] Параметр TaskType убран из структуры CGCompParameters - он та
+		м совершенно не нужен
+
+	* DialogForm.cpp 1.20:
+		[*] Немного изменён способ поиска поля объекта, соответствующего 
+		контролу формы
+
+2004-12-28	adirks
+	* DLL/GCompDLL.mak 1.5:
+		[*] Makefile приведён в соответствие с проектом
+
+	* DialogForm.cpp 1.19:
+		[-] Исправлены ошибки при выгрузке многострочной части (browse). 
+		Выгружался идентификатор.
+
+	* DialogForm.cpp 1.16:
+	* MMS_BasicTypes.cpp 1.15:
+	* MMS_BasicTypes.h 1.17:
+	* gcomp.opt 1.30:
+		[*] Если в параметрах формы стоит "шрифт по умолчанию", то параме
+		тры шрифта не выводятся.
+
+	* NameTable.cpp 1.8:
+		[*] Английская таблица имён приведена в соответствие с русской
+
+	* DialogForm.cpp 1.18:
+		[*] Если контрол диалога является реквизитом объекта, то его тип 
+		всегда берём из реквизита.
+
+	* DialogForm.cpp 1.15:
+	* DialogForm.cpp 1.17:
+	* DialogForm.h 1.15:
+	* DialogForm.h 1.16:
+	* MMS_BasicTypes.cpp 1.16:
+	* MMS_Compile.cpp 1.12:
+	* MMS_Decompile.cpp 1.19:
+	* MMS_Decompile.cpp 1.20:
+	* MMS_Subconto.cpp 1.15:
+		[*] Восстановлена коррекция ссылок на поля объектов из элементов 
+		диалогов.
+
+	* scripts/correct_dlg/correct_dlg.pl 1.4:
+		[+] Добавлена возможность корректировать параметр формы Param25
+
+2004-12-27	adirks
+	* MMS_Basic.cpp 1.11:
+	* gcomp.opt 1.29:
+		[-] В заголовке ссылок выводился лишний 0 (ID)
+
+	* DLL/GComp.cpp 1.11:
+	* DLL/GComp.h 1.5:
+	* MMS_Basic.cpp 1.10:
+	* MMS_Decompile.cpp 1.18:
+	* Task.cpp 1.27:
+	* TaskHelp.cpp 1.15:
+		[*] режим с числовыми ID в отдельном файле сделан основным и един
+		ственным
+
+	* DialogForm.cpp 1.14:
+	* DialogForm.h 1.14:
+		[-] восстановлена работа опции --sort-form-controls
+
+	* DLL/GComp.cpp 1.10:
+	* DLL/GComp.h 1.4:
+	* Declarations.h 1.10:
+	* MMS.cpp 1.27:
+	* MMS.h 1.24:
+	* MMS_Basic.cpp 1.9:
+	* MMS_Basic.h 1.8:
+	* MMS_Buh.cpp 1.13:
+	* MMS_Buh.h 1.8:
+	* MMS_Calculation.cpp 1.8:
+	* MMS_Compile.cpp 1.11:
+	* MMS_Decompile.cpp 1.17:
+	* MMS_Document.h 1.8:
+	* MMS_Subconto.h 1.5:
+	* NameTable.cpp 1.7:
+	* gcomp.opt 1.28:
+		[*] с ключом --save-mms числовые ID не пишутся в файлы *.mdp - то
+		лько ОбъектыМетаданных.txt
+
+2004-12-24	adirks
+	* Rights_Compile.cpp 1.4:
+		[-] исправлена компиляция с английскими именами и транслитом
+
+	* MMS.cpp 1.26:
+	* MMS_Assemble.cpp 1.8:
+	* MMS_Basic.h 1.7:
+	* MMS_Calculation.cpp 1.7:
+	* MMS_Calculation.h 1.6:
+	* MMS_Compile.cpp 1.10:
+	* MMS_Decompile.cpp 1.16:
+	* MMS_Document.h 1.7:
+	* MMS_Subconto.cpp 1.14:
+		[*] восстановлена работа ключа --more-subfolders
+
+	* NameTable.cpp 1.6:
+		Таблица английских имён приведена в соответствие с русской.
+
+2004-12-23	adirks
+	* Lexer.cpp 1.9:
+	* MMS_BasicTypes.h 1.16:
+	* MMS_Document.cpp 1.7:
+		Исправлены мелкие ошибки
+
+	* MMS_Assemble.cpp 1.7:
+	* MMS_Buh.cpp 1.12:
+		Исправлена несущественная ошибка в параметрах бухгалтерии
+
+	* DLL/GComp.cpp 1.9:
+		Исправлена ошибка: ini-файл не сохранялся.
+
+	* DLL/GComp.cpp 1.8:
+	* DLL/GComp.rc 1.5:
+		Версия изменена на 2.2.0
+
+	* MMS_Decompile.cpp 1.15:
+		Убран отладочный код
+
+	* DLL/GCompDLL.dsp 1.11:
+	* Declarations.h 1.9:
+	* DialogForm.cpp 1.12:
+	* DialogForm.h 1.12:
+	* DlgForm_Tables.cpp 1.9:
+	* FileParser.cpp 1.3:
+	* MMS.cpp 1.24:
+	* MMS.h 1.23:
+	* MMS_Assemble.cpp 1.6:
+	* MMS_Basic.cpp 1.5:
+	* MMS_Basic.h 1.5:
+	* MMS_BasicTypes.cpp 1.14:
+	* MMS_BasicTypes.h 1.15:
+	* MMS_Buh.cpp 1.11:
+	* MMS_Buh.h 1.7:
+	* MMS_Calculation.cpp 1.4:
+	* MMS_Compile.cpp 1.9:
+	* MMS_Decompile.cpp 1.14:
+	* MMS_Document.cpp 1.4:
+	* MMS_Parser.cpp 1.15:
+	* MMS_Subconto.cpp 1.12:
+	* gcomp.opt 1.25:
+		Компиляция бухгалтерии доделана.
+		
+		Первая бета-версия в новом формате готова!!!
+
+	* MMS_Basic.cpp 1.7:
+		Увеличена скорость компиляции.  Тормоза были из-за того, что в кл
+		ассе CString память выделяется крайне неоптимально.
+
+	* DialogForm.cpp 1.13:
+	* DialogForm.h 1.13:
+	* FileParser.cpp 1.4:
+	* FileParser.cpp 1.5:
+	* MMS.cpp 1.25:
+	* MMS_Basic.cpp 1.6:
+	* MMS_Basic.h 1.6:
+	* MMS_Calculation.cpp 1.5:
+	* MMS_Calculation.cpp 1.6:
+	* MMS_Calculation.h 1.4:
+	* MMS_Calculation.h 1.5:
+	* MMS_Document.cpp 1.5:
+	* MMS_Document.cpp 1.6:
+	* MMS_Document.h 1.5:
+	* MMS_Document.h 1.6:
+	* MMS_Parser.cpp 1.16:
+	* MMS_Subconto.cpp 1.13:
+	* MMS_Subconto.h 1.4:
+	* gcomp.opt 1.26:
+		Небольшой плановый рефакторинг
+
+	* DLL/GComp.cpp 1.7:
+	* DLL/GComp.h 1.3:
+	* Task.cpp 1.26:
+	* TaskHelp.cpp 1.14:
+		Немного изменены параметры декомпиляции/компиляции
+
+	* MMS_Basic.cpp 1.8:
+		Немножко ускорена декомпиляция
+
+	* DlgForm_Compile.cpp 1.6:
+		Удалён лишний файл
+
+2004-12-22	adirks
+	* DLL/GCompDLL.dsp 1.10:
+	* DialogForm.cpp 1.11:
+	* DialogForm.h 1.11:
+	* Lexer.cpp 1.8:
+	* MMS.cpp 1.23:
+	* MMS_Basic.cpp 1.4:
+	* MMS_Basic.h 1.4:
+	* MMS_BasicTypes.cpp 1.13:
+	* MMS_BasicTypes.h 1.14:
+	* MMS_Parser.cpp 1.14:
+	* Strings.cpp 1.4:
+	* gcomp.opt 1.24:
+		Доделана компиляция диалогов. Исправлены ошибки при компиляции от
+		чётов и обработок.
+
+2004-12-21	adirks
+	* CommonFunctions.cpp 1.5:
+	* CommonFunctions.h 1.5:
+	* DialogForm.cpp 1.9:
+	* DialogForm.h 1.9:
+	* DlgForm_Tables.cpp 1.7:
+	* MMS.h 1.22:
+	* MMS_Assemble.cpp 1.5:
+	* MMS_Basic.cpp 1.2:
+	* MMS_Basic.h 1.2:
+	* MMS_BasicTypes.cpp 1.11:
+	* MMS_Buh.cpp 1.10:
+	* MMS_Buh.h 1.6:
+	* MMS_Calculation.cpp 1.3:
+	* MMS_Calculation.h 1.3:
+	* MMS_Compile.cpp 1.8:
+	* MMS_Decompile.cpp 1.13:
+	* MMS_Document.cpp 1.3:
+	* MMS_Document.h 1.4:
+	* MMS_Subconto.cpp 1.11:
+	* MMS_Subconto.h 1.3:
+	* gcomp.opt 1.22:
+		Метаданные собираются правильно. Остались диалоги и бухгалтерия.
+
+	* DlgFormFlags.h 1.3:
+		Удалён лишний файл
+
+	* DLL/GCompDLL.dsp 1.9:
+	* DialogForm.cpp 1.10:
+	* DialogForm.h 1.10:
+	* DlgForm_Compile.cpp 1.5:
+	* DlgForm_Tables.cpp 1.8:
+	* FileParser.cpp 1.2:
+	* MMS_Basic.cpp 1.3:
+	* MMS_Basic.h 1.3:
+	* MMS_BasicTypes.cpp 1.12:
+	* MMS_BasicTypes.h 1.13:
+	* MMS_Parser.cpp 1.13:
+	* gcomp.opt 1.23:
+		Почти доделана компиляция диалоговых форм
+
+2004-12-20	adirks
+	* FileParser.cpp 1.1:
+	* MMS_Basic.cpp 1.1:
+	* MMS_Basic.h 1.1:
+		Практически завершена компиляция метаданных
+
+	* BeautyObjects.tab.cpp 1.2:
+	* MainMetadataStream.tab.cpp 1.2:
+	* MainMetadataStream.y 1.10:
+	* ParserTest.cpp 1.6:
+	* ParserTest.dsp 1.5:
+		Удалены ненужные файлы
+
+2004-12-19	adirks
+	* DLL/GComp.cpp 1.6:
+	* DLL/GComp.rc 1.4:
+	* DLL/GCompDLL.dsp 1.8:
+	* Declarations.h 1.8:
+	* DialogForm.h 1.8:
+	* Lexer.h 1.7:
+	* MD_Formats.txt 1.6:
+	* MMS.cpp 1.22:
+	* MMS.h 1.21:
+	* MMS_Assemble.cpp 1.4:
+	* MMS_BasicTypes.cpp 1.10:
+	* MMS_BasicTypes.h 1.12:
+	* MMS_Buh.cpp 1.9:
+	* MMS_Buh.h 1.5:
+	* MMS_Calculation.cpp 1.2:
+	* MMS_Calculation.h 1.2:
+	* MMS_Compile.cpp 1.7:
+	* MMS_Decompile.cpp 1.12:
+	* MMS_Document.cpp 1.2:
+	* MMS_Document.h 1.3:
+	* MMS_Parser.cpp 1.12:
+	* MMS_Subconto.cpp 1.10:
+	* MMS_Subconto.h 1.2:
+	* NameTable.cpp 1.5:
+	* gcomp.opt 1.21:
+		Практически завершена компиляция метаданных
+
+2004-12-01	adirks
+	* MMS_Buh.cpp 1.8:
+	* MMS_Buh.h 1.4:
+		Планы счетов выделены как каталоги, счета выделены как файлы
+
+	* MMS.cpp 1.21:
+	* MMS_Buh.cpp 1.7:
+	* MMS_Buh.h 1.3:
+	* gcomp.opt 1.20:
+		Заполнены все поля объектов бухгалтерии
+
+2004-11-29	adirks
+	* DialogForm.cpp 1.7:
+	* DialogForm.h 1.7:
+	* DlgForm_Tables.cpp 1.6:
+	* DlgForms.txt 1.4:
+	* MMS.cpp 1.19:
+	* MMS.h 1.20:
+	* MMS_BasicTypes.cpp 1.8:
+	* MMS_BasicTypes.h 1.10:
+	* MMS_Document.h 1.2:
+	* Strings.h 1.4:
+		Закончена декомпиляция диалоговых форм
+
+	* MMS_Buh.cpp 1.6:
+	* MMS_Buh.h 1.2:
+		Начало работ с параметрами бухгалтерии
+
+	* DialogForm.cpp 1.8:
+	* MMS.cpp 1.20:
+	* MMS_BasicTypes.cpp 1.9:
+	* MMS_BasicTypes.h 1.11:
+	* MMS_Parser.cpp 1.11:
+		Убрал отладочный код
+
+2004-11-28	adirks
+	* DialogForm.cpp 1.6:
+	* DialogForm.h 1.6:
+	* DlgForm_Tables.cpp 1.5:
+	* DlgForms.txt 1.3:
+	* Lexer.cpp 1.7:
+	* MMS_Parser.cpp 1.10:
+	* gcomp.opt 1.19:
+		Начало работ по переделке диалоговых форм на новую технологию
+
+	* DLL/GCompDLL.dsp 1.7:
+	* DLL/GCompDLL.mak 1.4:
+	* Declarations.h 1.7:
+	* MMS.cpp 1.18:
+	* MMS.h 1.19:
+	* MMS_Buh.cpp 1.5:
+	* MMS_Buh.h 1.1:
+	* MMS_Calculation.cpp 1.1:
+	* MMS_Calculation.h 1.1:
+	* MMS_Decompile.cpp 1.11:
+	* MMS_Document.cpp 1.1:
+	* MMS_Document.h 1.1:
+	* MMS_Subconto.cpp 1.9:
+	* MMS_Subconto.h 1.1:
+	* gcomp.opt 1.18:
+		Ставшие излишне большими файлы MMS.h и MMS.cpp разделены на части
+		.
+
+	* Declarations.h 1.6:
+	* MD_Formats.txt 1.5:
+	* MMS.cpp 1.17:
+	* MMS.h 1.18:
+	* MMS_BasicTypes.h 1.9:
+	* MMS_Decompile.cpp 1.10:
+	* MMS_Parser.cpp 1.9:
+	* gcomp.opt 1.17:
+		Декомпиляция объектов компоненты "расчёт"
+
+2004-11-27	adirks
+	* MD_Formats.txt 1.4:
+	* MMS.cpp 1.16:
+	* MMS.h 1.17:
+	* MMS_Parser.cpp 1.8:
+	* gcomp.opt 1.16:
+		Декомпилируются последовательности документов
+
+	* MD_Formats.txt 1.3:
+	* MMS.cpp 1.15:
+	* MMS.h 1.16:
+	* MMS_BasicTypes.h 1.8:
+	* MMS_Decompile.cpp 1.9:
+	* MMS_Parser.cpp 1.7:
+	* MMS_Subconto.cpp 1.8:
+	* gcomp.opt 1.15:
+		Декомпиляция журналов документов и журналов рвсчётов
+
+2004-11-26	adirks
+	* MMS.cpp 1.14:
+	* MMS.h 1.14:
+	* MMS.h 1.15:
+	* MMS_Decompile.cpp 1.8:
+	* gcomp.opt 1.13:
+	* gcomp.opt 1.14:
+		Начало работ с журналами документов
+
+	* MD_Formats.txt 1.2:
+	* MMS.cpp 1.13:
+	* MMS.h 1.13:
+	* MMS_BasicTypes.cpp 1.7:
+	* MMS_BasicTypes.h 1.7:
+	* MMS_Decompile.cpp 1.7:
+	* MMS_Parser.cpp 1.6:
+	* MMS_Subconto.cpp 1.7:
+	* Rights.cpp 1.6:
+	* gcomp.opt 1.12:
+		Сделана декомпиляция основных объектов метаданных. Осталась бухга
+		лтерия и расчёты.
+
+	* DLL/GCompDLL.mak 1.3:
+		Изменения в составе проекта
+
+2004-11-25	adirks
+	* MMS.cpp 1.12:
+	* MMS.h 1.12:
+	* MMS_BasicTypes.cpp 1.6:
+	* MMS_BasicTypes.h 1.6:
+	* MMS_Parser.cpp 1.5:
+	* MMS_Subconto.cpp 1.6:
+	* gcomp.opt 1.11:
+	* scripts/readme.txt 1.3:
+		Метаданные справочников и документов декомпилируются как надо
+
+2004-11-23	adirks
+	* Container.h 1.6:
+	* DLL/GComp.cpp 1.5:
+	* DLL/GCompDLL.dsp 1.6:
+	* DialogForm.cpp 1.5:
+	* DialogForm.h 1.5:
+	* DlgForm_Compile.cpp 1.4:
+	* MMS.cpp 1.10:
+	* MMS.h 1.10:
+	* MMS_BasicTypes.cpp 1.4:
+	* MMS_BasicTypes.h 1.4:
+	* MMS_Compile.cpp 1.6:
+	* MMS_Decompile.cpp 1.6:
+	* MMS_Parser.cpp 1.4:
+	* MMS_Subconto.cpp 1.4:
+	* Rights.cpp 1.5:
+	* Rights.h 1.4:
+	* Task.h 1.37:
+	* UI.CPP 1.4:
+	* UI.H 1.4:
+	* gcomp.opt 1.9:
+		Первая работающая версия
+
+2004-11-09	adirks
+	* Lexer.cpp 1.5:
+	* Lexer.h 1.5:
+		Более подробная информация о месте возникновения ошибки
+
+2004-11-05	adirks
+	* MMS.cpp 1.6:
+	* MMS.h 1.6:
+	* gcomp.opt 1.5:
+		Добавлено новых классов для объектов метаданных
+
+	* MD_Formats.txt 1.1:
+		Описание форматов объектов метаданных
+
+2004-11-04	adirks
+	* scripts/repository_cvt/1c_vss2cvs.pl 1.3:
+		Более правильная перекодировка и ведение лога сконвертированных в
+		ерсий
+
+	* DLL/GCompDLL.dsp 1.4:
+	* Declarations.h 1.5:
+	* MMS.cpp 1.5:
+	* MMS.h 1.5:
+	* MMS_Subconto.cpp 1.2:
+	* gcomp.opt 1.4:
+	* scripts/correct_dlg/correct_dlg.pl 1.3:
+		Потихоньку описываем объекты метаданных.
+
+2004-11-03	adirks
+	* scripts/code_beautifyer/RunPerlScripts.vbs 1.3:
+	* scripts/code_beautifyer/code_beautifyer.pl 1.3:
+		Исправлена ошибка отработки многострочных If'ов.
+		Фрагменты 'TurboMD' заменены на 'OpenConf'  (при чём тут вообще TurboMD?! иногда я просто сам себя не понимаю)
+
+2004-11-02	adirks
+	* 1CVS_Tables.cpp 1.3:
+	* BeautyObjects.tab.cpp 1.1:
+	* CommonFunctions.cpp 1.4:
+	* CommonFunctions.h 1.4:
+	* Container.cpp 1.4:
+	* Container.h 1.4:
+	* DLL/GComp.cpp 1.3:
+	* DLL/GComp.rc 1.3:
+	* DLL/GCompDLL.dsp 1.3:
+	* DialogForm.cpp 1.3:
+	* DialogForm.h 1.3:
+	* DlgForm_Compile.cpp 1.3:
+	* DlgForm_Tables.cpp 1.3:
+	* Interfaces.txt 1.3:
+	* Lexer.cpp 1.3:
+	* Lexer.h 1.3:
+	* MMS.cpp 1.4:
+	* MMS.h 1.4:
+	* MMS_Assemble.cpp 1.3:
+	* MMS_BasicTypes.cpp 1.1:
+	* MMS_BasicTypes.h 1.1:
+	* MMS_Buh.cpp 1.3:
+	* MMS_Compile.cpp 1.4:
+	* MMS_Decompile.cpp 1.4:
+	* MMS_Filter.cpp 1.3:
+	* MMS_Filter.h 1.3:
+	* MMS_Subconto.cpp 1.1:
+	* MainMetadataStream.tab.cpp 1.1:
+	* MainMetadataStream.y 1.8:
+	* NameTable.cpp 1.4:
+	* NameTable.h 1.4:
+	* Ordering.cpp 1.3:
+	* Ordering.h 1.3:
+	* PictureGallery.cpp 1.3:
+	* Rights.cpp 1.3:
+	* Rights.h 1.3:
+	* Rights_Compile.cpp 1.3:
+	* Storage.cpp 1.4:
+	* Storage.h 1.4:
+	* StreamInfo.cpp 1.13:
+	* StreamInfo.h 1.12:
+	* Strings.cpp 1.3:
+	* Strings.h 1.3:
+	* Task.h 1.36:
+	* UI.CPP 1.3:
+	* UI.H 1.3:
+	* UI_Compile.cpp 1.3:
+	* gcomp.opt 1.3:
+		Начало работ по представлению метаданных в human-readable виде (п
+		одобно диалоговым формам).
+
+	* 1CVS_Tables.cpp 1.2:
+	* CommonFunctions.cpp 1.3:
+	* CommonFunctions.h 1.3:
+	* Container.cpp 1.3:
+	* Container.h 1.3:
+	* DLL/GComp.cpp 1.2:
+	* DLL/GComp.h 1.2:
+	* DLL/GComp.rc 1.2:
+	* DLL/GCompDLL.dsp 1.2:
+	* DLL/GCompDLL.mak 1.2:
+	* DLL/resource.h 1.2:
+	* Declarations.h 1.4:
+	* DialogForm.cpp 1.2:
+	* DialogForm.h 1.2:
+	* DlgFormFlags.h 1.2:
+	* DlgForm_Compile.cpp 1.2:
+	* DlgForm_Tables.cpp 1.2:
+	* DlgForms.txt 1.2:
+	* Interfaces.txt 1.2:
+	* Lexer.cpp 1.2:
+	* Lexer.h 1.2:
+	* MMS.cpp 1.3:
+	* MMS.h 1.3:
+	* MMS_Assemble.cpp 1.2:
+	* MMS_Buh.cpp 1.2:
+	* MMS_Compile.cpp 1.3:
+	* MMS_Decompile.cpp 1.3:
+	* MMS_Filter.cpp 1.2:
+	* MMS_Filter.h 1.2:
+	* MainMetadataStream.y 1.7:
+	* NameTable.cpp 1.3:
+	* NameTable.h 1.3:
+	* Ordering.cpp 1.2:
+	* Ordering.h 1.2:
+	* PictureGallery.cpp 1.2:
+	* ReadMe.txt 1.2:
+	* Rights.cpp 1.2:
+	* Rights.h 1.2:
+	* Rights_Compile.cpp 1.2:
+	* Storage.cpp 1.3:
+	* Storage.h 1.3:
+	* StreamInfo.cpp 1.12:
+	* StreamInfo.h 1.11:
+	* Strings.cpp 1.2:
+	* Strings.h 1.2:
+	* Task.cpp 1.25:
+	* Task.h 1.35:
+	* TaskCompile.cpp 1.22:
+	* TaskDecompile.cpp 1.39:
+	* TaskHelp.cpp 1.13:
+	* UI.CPP 1.2:
+	* UI.H 1.2:
+	* UI_Compile.cpp 1.2:
+	* cvs2cl.py 1.2:
+	* gcomp.cpp 1.10:
+	* gcomp.dsp 1.12:
+	* gcomp.dsw 1.7:
+	* gcomp.lst 1.2:
+	* gcomp.mak 1.2:
+	* gcomp.opt 1.2:
+	* gcomp_bin.lst 1.2:
+	* gcomp_vis/GComp.pas 1.2:
+	* gcomp_vis/Project1.cfg 1.2:
+	* gcomp_vis/Project1.dof 1.2:
+	* gcomp_vis/Project1.dpr 1.2:
+	* gcomp_vis/Project1.res 1.2:
+	* gcomp_vis/Readme.txt 1.2:
+	* gcomp_vis/Unit1.dfm 1.2:
+	* gcomp_vis/Unit1.pas 1.2:
+	* gcomp_vis/Unit2.dfm 1.2:
+	* gcomp_vis/Unit2.pas 1.2:
+	* gcomp_vis/Unit3.dfm 1.2:
+	* gcomp_vis/Unit3.pas 1.2:
+	* gcomp_vis/Unit4.dfm 1.2:
+	* gcomp_vis/Unit4.pas 1.2:
+	* gcomp_vis/Unit5.dfm 1.2:
+	* gcomp_vis/Unit5.pas 1.2:
+	* gcomp_vis/Unit6.dfm 1.2:
+	* gcomp_vis/Unit6.pas 1.2:
+	* gcomp_vis/VisualGcomp.exe 1.2:
+	* gnugpl.eng.txt 1.2:
+	* gnugpl.rus.txt 1.2:
+	* license.txt 1.2:
+	* makedistr.bat 1.2:
+	* scripts/Test/readme.txt 1.2:
+	* scripts/Test/test.bat 1.2:
+	* scripts/auto_add/auto_add.pl 1.2:
+	* scripts/auto_add/auto_add.py 1.2:
+	* scripts/auto_add/readme.txt 1.2:
+	* scripts/auto_add/test.bat 1.2:
+	* scripts/check_max_id/check_max_id.pl 1.2:
+	* scripts/check_max_id/check_max_id.py 1.2:
+	* scripts/check_max_id/readme.txt 1.2:
+	* scripts/check_max_id/test.bat 1.2:
+	* scripts/code_beautifyer/RunPerlScripts.vbs 1.2:
+	* scripts/code_beautifyer/code_beautifyer.pl 1.2:
+	* scripts/code_beautifyer/readme.txt 1.2:
+	* scripts/code_beautifyer/test.bat 1.2:
+	* scripts/correct_dlg/correct_dlg.pl 1.2:
+	* scripts/correct_dlg/readme.txt 1.2:
+	* scripts/correct_dlg/test.bat 1.2:
+	* scripts/extract_proc/ExtractProc.py 1.2:
+	* scripts/extract_proc/readme.txt 1.2:
+	* scripts/readme.txt 1.2:
+	* scripts/repository_cvt/1c_vss2cvs.pl 1.2:
+	* scripts/repository_cvt/readme.txt 1.2:
+	* scripts/repository_cvt/repository_cvt.pl 1.2:
+	* scripts/show_pics/readme.txt 1.2:
+	* scripts/show_pics/show_all_pics.py 1.2:
+	* scripts/show_pics/test.bat 1.2:
+		Ветка ContainerContents наконец-то залита в основной ствол.
+
+2004-10-11	fez
+	* scripts/Test/test.bat 1.1:
+		file test.bat was initially added on branch ContainerContents.
+
+	* scripts/Test/readme.txt 1.1:
+		file readme.txt was initially added on branch ContainerContents.
+
+	* scripts/Test/readme.txt [ContainerContents] 1.1.2.1:
+	* scripts/Test/test.bat [ContainerContents] 1.1.2.1:
+		Добавлен скрипт полуавтоматического тестирования спорных ситуаций
+		.
+
+2004-10-09	adirks
+	* DialogForm.cpp [ContainerContents] 1.1.2.40:
+	* DialogForm.h [ContainerContents] 1.1.2.20:
+	* DlgForm_Compile.cpp [ContainerContents] 1.1.2.17:
+	* DlgForm_Tables.cpp [ContainerContents] 1.1.2.13:
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.81:
+	* Rights.cpp [ContainerContents] 1.1.2.11:
+	* Rights.h [ContainerContents] 1.1.2.5:
+	* Strings.cpp [ContainerContents] 1.1.2.6:
+	* Strings.h [ContainerContents] 1.1.2.6:
+	* UI.CPP [ContainerContents] 1.1.2.18:
+		Небольшой рефакторинг в диалогах и правах.
+
+2004-08-14	fez
+	* MMS_Assemble.cpp [ContainerContents] 1.1.2.7:
+	* PictureGallery.cpp [ContainerContents] 1.1.2.9:
+	* Storage.cpp [ContainerContents] 1.1.2.70:
+	* Storage.h [ContainerContents] 1.1.2.34:
+		Адаптация gcomp к ClearCase от Евгения Соломахи (
+		E.Solomaha@sys4tec.com)
+
+	* makedistr.bat [ContainerContents] 1.1.2.7:
+		Добавлено еще одно требование для работы скрипта
+
+	* makedistr.bat [ContainerContents] 1.1.2.6:
+		Добавлены примеры заполнения переменных окружения, необходимых дл
+		я работы скрипта.
+
+2004-08-09	adirks
+	* scripts/auto_add/auto_add.pl [ContainerContents] 1.1.2.10:
+		Запускаем дифф только на текстовых файлах.
+
+	* scripts/auto_add/auto_add.pl [ContainerContents] 1.1.2.9:
+		Добавлен ключик --diff - при его указани будет запускаться внешни
+		й дифф на каждый изменённый файл. Текущая версия из репозитария с
+		кладывается в каталог временных файлов (берётся из TMP или TEMP)
+		. Внешний дифф можно прописать в самом скрипте, или в переменной 
+		среды DIFFCMD (путь не должен содержать пробелов).
+
+	* scripts/auto_add/auto_add.pl [ContainerContents] 1.1.2.8:
+		В командах имена файлов и каталогов заключаем в кавычки, т.к. там
+		 могут содержаться пробелы.
+
+2004-08-06	adirks
+	* Rights.cpp [ContainerContents] 1.1.2.10:
+	* Rights.h [ContainerContents] 1.1.2.4:
+		Наведём немножко красоты
+
+	* DLL/GComp.cpp [ContainerContents] 1.1.2.32:
+	* DLL/GComp.h [ContainerContents] 1.1.2.17:
+	* DialogForm.cpp [ContainerContents] 1.1.2.39:
+	* DialogForm.h [ContainerContents] 1.1.2.19:
+	* DlgForm_Compile.cpp [ContainerContents] 1.1.2.16:
+	* Task.cpp [ContainerContents] 1.22.2.48:
+	* TaskHelp.cpp [ContainerContents] 1.11.2.28:
+		При декомпиляции добавлена возможность отсортировать элементы диа
+		логовых форм по идентификатору (чтобы потом удобнее было смотреть
+		 изменения). При компиляции элементы сортируются по порядку обход
+		а.  Ключ командной строки --sort-form-controls.
+
+2004-08-04	adirks
+	* DLL/GComp.cpp [ContainerContents] 1.1.2.31:
+	* DLL/GComp.h [ContainerContents] 1.1.2.16:
+	* Rights.cpp [ContainerContents] 1.1.2.8:
+	* Task.cpp [ContainerContents] 1.22.2.47:
+	* TaskHelp.cpp [ContainerContents] 1.11.2.27:
+		Добавлена опция для сортировки объектов пользовательских прав. По
+		 умолчанию они не сортируются.
+
+	* Rights.cpp [ContainerContents] 1.1.2.9:
+		Права на всё конфигурацию должны быть в самом начале.
+
+2004-08-01	adirks
+	* Rights.cpp [ContainerContents] 1.1.2.7:
+	* Rights.h [ContainerContents] 1.1.2.3:
+	* Rights_Compile.cpp [ContainerContents] 1.1.2.2:
+		При декомпиляции прав проверяем, является ли ссылка на метаданные "битой". Если "битая" - то оставляем числовой идентификатор.
+		Объекты наборов прав сортируются по типу и наименованию.
+
+	* DialogForm.cpp [ContainerContents] 1.1.2.38:
+		Исправлена ошибка: не определялся текстовый идентификатор поля дл
+		я форм справочников
+
+2004-07-21	fez
+	* DlgForm_Tables.cpp [ContainerContents] 1.1.2.12:
+		Добавлен комментарий
+
+	* Storage.cpp [ContainerContents] 1.1.2.69:
+		В ситуации, когда декомпилируемый файл уже открыт кем-то еще на з
+		апись теперь выдается более внятное сообщение.
+
+2004-07-21	adirks
+	* scripts/code_beautifyer/code_beautifyer.pl [ContainerContents] 1.1.2.2:
+	* scripts/code_beautifyer/code_beautifyer.pl [ContainerContents] 1.1.2.3:
+		Более интеллектуальный учёт символов ';' в конце конструкций
+
+	* scripts/code_beautifyer/RunPerlScripts.vbs [ContainerContents] 1.1.2.2:
+		Удаляем за собой служебный файл
+
+	* MMS.h [ContainerContents] 1.1.2.82:
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.80:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.102:
+		Исправлена ошибка: при компиляции перезаписывался файл ОбъектыМет
+		аданных.txt.
+
+2004-07-20	fez
+	* TaskHelp.cpp [ContainerContents] 1.11.2.26:
+		Новые опции добавлены в англоязычную помощь
+
+2004-07-20	adirks
+	* DLL/GComp.cpp [ContainerContents] 1.1.2.30:
+	* DLL/GComp.rc [ContainerContents] 1.1.2.6:
+		Изменён номер версии
+
+	* DialogForm.cpp [ContainerContents] 1.1.2.37:
+	* DialogForm.h [ContainerContents] 1.1.2.18:
+	* MMS.h [ContainerContents] 1.1.2.81:
+	* MMS_Buh.cpp [ContainerContents] 1.1.2.7:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.101:
+		При декомпиляии диалоговых форм в поле ИдентификаторМетаданных по
+		дставляется атрибут родительского объекта, имя которого совпадает
+		 с идентификатором контрола диалога.
+
+	* scripts/correct_dlg/correct_dlg.pl [ContainerContents] 1.1.2.6:
+		Небольшие усовершенствования
+
+2004-07-19	adirks
+	* scripts/code_beautifyer/code_beautifyer.pl 1.1:
+		file code_beautifyer.pl was initially added on branch 
+		ContainerContents.
+
+	* scripts/code_beautifyer/RunPerlScripts.vbs [ContainerContents] 1.1.2.1:
+	* scripts/code_beautifyer/code_beautifyer.pl [ContainerContents] 1.1.2.1:
+	* scripts/code_beautifyer/readme.txt [ContainerContents] 1.1.2.1:
+	* scripts/code_beautifyer/test.bat [ContainerContents] 1.1.2.1:
+	* scripts/readme.txt [ContainerContents] 1.1.2.7:
+		Добавлен скрипт для автоформатировния кода модулей.
+
+	* scripts/code_beautifyer/test.bat 1.1:
+		file test.bat was initially added on branch ContainerContents.
+
+	* scripts/code_beautifyer/readme.txt 1.1:
+		file readme.txt was initially added on branch ContainerContents.
+
+	* scripts/code_beautifyer/RunPerlScripts.vbs 1.1:
+		file RunPerlScripts.vbs was initially added on branch 
+		ContainerContents.
+
+2004-07-13	adirks
+	* TaskHelp.cpp [ContainerContents] 1.11.2.25:
+		В хелпе описаны добавленные опции
+
+	* MMS_Filter.cpp [ContainerContents] 1.1.2.3:
+		В качестве разделителей в фильтре можно использовать '/' и '.'
+
+2004-07-05	adirks
+	* DLL/GComp.cpp [ContainerContents] 1.1.2.29:
+	* DLL/GComp.rc [ContainerContents] 1.1.2.5:
+		Изменён номер версии gcomp (в связи с изменением в диалоговых фор
+		мах).
+
+	* DialogForm.cpp [ContainerContents] 1.1.2.36:
+		Значение по умолчанию для PictureID
+
+2004-06-29	adirks
+	* DialogForm.h [ContainerContents] 1.1.2.17:
+	* DlgForm_Tables.cpp [ContainerContents] 1.1.2.11:
+	* DlgForms.txt [ContainerContents] 1.1.2.11:
+		Выяснено назначение парочки полей и флагов в диалоговых формах
+
+2004-06-24	adirks
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.79:
+		При компиляции общих таблиц в потоке GlobalData\
+		GlobalData_Number1\WorkBook\Container.Contents создавалась запись
+		 о якобы существующем модуле формы.
+
+	* MMS.cpp [ContainerContents] 1.1.2.77:
+		При построении таблицы идентификаторов отбрасываются объекты 
+		AccSbCnts и все их потомки.
+
+2004-06-23	adirks
+	* scripts/extract_proc/ExtractProc.py [ContainerContents] 1.1.2.4:
+	* scripts/extract_proc/readme.txt [ContainerContents] 1.1.2.2:
+		Исправления от Сергея Ушакова: исправлено некрасивое ругательство
+		, когда отсутствовал каталог. Добавлены ключи -s, -v, -E -V.
+
+	* scripts/extract_proc/extract_proc.py [ContainerContents] 1.1.2.2:
+		Удалён лишний скрипт
+
+2004-06-22	fez
+	* CommonFunctions.cpp [ContainerContents] 1.1.2.50:
+	* CommonFunctions.h [ContainerContents] 1.1.2.20:
+	* Storage.cpp [ContainerContents] 1.1.2.66:
+	* Storage.h [ContainerContents] 1.1.2.33:
+		Ключ --no-empty-folders
+		Доделал рекурсивное удаление "пустых" папок. Все-таки это кому-то оказалось нужным
+		http://cvs.alterplast.ru/bugs/show_bug.cgi?id=403
+
+	* DLL/GComp.cpp [ContainerContents] 1.1.2.28:
+		Изменен номер версии: 2.1.4
+
+	* TaskHelp.cpp [ContainerContents] 1.11.2.24:
+		Ключ --no-empty-folders описан в помощи
+
+	* CommonFunctions.cpp [ContainerContents] 1.1.2.51:
+	* CommonFunctions.h [ContainerContents] 1.1.2.21:
+	* Storage.cpp [ContainerContents] 1.1.2.68:
+		Подчистили за собой хвосты.
+
+	* Storage.cpp [ContainerContents] 1.1.2.67:
+		Ключ --no-empty-folders
+		При удалении служебных папок - снимем у файлов атрибут ридонли.
+		http://cvs.alterplast.ru/bugs/show_bug.cgi?id=403
+
+2004-06-21	fez
+	* DLL/GComp.cpp [ContainerContents] 1.1.2.27:
+	* Storage.cpp [ContainerContents] 1.1.2.65:
+	* Storage.h [ContainerContents] 1.1.2.32:
+		Ключ --no-empty-folders
+		Немного накосячил с передачей общего параметра - так будет лучше
+		http://cvs.alterplast.ru/bugs/show_bug.cgi?id=403
+
+	* DLL/GComp.cpp [ContainerContents] 1.1.2.26:
+	* DLL/GComp.h [ContainerContents] 1.1.2.15:
+	* Storage.cpp [ContainerContents] 1.1.2.64:
+	* Task.cpp [ContainerContents] 1.22.2.46:
+		Ключ --no-empty-folders
+		http://cvs.alterplast.ru/bugs/show_bug.cgi?id=403
+
+2004-06-19	adirks
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.78:
+		Потоки для модулей форм создавались независимо от наличия самих ф
+		орм. При попытке открыть такую форму 1С умирала.
+
+2004-06-17	fez
+	* cvs2cl.py 1.1:
+		file cvs2cl.py was initially added on branch ContainerContents.
+
+	* DLL/GCompDLL.mak [ContainerContents] 1.1.2.2:
+		Обновлены mak файлы для версии 2.1.3
+
+	* cvs2cl.py [ContainerContents] 1.1.2.1:
+		Добавлен скрипт получения ChangeLog. Чтобы не искать потом в случ
+		ае чего.
+
+2004-06-17	adirks
+	* Storage.cpp [ContainerContents] 1.1.2.62:
+		Функция сравнения строки с потоком почти всегда возвращала -1
+
+	* DialogForm.cpp [ContainerContents] 1.1.2.34:
+	* DialogForm.cpp [ContainerContents] 1.1.2.35:
+		Проверка на "битые ссылки" в свойстве АгрегатныйТип элементов диа
+		логов.  Битые ссылки выгружаются в виде числового идентификатора
+		.
+
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.98:
+		Если совсем нет документов, то не до конца декомпилируется
+
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.99:
+		Если совсем нет журналов документов, то не до конца декомпилирует
+		ся
+
+	* MMS.h [ContainerContents] 1.1.2.80:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.100:
+		При декомпиляции не извлекаем модули форм, если они пустые
+
+	* scripts/correct_dlg/correct_dlg.pl [ContainerContents] 1.1.2.5:
+		Убраны лишние переносы строк
+
+	* Storage.cpp [ContainerContents] 1.1.2.63:
+		При создании потока из строки учитываем, что потоки бывают запако
+		ванные.
+
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.77:
+		При компиляции форм вместо отстутствующего модуля создаётся пусто
+		й поток
+
+2004-06-16	adirks
+	* Storage.cpp [ContainerContents] 1.1.2.61:
+		При сравнении строки с потоком на всякий случай пропускаем \r \n
+
+	* Rights.cpp [ContainerContents] 1.1.2.6:
+		Обнаружилось ещё одно свойство прав с кодом 0x00. Бывает только у
+		 всей конфигурации.
+
+2004-06-15	adirks
+	* Rights.cpp [ContainerContents] 1.1.2.5:
+		Добавлено описание свойства 0x2e
+
+	* DLL/GComp.rc [ContainerContents] 1.1.2.4:
+		Изменен номер версии
+
+2004-06-13	adirks
+	* scripts/extract_proc/ExtractProc.py [ContainerContents] 1.1.2.3:
+		Доделана обратная сборка модулей
+
+	* Rights.cpp [ContainerContents] 1.1.2.4:
+		Исправлены орфографические ошибки
+
+	* Rights.cpp [ContainerContents] 1.1.2.3:
+	* gcomp.opt [ContainerContents] 1.1.2.66:
+		Добавлено описание свойства 0x2c
+
+	* DLL/GCompDLL.dsp [ContainerContents] 1.1.2.10:
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.76:
+	* Rights.cpp [ContainerContents] 1.1.2.2:
+	* Rights.h [ContainerContents] 1.1.2.2:
+	* Rights_Compile.cpp [ContainerContents] 1.1.2.1:
+	* gcomp.opt [ContainerContents] 1.1.2.65:
+		Компиляция пользовательских прав из текстовых файлов
+
+	* Rights_Compile.cpp 1.1:
+		file Rights_Compile.cpp was initially added on branch 
+		ContainerContents.
+
+2004-06-12	adirks
+	* Rights.h 1.1:
+		file Rights.h was initially added on branch ContainerContents.
+
+	* Rights.cpp 1.1:
+		file Rights.cpp was initially added on branch ContainerContents.
+
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.97:
+	* Rights.cpp [ContainerContents] 1.1.2.1:
+	* Rights.h [ContainerContents] 1.1.2.1:
+	* Strings.cpp [ContainerContents] 1.1.2.5:
+	* Strings.h [ContainerContents] 1.1.2.5:
+	* UI.CPP [ContainerContents] 1.1.2.17:
+	* UI_Compile.cpp [ContainerContents] 1.1.2.17:
+	* gcomp.opt [ContainerContents] 1.1.2.64:
+		Декомпиляция пользовательских прав в human readable виде
+
+	* 1CVS_Tables.cpp [ContainerContents] 1.1.2.1:
+	* DLL/GComp.cpp [ContainerContents] 1.1.2.25:
+	* DLL/GComp.h [ContainerContents] 1.1.2.14:
+	* DLL/GCompDLL.dsp [ContainerContents] 1.1.2.9:
+	* Declarations.h [ContainerContents] 1.1.2.13:
+	* NameTable.cpp [ContainerContents] 1.1.2.38:
+	* Task.cpp [ContainerContents] 1.22.2.45:
+	* Task.h [ContainerContents] 1.32.2.28:
+		Добавлена функция для трансляции 1С-имён объектов в пути к файлам
+		.  Пока в зачаточном состоянии.
+
+	* 1CVS_Tables.cpp 1.1:
+		file 1CVS_Tables.cpp was initially added on branch 
+		ContainerContents.
+
+2004-06-11	adirks
+	* scripts/correct_dlg/correct_dlg.pl [ContainerContents] 1.1.2.4:
+		Добавлена возможность просто сдвигать элементы диалогов по вертик
+		али. Ключик -shifty
+
+2004-06-03	fez
+	* makedistr.bat [ContainerContents] 1.1.2.4:
+		Скрипт создания дистрибутива теперь еще делает cvs update и строит changelog.
+		
+		Осталось только на сайт новости выкладывать и рассылку отправлять :)
+
+	* makedistr.bat [ContainerContents] 1.1.2.5:
+		Добавил немного диагностики
+
+	* gcomp.lst [ContainerContents] 1.1.2.9:
+	* gcomp_bin.lst [ContainerContents] 1.1.2.2:
+		Чего-то я запутался в этих lst. Пусть все скрипты будут во всех а
+		рхивах.
+
+2004-06-03	adirks
+	* Task.cpp [ContainerContents] 1.22.2.44:
+		При анализе ключей с параметрами проверяем наличие параметров
+
+	* DialogForm.cpp [ContainerContents] 1.1.2.33:
+	* MMS.cpp [ContainerContents] 1.1.2.76:
+	* gcomp.opt [ContainerContents] 1.1.2.63:
+		Убрано сообщение о битых ссылках на метаданные в формах
+
+2004-06-01	adirks
+	* scripts/auto_add/auto_add.pl [ContainerContents] 1.1.2.7:
+		Исправлен косяк с буквой "ё"
+
+	* scripts/repository_cvt/1c_vss2cvs.pl [ContainerContents] 1.1.2.6:
+		Исправлен косяк с буквой "ё"
+		cvs tag больше не выводится в отдельный лог
+
+2004-05-31	adirks
+	* gcomp.cpp [ContainerContents] 1.8.2.25:
+		test commit
+
+2004-05-30	adirks
+	* DLL/GCompDLL.mak [ContainerContents] 1.1.2.1:
+		makefile для сборки gcomp.dll
+
+	* CommonFunctions.cpp [ContainerContents] 1.1.2.49:
+	* DLL/GComp.cpp [ContainerContents] 1.1.2.24:
+	* DLL/GComp.h [ContainerContents] 1.1.2.13:
+	* ReadMe.txt [ContainerContents] 1.1.2.4:
+	* Task.cpp [ContainerContents] 1.22.2.43:
+	* gcomp.opt [ContainerContents] 1.1.2.62:
+		Сохранение параметров декомпиляции в gcomp.ini
+
+	* DLL/GCompDLL.mak 1.1:
+		file GCompDLL.mak was initially added on branch 
+		ContainerContents.
+
+	* gcomp.lst [ContainerContents] 1.1.2.8:
+	* gcomp_bin.lst [ContainerContents] 1.1.2.1:
+		Дистрибутив разделён на 2 части: исходники и бинарники
+
+	* MMS.h [ContainerContents] 1.1.2.78:
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.74:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.95:
+	* gcomp.opt [ContainerContents] 1.1.2.60:
+		Немного навёл красоты
+
+	* gcomp_bin.lst 1.1:
+		file gcomp_bin.lst was initially added on branch 
+		ContainerContents.
+
+	* MMS.cpp [ContainerContents] 1.1.2.75:
+	* MMS.h [ContainerContents] 1.1.2.79:
+	* NameTable.cpp [ContainerContents] 1.1.2.37:
+		Убраны инфикса Form, CalcJornFlds из имён объектов. Приведены в п
+		орядок параметры бухгалтерии.
+
+	* makedistr.bat [ContainerContents] 1.1.2.3:
+		Скрипт создания дистрибутива автоматически перекомпилирует всё чт
+		о нужно.
+
+	* gcomp.mak [ContainerContents] 1.1.2.1:
+		makefile для сборки gcomp.exe
+
+	* DLL/GComp.cpp [ContainerContents] 1.1.2.22:
+	* MMS_Buh.cpp [ContainerContents] 1.1.2.6:
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.75:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.96:
+	* MMS_Filter.cpp [ContainerContents] 1.1.2.2:
+	* Storage.cpp [ContainerContents] 1.1.2.60:
+	* Storage.h [ContainerContents] 1.1.2.31:
+	* Task.cpp [ContainerContents] 1.22.2.42:
+	* UI_Compile.cpp [ContainerContents] 1.1.2.16:
+	* gcomp.opt [ContainerContents] 1.1.2.61:
+	* gcomp_vis/Unit1.ddp [ContainerContents] 1.1.2.2:
+	* gcomp_vis/Unit1.dfm [ContainerContents] 1.1.2.4:
+	* gcomp_vis/Unit1.pas [ContainerContents] 1.1.2.4:
+	* scripts/repository_cvt/repository_cvt.pl [ContainerContents] 1.1.2.7:
+		Выборочная компиляция. Указанные объекты метаданных (справочники,
+		 документы, регистры и т.д.) должны быть в МДшнике - новые объект
+		ы создаваться не будут.
+
+	* DLL/GComp.cpp [ContainerContents] 1.1.2.23:
+	* DLL/GComp.rc [ContainerContents] 1.1.2.3:
+		Изменён номер версии
+
+	* gcomp.mak 1.1:
+		file gcomp.mak was initially added on branch ContainerContents.
+
+2004-05-29	adirks
+	* Declarations.h [ContainerContents] 1.1.2.12:
+	* MMS.cpp [ContainerContents] 1.1.2.74:
+	* MMS.h [ContainerContents] 1.1.2.77:
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.73:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.93:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.94:
+	* NameTable.cpp [ContainerContents] 1.1.2.36:
+	* gcomp.opt [ContainerContents] 1.1.2.59:
+		Немного навёл красоты
+
+2004-05-28	adirks
+	* MMS.cpp [ContainerContents] 1.1.2.73:
+	* MMS.h [ContainerContents] 1.1.2.76:
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.72:
+	* gcomp.opt [ContainerContents] 1.1.2.58:
+		Таблица соответствий числовых ID и имён используется и при компил
+		яции
+
+	* Declarations.h [ContainerContents] 1.1.2.11:
+	* NameTable.cpp [ContainerContents] 1.1.2.35:
+		JournalFld не появляется больше в именах объектов
+
+2004-05-27	adirks
+	* DLL/GComp.cpp [ContainerContents] 1.1.2.21:
+	* DLL/GComp.h [ContainerContents] 1.1.2.12:
+	* DLL/GCompDLL.dsp [ContainerContents] 1.1.2.8:
+	* Task.cpp [ContainerContents] 1.22.2.41:
+		Тестовый ключик --save-mms для Александра Белова
+
+	* MMS.cpp [ContainerContents] 1.1.2.72:
+	* MMS.h [ContainerContents] 1.1.2.75:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.92:
+	* gcomp.opt [ContainerContents] 1.1.2.57:
+		Оптимизация получения имени объекта по его ID. Таблица объектов с
+		троится в самом начале работы
+
+	* DialogForm.cpp [ContainerContents] 1.1.2.32:
+	* DialogForm.h [ContainerContents] 1.1.2.16:
+	* DlgForm_Tables.cpp [ContainerContents] 1.1.2.10:
+		Трансляция ID связанных атрибутов для полей форм в символьные име
+		на
+
+2004-05-26	fez
+	* gcomp_vis/GComp.pas 1.1:
+		file GComp.pas was initially added on branch ContainerContents.
+
+	* gcomp_vis/VisualGcomp.exe 1.1:
+		file VisualGcomp.exe was initially added on branch 
+		ContainerContents.
+
+	* gcomp_vis/VisualGcomp.exe [ContainerContents] 1.1.2.1:
+		Поскольку у меня нету паскалевского компилятора - я не могу сам собирать этот бинарник.
+		Так что пусть пока полежит в репозитории.
+
+	* gcomp_vis/GComp.pas [ContainerContents] 1.1.2.1:
+	* gcomp_vis/Project1.dpr [ContainerContents] 1.1.2.2:
+	* gcomp_vis/Readme.txt [ContainerContents] 1.1.2.2:
+	* gcomp_vis/Unit1.dfm [ContainerContents] 1.1.2.3:
+	* gcomp_vis/Unit1.pas [ContainerContents] 1.1.2.3:
+	* gcomp_vis/Unit3.pas [ContainerContents] 1.1.2.3:
+	* gcomp_vis/Unit4.dfm [ContainerContents] 1.1.2.3:
+	* gcomp_vis/Unit4.pas [ContainerContents] 1.1.2.2:
+	* gcomp_vis/Unit5.dfm [ContainerContents] 1.1.2.2:
+	* gcomp_vis/Unit5.pas [ContainerContents] 1.1.2.2:
+	* gcomp_vis/VisualGcomp.exe [ContainerContents] 1.1.2.2:
+		Версия visualgcomp 1.1.1
+
+2004-05-26	adirks
+	* gcomp_vis/GComp.pas [ContainerContents] 1.1.2.2:
+	* gcomp_vis/VisualGcomp.exe [ContainerContents] 1.1.2.3:
+		Немного подправил, чтобы соответствовал gcomp.dll 2.1.2.beta
+
+2004-05-21	fez
+	* gnugpl.eng.txt [ContainerContents] 1.1.2.1:
+	* gnugpl.rus.txt [ContainerContents] 1.1.2.1:
+	* license.txt [ContainerContents] 1.1.2.1:
+		Добавлены файлы с лицензией
+
+	* license.txt 1.1:
+		file license.txt was initially added on branch 
+		ContainerContents.
+
+	* gnugpl.rus.txt 1.1:
+		file gnugpl.rus.txt was initially added on branch 
+		ContainerContents.
+
+	* gnugpl.eng.txt 1.1:
+		file gnugpl.eng.txt was initially added on branch 
+		ContainerContents.
+
+	* gcomp.cpp [ContainerContents] 1.8.2.24:
+		test commit
+
+	* gcomp.lst [ContainerContents] 1.1.2.7:
+		Файлы с лицензиями включены в состав дистрибутива
+
+	* DlgForms.txt [ContainerContents] 1.1.2.10:
+	* Interfaces.txt [ContainerContents] 1.1.2.5:
+		Копирайты со ссылками на лицензию перенесены в заголовки
+
+	* DlgForms.txt [ContainerContents] 1.1.2.9:
+	* Interfaces.txt [ContainerContents] 1.1.2.4:
+		Проставлены копирайты и указана ссылка на лицензию
+
+	* gcomp.dsp [ContainerContents] 1.10.2.20:
+		Файлы с лицензиями включены в состав проекта
+
+2004-05-20	adirks
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.71:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.91:
+		Немного изменена общая схема формирования имён файлов описаний
+
+	* Declarations.h [ContainerContents] 1.1.2.10:
+	* MMS.cpp [ContainerContents] 1.1.2.71:
+	* MMS.h [ContainerContents] 1.1.2.74:
+	* MainMetadataStream.y [ContainerContents] 1.5.2.28:
+	* NameTable.cpp [ContainerContents] 1.1.2.34:
+	* gcomp.opt [ContainerContents] 1.1.2.56:
+		Описания перечислений выгружаются без инфиксов EnumVal
+
+2004-05-19	adirks
+	* DLL/GComp.cpp [ContainerContents] 1.1.2.20:
+	* DLL/GCompDLL.dsp [ContainerContents] 1.1.2.7:
+	* Declarations.h [ContainerContents] 1.1.2.9:
+	* MMS.cpp [ContainerContents] 1.1.2.70:
+	* MMS.h [ContainerContents] 1.1.2.73:
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.70:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.90:
+	* MainMetadataStream.y [ContainerContents] 1.5.2.27:
+	* NameTable.cpp [ContainerContents] 1.1.2.33:
+	* gcomp.opt [ContainerContents] 1.1.2.55:
+		Описания реквизитов справочников документов и регистров выгружают
+		ся без инфиксов Props, HeadFields и т.д.
+
+2004-05-16	fez
+	* DialogForm.cpp [ContainerContents] 1.1.2.31:
+	* DialogForm.h [ContainerContents] 1.1.2.15:
+		Небольшой рефакторинг: Избавление от глобальных функций
+
+2004-05-15	adirks
+	* DialogForm.cpp [ContainerContents] 1.1.2.30:
+	* DialogForm.h [ContainerContents] 1.1.2.14:
+	* DlgForm_Compile.cpp [ContainerContents] 1.1.2.15:
+		Исправлена ошибка компиляции с --no-dialog-defaults (ругалось, чт
+		о не знает такого типа "0")
+
+	* DlgForm_Tables.cpp [ContainerContents] 1.1.2.9:
+		Совсем немножко красоты
+
+	* DialogForm.cpp [ContainerContents] 1.1.2.29:
+		Небольшая оптимизация
+
+2004-05-14	adirks
+	* DialogForm.cpp [ContainerContents] 1.1.2.26:
+	* NameTable.cpp [ContainerContents] 1.1.2.31:
+	* NameTable.h [ContainerContents] 1.1.2.8:
+	* gcomp.opt [ContainerContents] 1.1.2.52:
+		В таблице имён теперь хранятся имена базовых типов 1С (Справочник
+		, Документ и т.д.).  Имена агрегатных типов в диалогах теперь бер
+		утся из этого поля, а не из sID.
+
+	* DialogForm.cpp [ContainerContents] 1.1.2.28:
+	* DialogForm.h [ContainerContents] 1.1.2.13:
+	* DlgForm_Compile.cpp [ContainerContents] 1.1.2.14:
+	* MMS.cpp [ContainerContents] 1.1.2.69:
+	* MMS.h [ContainerContents] 1.1.2.72:
+		Функция преобразования символьного идентификатора в числовой также вынесена в класс CMMS.
+		Сделана попытка ускорить работу за счёт кэширования имён объектов, но ощутимого выигрыша не заметно.
+
+	* DLL/GComp.cpp [ContainerContents] 1.1.2.19:
+	* DLL/GComp.h [ContainerContents] 1.1.2.11:
+	* DialogForm.cpp [ContainerContents] 1.1.2.27:
+	* DialogForm.h [ContainerContents] 1.1.2.12:
+	* MMS.cpp [ContainerContents] 1.1.2.68:
+	* MMS.h [ContainerContents] 1.1.2.71:
+	* Task.cpp [ContainerContents] 1.22.2.40:
+	* gcomp.opt [ContainerContents] 1.1.2.53:
+		Убрана экспериментальная опция --dialog-symtypes, и режим символь
+		ных типов в диалогах используется всегда.
+
+	* NameTable.cpp [ContainerContents] 1.1.2.32:
+	* NameTable.h [ContainerContents] 1.1.2.9:
+		Убрана парочка неиспользуемых функций
+
+2004-05-12	adirks
+	* gcomp_vis/Unit1.dcu [ContainerContents] 1.1.2.3:
+	* gcomp_vis/Unit1.~ddp [ContainerContents] 1.1.2.2:
+	* gcomp_vis/Unit1.~dfm [ContainerContents] 1.1.2.2:
+	* gcomp_vis/Unit1.~pas [ContainerContents] 1.1.2.2:
+	* gcomp_vis/Unit2.dcu [ContainerContents] 1.1.2.3:
+	* gcomp_vis/Unit3.dcu [ContainerContents] 1.1.2.3:
+	* gcomp_vis/Unit4.dcu [ContainerContents] 1.1.2.3:
+	* gcomp_vis/Unit5.dcu [ContainerContents] 1.1.2.3:
+		Убраны лишние файлы из репозитария
+
+2004-05-11	adirks
+	* scripts/repository_cvt/readme.txt [ContainerContents] 1.1.2.2:
+		Используется скрипт auto_add.
+
+	* scripts/repository_cvt/repository_cvt.pl [ContainerContents] 1.1.2.6:
+		Изменён способ формирования файла комментария
+
+	* MMS_Filter.cpp [ContainerContents] 1.1.2.1:
+	* MMS_Filter.h [ContainerContents] 1.1.2.1:
+		Фильтр для выборочной компиляции
+
+	* scripts/repository_cvt/1c_vss2cvs.pl [ContainerContents] 1.1.2.2:
+		Исправлена ошибка установки системной даты.
+		Избавился от внешнего перекодировщика.
+		Используется скрипт auto_add.
+
+	* scripts/repository_cvt/1c_vss2cvs.pl [ContainerContents] 1.1.2.4:
+		Ещё ошибки
+
+	* MMS_Filter.h 1.1:
+		file MMS_Filter.h was initially added on branch 
+		ContainerContents.
+
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.68:
+		Исправлена ошибка компиляции отчетов и обработок. Если отчёт был 
+		создан в конфигураторе, но непроинициализирован, то при сборке со
+		здавался пустой контейнер. При попытке открыть такой отчёт 1С усп
+		ешно падает.
+
+	* MMS_Filter.cpp 1.1:
+		file MMS_Filter.cpp was initially added on branch 
+		ContainerContents.
+
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.69:
+		Переменные одного назачения должны и называться одинаково
+
+	* scripts/repository_cvt/1c_vss2cvs.pl [ContainerContents] 1.1.2.5:
+		Исправлены ошибки. Удалён неиспользуемый код.
+
+	* scripts/repository_cvt/1c_vss2cvs.pl [ContainerContents] 1.1.2.3:
+		Исправлены ошибки.
+		Попытка прикрутить signal handling.
+
+2004-05-10	adirks
+	* scripts/check_max_id/test.bat 1.1:
+		file test.bat was initially added on branch ContainerContents.
+
+	* scripts/check_max_id/readme.txt 1.1:
+	* scripts/extract_proc/readme.txt 1.1:
+	* scripts/repository_cvt/readme.txt 1.1:
+		file readme.txt was initially added on branch ContainerContents.
+
+	* scripts/extract_proc/ExtractProc.py 1.1:
+		file ExtractProc.py was initially added on branch 
+		ContainerContents.
+
+	* CommonFunctions.cpp [ContainerContents] 1.1.2.48:
+	* CommonFunctions.h [ContainerContents] 1.1.2.19:
+	* DLL/GComp.cpp [ContainerContents] 1.1.2.16:
+	* MMS_Assemble.cpp [ContainerContents] 1.1.2.6:
+	* gcomp.opt [ContainerContents] 1.1.2.48:
+		В случае ошибки разбора MMS при компиляции создаём файл с полной 
+		копией MMS, чтобы можно было понять где ошибка.
+
+	* scripts/extract_proc/ExtractProc.py [ContainerContents] 1.1.2.1:
+	* scripts/extract_proc/extract_proc.py [ContainerContents] 1.1.2.1:
+		Скрипт для раскладывания модулей на процедуры - каждая процедура 
+		в отдельном файле
+
+	* scripts/extract_proc/readme.txt [ContainerContents] 1.1.2.1:
+	* scripts/readme.txt [ContainerContents] 1.1.2.6:
+		Добавлено описание скриптов extract_proc
+
+	* scripts/repository_cvt/1c_vss2cvs.pl 1.1:
+		file 1c_vss2cvs.pl was initially added on branch 
+		ContainerContents.
+
+	* scripts/extract_proc/extract_proc.py 1.1:
+		file extract_proc.py was initially added on branch 
+		ContainerContents.
+
+	* scripts/check_max_id/test.bat [ContainerContents] 1.1.2.1:
+		Добавлен пример использования скрипта check_max_id
+
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.88:
+	* gcomp.opt [ContainerContents] 1.1.2.49:
+		Убраны номера страниц из имён шаблонов mxl - при наличии ПорядокО
+		бъектов.ord они ведь не нужны.
+
+	* DLL/GComp.cpp [ContainerContents] 1.1.2.17:
+	* DLL/GCompDLL.dsp [ContainerContents] 1.1.2.6:
+	* Declarations.h [ContainerContents] 1.1.2.8:
+	* DialogForm.cpp [ContainerContents] 1.1.2.24:
+	* DialogForm.h [ContainerContents] 1.1.2.11:
+	* DlgForm_Compile.cpp [ContainerContents] 1.1.2.13:
+	* DlgForm_Tables.cpp [ContainerContents] 1.1.2.8:
+	* MMS.cpp [ContainerContents] 1.1.2.67:
+	* MMS.h [ContainerContents] 1.1.2.70:
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.67:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.89:
+	* gcomp.opt [ContainerContents] 1.1.2.50:
+	* scripts/extract_proc/ExtractProc.py [ContainerContents] 1.1.2.2:
+		В порядке эксперимента агрегатные типы в диалогах выводятся в виде текстовых идентификаторов (SbCnts.Контрагенты).
+		С опцией --no-dialog-defaults в диалогах сохраняется конструкция {{{}},{}} - для этого введён параметр "Скобки"
+
+	* scripts/readme.txt [ContainerContents] 1.1.2.4:
+	* scripts/repository_cvt/1c_vss2cvs.pl [ContainerContents] 1.1.2.1:
+	* scripts/repository_cvt/readme.txt [ContainerContents] 1.1.2.1:
+	* scripts/repository_cvt/repository_cvt.pl [ContainerContents] 1.1.2.5:
+		Добавлен скрипт 1c_vss2cvs.pl
+		Добавлено описание для скриптов repository_cvt.pl и 1c_vss2cvs.pl
+
+	* scripts/check_max_id/readme.txt [ContainerContents] 1.1.2.1:
+	* scripts/readme.txt [ContainerContents] 1.1.2.5:
+		Добавлено описание скрипта check_max_id
+
+	* DLL/GComp.cpp [ContainerContents] 1.1.2.18:
+	* DLL/GComp.h [ContainerContents] 1.1.2.10:
+	* DialogForm.cpp [ContainerContents] 1.1.2.25:
+	* Task.cpp [ContainerContents] 1.22.2.39:
+	* gcomp.opt [ContainerContents] 1.1.2.51:
+		Текстовые агрегатные типы в диалогах выводятся только с ключом --
+		dialog-symtypes
+
+	* scripts/check_max_id/check_max_id.pl [ContainerContents] 1.1.2.2:
+		Изменён способ разбора командной строки
+
+	* scripts/auto_add/auto_add.pl [ContainerContents] 1.1.2.6:
+	* scripts/auto_add/readme.txt [ContainerContents] 1.1.2.4:
+		Опция --filter
+
+	* scripts/auto_add/atuo_add.py [ContainerContents] 1.1.2.2:
+	* scripts/auto_add/auto_add.py [ContainerContents] 1.1.2.1:
+		Исправлена ошибка в имени скрипта
+
+	* scripts/auto_add/auto_add.py 1.1:
+		file auto_add.py was initially added on branch 
+		ContainerContents.
+
+2004-05-09	adirks
+	* CommonFunctions.cpp [ContainerContents] 1.1.2.47:
+	* CommonFunctions.h [ContainerContents] 1.1.2.18:
+	* DLL/GComp.cpp [ContainerContents] 1.1.2.15:
+	* DLL/GComp.h [ContainerContents] 1.1.2.9:
+	* DLL/GCompDLL.dsp [ContainerContents] 1.1.2.4:
+	* MMS.h [ContainerContents] 1.1.2.69:
+	* MMS_Assemble.cpp [ContainerContents] 1.1.2.5:
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.66:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.86:
+	* MainMetadataStream.y [ContainerContents] 1.5.2.26:
+	* Task.cpp [ContainerContents] 1.22.2.38:
+	* TaskHelp.cpp [ContainerContents] 1.11.2.23:
+	* gcomp.opt [ContainerContents] 1.1.2.46:
+		Декомпиляция (опционально) с раскладыванием по отдельным папкам к
+		онстант, перечислений, общих полей документов, граф отбора, нумер
+		аторов, календарей, последовательностей документов, регистров. Оп
+		ция командной строки --more-subfolders
+
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.87:
+	* gcomp.opt [ContainerContents] 1.1.2.47:
+		Выборочная декомпиляция при развороте MetadataPart по папкам (т.е
+		. можно выгрузить отдельное перечисление, константу и т.д.)
+
+	* DLL/GCompDLL.dsp [ContainerContents] 1.1.2.5:
+		Сокращён размер gcomp.dll за счёт использования mfcXX.dll
+
+2004-05-08	adirks
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.85:
+	* gcomp.opt [ContainerContents] 1.1.2.45:
+		Выборочная декомпиляция с детализацией до файла. Везде, кроме пар
+		аметров бухгалтерии.
+
+	* DLL/GComp.cpp [ContainerContents] 1.1.2.14:
+	* DLL/GComp.h [ContainerContents] 1.1.2.8:
+	* DLL/GCompDLL.dsp [ContainerContents] 1.1.2.3:
+	* Declarations.h [ContainerContents] 1.1.2.7:
+	* MMS.h [ContainerContents] 1.1.2.68:
+	* MMS_Buh.cpp [ContainerContents] 1.1.2.5:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.84:
+	* Storage.h [ContainerContents] 1.1.2.30:
+	* Task.cpp [ContainerContents] 1.22.2.37:
+	* UI.CPP [ContainerContents] 1.1.2.16:
+	* gcomp.opt [ContainerContents] 1.1.2.44:
+		Выборочная декомпиляция объектов. Пока только до уровня отдельных
+		 объектов (можно выгрузить отд. документ, но нельзя выгрузить тол
+		ько модуль документа). В структуру CGCompParameters добавлено пол
+		е MetadataPath (примерное описание там), в командной строке - опц
+		ия --filter
+
+2004-05-06	fez
+	* UI.H [ContainerContents] 1.1.2.10:
+	* UI_Compile.cpp [ContainerContents] 1.1.2.15:
+	* gcomp.opt [ContainerContents] 1.1.2.43:
+		Небольшой рефакторинг
+
+2004-05-06	adirks
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.83:
+	* Storage.cpp [ContainerContents] 1.1.2.59:
+		Исправлена ошибка: при декомпиляции каждый раз обновлялись файлы 
+		Container.Profile
+
+2004-05-05	adirks
+	* scripts/auto_add/readme.txt [ContainerContents] 1.1.2.3:
+	* scripts/auto_add/test.bat [ContainerContents] 1.1.2.2:
+		Добавлен аналог скрипта auto_add на питоне, в перловом скрипте пе
+		рекодировка делается средствами самого перла - внешний перекодиро
+		вщик больше не нужен.
+
+	* DLL/GComp.cpp [ContainerContents] 1.1.2.13:
+		Не обнулялся hwndLog при инициализации
+
+	* scripts/auto_add/atuo_add.py [ContainerContents] 1.1.2.1:
+		Аналог скрипта auto_add на питоне
+
+	* scripts/repository_cvt/repository_cvt.pl [ContainerContents] 1.1.2.4:
+		Немого подправил определение версии, и отработку веток
+
+	* scripts/auto_add/auto_add.pl [ContainerContents] 1.1.2.5:
+		Добавлена перекодировка текста внутри скрипта, что делает ненужны
+		м внешний перекодировщик.
+
+	* scripts/check_max_id/check_max_id.py [ContainerContents] 1.1.2.2:
+		Небольшая правка стиля
+
+	* scripts/auto_add/atuo_add.py 1.1:
+		file atuo_add.py was initially added on branch 
+		ContainerContents.
+
+	* PictureGallery.cpp [ContainerContents] 1.1.2.8:
+	* Storage.cpp [ContainerContents] 1.1.2.58:
+		Исправлена ошибка компиляции галереи картинок, когда задаётся абс
+		олютный путь к исходному каталогу (буква диска отбрасывалась)
+
+2004-05-04	adirks
+	* scripts/auto_add/auto_add.pl [ContainerContents] 1.1.2.4:
+	* scripts/auto_add/readme.txt [ContainerContents] 1.1.2.2:
+		Добавлен вариант скрипта на Python'е
+
+	* scripts/check_max_id/check_max_id.pl 1.1:
+		file check_max_id.pl was initially added on branch 
+		ContainerContents.
+
+	* scripts/check_max_id/check_max_id.py 1.1:
+		file check_max_id.py was initially added on branch 
+		ContainerContents.
+
+	* scripts/check_max_id/check_max_id.pl [ContainerContents] 1.1.2.1:
+	* scripts/check_max_id/check_max_id.py [ContainerContents] 1.1.2.1:
+		Проверка макс. ID в МДшнике перед коммитом по схеме, предложенной
+		 Tazoth'ом
+
+2004-04-29	adirks
+	* scripts/auto_add/auto_add.pl [ContainerContents] 1.1.2.3:
+		Что-то со слэшами у cvs нелады. Вдруг перестали нравиться двойные
+		 слэши. Пришлось в скрипте сделать настроечку - какой нам тип слэ
+		шей нужен.
+
+2004-04-28	fez
+	* gcomp.lst [ContainerContents] 1.1.2.6:
+		Изменен список файлов необходимых для сборки релиза
+
+2004-04-28	adirks
+	* PictureGallery.cpp [ContainerContents] 1.1.2.6:
+		Добавлено проверок на ошибки. Ошибки маловероятны, но похоже они 
+		всё-таки случаются.
+
+	* DLL/GComp.cpp [ContainerContents] 1.1.2.11:
+	* DLL/GComp.h [ContainerContents] 1.1.2.7:
+	* Task.cpp [ContainerContents] 1.22.2.35:
+	* TaskHelp.cpp [ContainerContents] 1.11.2.21:
+		Добавлена опция --no-order - не создавать файлы *.ord при декомпи
+		ляции.
+
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.81:
+		Поправлен анализ нужности/ненужности Container.Profile при выгрузке.
+		Добавлена опция --no-order - не создавать файлы *.ord при декомпиляции.
+
+	* CommonFunctions.cpp [ContainerContents] 1.1.2.46:
+	* DLL/GComp.cpp [ContainerContents] 1.1.2.12:
+	* DialogForm.cpp [ContainerContents] 1.1.2.23:
+	* DlgForm_Compile.cpp [ContainerContents] 1.1.2.12:
+	* MMS_Assemble.cpp [ContainerContents] 1.1.2.4:
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.65:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.82:
+	* PictureGallery.cpp [ContainerContents] 1.1.2.7:
+	* Storage.cpp [ContainerContents] 1.1.2.57:
+	* StreamInfo.cpp [ContainerContents] 1.10.2.12:
+	* Task.cpp [ContainerContents] 1.22.2.36:
+	* TaskDecompile.cpp [ContainerContents] 1.37.2.32:
+	* TaskHelp.cpp [ContainerContents] 1.11.2.22:
+	* UI.CPP [ContainerContents] 1.1.2.15:
+	* UI_Compile.cpp [ContainerContents] 1.1.2.14:
+	* gcomp.opt [ContainerContents] 1.1.2.42:
+		Немного подкорректирован вывод сообщений, чтобы при выводе в 
+		LISTBOX не появлялось некрасивых символов в конце строки
+
+	* Storage.cpp [ContainerContents] 1.1.2.56:
+	* Storage.h [ContainerContents] 1.1.2.29:
+	* gcomp.opt [ContainerContents] 1.1.2.40:
+	* gcomp.opt [ContainerContents] 1.1.2.41:
+		Поправлен анализ нужности/ненужности Container.Profile при выгруз
+		ке.
+
+2004-04-24	adirks
+	* CommonFunctions.cpp [ContainerContents] 1.1.2.45:
+	* DLL/GComp.h [ContainerContents] 1.1.2.6:
+		Немножко красоты
+
+2004-04-23	adirks
+	* CommonFunctions.cpp [ContainerContents] 1.1.2.44:
+	* DLL/GComp.cpp [ContainerContents] 1.1.2.10:
+	* DLL/GComp.h [ContainerContents] 1.1.2.5:
+	* Task.cpp [ContainerContents] 1.22.2.34:
+	* TaskHelp.cpp [ContainerContents] 1.11.2.20:
+	* gcomp.opt [ContainerContents] 1.1.2.39:
+		Добавлена возможность выводить сообщения в окно класса LISTBOX  (
+		SendMessage(hwnd, LB_ADDSTRING,...))
+
+2004-04-21	adirks
+	* DlgForm_Tables.cpp [ContainerContents] 1.1.2.7:
+		Исправлена ошибка декомпиляции диалогов. Остался идентификатор с 
+		пробелом "Цвет фона".
+
+	* DLL/GComp.cpp [ContainerContents] 1.1.2.9:
+		Были перепутаны TRUE и FALSE в возврате результата декомпиляции.
+
+	* DLL/GComp.h [ContainerContents] 1.1.2.4:
+	* Task.h [ContainerContents] 1.32.2.27:
+		Немножко красоты
+
+	* scripts/repository_cvt/repository_cvt.pl [ContainerContents] 1.1.2.3:
+		Переделано определение нужной версии gcomp.  Кто первым сумел соб
+		рать - тот нам и нужен.
+
+	* DialogForm.cpp [ContainerContents] 1.1.2.22:
+		Исправлена серьёзная ошибка в диалоговых формах: типы ПланСчетов,
+		 Календарь и ВидРасчета преобразовывались в Неопределенный.  Сооб
+		щил WWWolfy.
+
+2004-04-20	adirks
+	* CommonFunctions.cpp [ContainerContents] 1.1.2.43:
+	* DLL/GComp.cpp [ContainerContents] 1.1.2.8:
+	* DLL/GComp.h [ContainerContents] 1.1.2.3:
+	* Declarations.h [ContainerContents] 1.1.2.6:
+	* MMS_Assemble.cpp [ContainerContents] 1.1.2.3:
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.64:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.80:
+	* Task.cpp [ContainerContents] 1.22.2.33:
+	* Task.h [ContainerContents] 1.32.2.26:
+	* TaskHelp.cpp [ContainerContents] 1.11.2.19:
+		Экпортируемые функции в DLL переделаны на стандартные C - функции
+		.
+
+	* scripts/repository_cvt/repository_cvt.pl [ContainerContents] 1.1.2.2:
+		Попробуем не таскать по одному файлу из исходного репозитария, а 
+		по дате апдейтиться.
+
+	* DLL/GComp.h [ContainerContents] 1.1.2.2:
+	* DialogForm.cpp [ContainerContents] 1.1.2.21:
+	* Strings.cpp [ContainerContents] 1.1.2.4:
+	* Strings.h [ContainerContents] 1.1.2.4:
+	* Task.cpp [ContainerContents] 1.22.2.32:
+	* TaskHelp.cpp [ContainerContents] 1.11.2.18:
+		Добавлена опция --no-dialog-defaults. При этом выводятся все пара
+		мтры элементов диалоговых форм, невзирая на умолчания.
+
+	* scripts/correct_dlg/correct_dlg.pl [ContainerContents] 1.1.2.3:
+		Все исправленные диалоги получались в одну строчку (без \n).
+
+2004-04-19	adirks
+	* scripts/repository_cvt/repository_cvt.pl [ContainerContents] 1.1.2.1:
+		Скрипт для конвертирования репозитария, созданного при помощи ста
+		рых версий gcomp. Пока что не умеет создавать ветки.
+
+	* scripts/repository_cvt/repository_cvt.pl 1.1:
+		file repository_cvt.pl was initially added on branch 
+		ContainerContents.
+
+2004-04-17	adirks
+	* scripts/auto_add/RECODE.EXE 1.1:
+		file RECODE.EXE was initially added on branch ContainerContents.
+
+	* scripts/auto_add/test.bat 1.1:
+	* scripts/correct_dlg/test.bat 1.1:
+		file test.bat was initially added on branch ContainerContents.
+
+	* scripts/auto_add/auto_add.pl [ContainerContents] 1.1.2.2:
+	* scripts/correct_dlg/correct_dlg.pl [ContainerContents] 1.1.2.2:
+		Небольшая стилистическая правка
+
+	* scripts/auto_add/RECODE.EXE [ContainerContents] 1.1.2.1:
+	* scripts/auto_add/auto_add.pl [ContainerContents] 1.1.2.1:
+	* scripts/auto_add/readme.txt [ContainerContents] 1.1.2.1:
+	* scripts/auto_add/test.bat [ContainerContents] 1.1.2.1:
+	* scripts/readme.txt [ContainerContents] 1.1.2.3:
+		Добавлен скрипт анализа лога gcomp -d -v, и автоматического выпол
+		нения команд cvs add и cvs remove
+
+	* scripts/correct_dlg/correct_dlg.pl [ContainerContents] 1.1.2.1:
+	* scripts/correct_dlg/readme.txt [ContainerContents] 1.1.2.1:
+	* scripts/correct_dlg/test.bat [ContainerContents] 1.1.2.1:
+	* scripts/readme.txt [ContainerContents] 1.1.2.2:
+		Добавлен скрипт для коррекции уехавших элементов диалогов
+
+	* scripts/correct_dlg/correct_dlg.pl 1.1:
+		file correct_dlg.pl was initially added on branch 
+		ContainerContents.
+
+	* scripts/auto_add/readme.txt 1.1:
+	* scripts/correct_dlg/readme.txt 1.1:
+		file readme.txt was initially added on branch ContainerContents.
+
+	* scripts/auto_add/auto_add.pl 1.1:
+		file auto_add.pl was initially added on branch 
+		ContainerContents.
+
+2004-04-15	fez
+	* Storage.cpp [ContainerContents] 1.1.2.54:
+		Попытка исправить падение на недостаточном дисковом пространстве
+
+	* DLL/GComp.cpp [ContainerContents] 1.1.2.6:
+		Изменен номер версии на 2.1.1.beta
+
+2004-04-15	adirks
+	* CommonFunctions.cpp [ContainerContents] 1.1.2.42:
+	* DLL/GComp.cpp [ContainerContents] 1.1.2.7:
+	* DialogForm.cpp [ContainerContents] 1.1.2.20:
+	* DlgForm_Compile.cpp [ContainerContents] 1.1.2.11:
+	* MMS_Assemble.cpp [ContainerContents] 1.1.2.2:
+	* Storage.cpp [ContainerContents] 1.1.2.55:
+	* StreamInfo.cpp [ContainerContents] 1.10.2.11:
+	* Task.cpp [ContainerContents] 1.22.2.31:
+	* UI_Compile.cpp [ContainerContents] 1.1.2.13:
+	* gcomp.opt [ContainerContents] 1.1.2.38:
+		Обработку ошибок в DLL будем делать через exception handling. Это
+		 вообще правильней, а уж тем более в DLL.
+
+2004-04-14	fez
+	* TaskHelp.cpp [ContainerContents] 1.11.2.17:
+		Поправлена помощь: слово "параметр" подходит чуть лучше, чем "арг
+		умент"
+
+2004-04-13	fez
+	* gcomp_vis/Unit5.pas 1.1:
+		file Unit5.pas was initially added on branch ContainerContents.
+
+	* gcomp_vis/Unit3.dcu 1.1:
+		file Unit3.dcu was initially added on branch ContainerContents.
+
+	* gcomp_vis/Unit4.dcu 1.1:
+		file Unit4.dcu was initially added on branch ContainerContents.
+
+	* gcomp_vis/Unit1.ddp 1.1:
+		file Unit1.ddp was initially added on branch ContainerContents.
+
+	* gcomp.dsp [ContainerContents] 1.10.2.19:
+	* gcomp.opt [ContainerContents] 1.1.2.37:
+		Настроены проекты веток Release
+
+	* gcomp_vis/Unit3.dfm 1.1:
+		file Unit3.dfm was initially added on branch ContainerContents.
+
+	* gcomp_vis/Unit1.~pas 1.1:
+		file Unit1.~pas was initially added on branch ContainerContents.
+
+	* gcomp.lst [ContainerContents] 1.1.2.5:
+		В дистрибутив добавлены файлы проекта DLL
+
+	* gcomp_vis/Project1.cfg [ContainerContents] 1.1.2.1:
+	* gcomp_vis/Project1.dof [ContainerContents] 1.1.2.1:
+	* gcomp_vis/Project1.dpr [ContainerContents] 1.1.2.1:
+	* gcomp_vis/Project1.res [ContainerContents] 1.1.2.1:
+	* gcomp_vis/Readme.txt [ContainerContents] 1.1.2.1:
+	* gcomp_vis/Unit1.dcu [ContainerContents] 1.1.2.1:
+	* gcomp_vis/Unit1.ddp [ContainerContents] 1.1.2.1:
+	* gcomp_vis/Unit1.dfm [ContainerContents] 1.1.2.1:
+	* gcomp_vis/Unit1.pas [ContainerContents] 1.1.2.1:
+	* gcomp_vis/Unit1.~ddp [ContainerContents] 1.1.2.1:
+	* gcomp_vis/Unit1.~dfm [ContainerContents] 1.1.2.1:
+	* gcomp_vis/Unit1.~pas [ContainerContents] 1.1.2.1:
+	* gcomp_vis/Unit2.dcu [ContainerContents] 1.1.2.1:
+	* gcomp_vis/Unit2.ddp [ContainerContents] 1.1.2.1:
+	* gcomp_vis/Unit2.dfm [ContainerContents] 1.1.2.1:
+	* gcomp_vis/Unit2.pas [ContainerContents] 1.1.2.1:
+	* gcomp_vis/Unit3.dcu [ContainerContents] 1.1.2.1:
+	* gcomp_vis/Unit3.ddp [ContainerContents] 1.1.2.1:
+	* gcomp_vis/Unit3.dfm [ContainerContents] 1.1.2.1:
+	* gcomp_vis/Unit3.pas [ContainerContents] 1.1.2.1:
+	* gcomp_vis/Unit4.dcu [ContainerContents] 1.1.2.1:
+	* gcomp_vis/Unit4.ddp [ContainerContents] 1.1.2.1:
+	* gcomp_vis/Unit4.dfm [ContainerContents] 1.1.2.1:
+	* gcomp_vis/Unit4.pas [ContainerContents] 1.1.2.1:
+	* gcomp_vis/Unit5.dcu [ContainerContents] 1.1.2.1:
+	* gcomp_vis/Unit5.ddp [ContainerContents] 1.1.2.1:
+	* gcomp_vis/Unit5.dfm [ContainerContents] 1.1.2.1:
+	* gcomp_vis/Unit5.pas [ContainerContents] 1.1.2.1:
+	* gcomp_vis/Unit6.dfm [ContainerContents] 1.1.2.1:
+	* gcomp_vis/Unit6.pas [ContainerContents] 1.1.2.1:
+		Добавлены исходники визуальной оболочки для gcomp - gcomp_vis
+
+	* gcomp_vis/Unit3.pas 1.1:
+		file Unit3.pas was initially added on branch ContainerContents.
+
+	* gcomp_vis/Unit2.dcu 1.1:
+		file Unit2.dcu was initially added on branch ContainerContents.
+
+	* DlgForms.txt [ContainerContents] 1.1.2.8:
+		Добавлено небольшое примечание
+
+	* TaskHelp.cpp [ContainerContents] 1.11.2.16:
+		Опция --no-version описана в gcomp -h
+
+	* gcomp_vis/Unit6.pas 1.1:
+		file Unit6.pas was initially added on branch ContainerContents.
+
+	* gcomp_vis/Project1.cfg [ContainerContents] 1.1.2.2:
+	* gcomp_vis/Unit1.dcu [ContainerContents] 1.1.2.2:
+	* gcomp_vis/Unit1.dfm [ContainerContents] 1.1.2.2:
+	* gcomp_vis/Unit1.pas [ContainerContents] 1.1.2.2:
+	* gcomp_vis/Unit2.dcu [ContainerContents] 1.1.2.2:
+	* gcomp_vis/Unit3.dcu [ContainerContents] 1.1.2.2:
+	* gcomp_vis/Unit3.pas [ContainerContents] 1.1.2.2:
+	* gcomp_vis/Unit4.dcu [ContainerContents] 1.1.2.2:
+	* gcomp_vis/Unit4.dfm [ContainerContents] 1.1.2.2:
+	* gcomp_vis/Unit5.dcu [ContainerContents] 1.1.2.2:
+		- при указании пути если таковой не существует создается нужный каталог (путь разложения, путь архива)
+		- при выборе файла всегда открыается каталог уже указанный в поле (бывали проблемы с параметрами)
+		- изменил отчество в about
+		- изменил номер версии
+		(Ушаков Сергей)
+
+	* gcomp_vis/Unit4.pas 1.1:
+		file Unit4.pas was initially added on branch ContainerContents.
+
+	* gcomp_vis/Project1.res 1.1:
+		file Project1.res was initially added on branch 
+		ContainerContents.
+
+	* gcomp_vis/Unit5.ddp 1.1:
+		file Unit5.ddp was initially added on branch ContainerContents.
+
+	* gcomp_vis/Unit1.~dfm 1.1:
+		file Unit1.~dfm was initially added on branch ContainerContents.
+
+	* gcomp_vis/Unit3.ddp 1.1:
+		file Unit3.ddp was initially added on branch ContainerContents.
+
+	* gcomp_vis/Unit1.~ddp 1.1:
+		file Unit1.~ddp was initially added on branch ContainerContents.
+
+	* gcomp_vis/Unit1.dcu 1.1:
+		file Unit1.dcu was initially added on branch ContainerContents.
+
+	* gcomp_vis/Unit1.pas 1.1:
+		file Unit1.pas was initially added on branch ContainerContents.
+
+	* gcomp_vis/Unit4.ddp 1.1:
+		file Unit4.ddp was initially added on branch ContainerContents.
+
+	* gcomp_vis/Unit1.dfm 1.1:
+		file Unit1.dfm was initially added on branch ContainerContents.
+
+	* gcomp_vis/Unit6.dfm 1.1:
+		file Unit6.dfm was initially added on branch ContainerContents.
+
+	* gcomp_vis/Readme.txt 1.1:
+		file Readme.txt was initially added on branch ContainerContents.
+
+	* DLL/GComp.cpp [ContainerContents] 1.1.2.4:
+	* DLL/GCompDLL.dsp [ContainerContents] 1.1.2.2:
+		Изменен номер версии на 2.1.0.beta
+
+	* gcomp_vis/Unit2.ddp 1.1:
+		file Unit2.ddp was initially added on branch ContainerContents.
+
+	* gcomp_vis/Unit5.dfm 1.1:
+		file Unit5.dfm was initially added on branch ContainerContents.
+
+	* gcomp_vis/Unit5.dcu 1.1:
+		file Unit5.dcu was initially added on branch ContainerContents.
+
+	* gcomp.lst [ContainerContents] 1.1.2.4:
+		Изменен список файлов, входящих в дистрибутив.
+
+	* gcomp_vis/Project1.dpr 1.1:
+		file Project1.dpr was initially added on branch 
+		ContainerContents.
+
+	* Task.h [ContainerContents] 1.32.2.25:
+		Удалена лишняя переменная
+
+	* DLL/GComp.cpp [ContainerContents] 1.1.2.5:
+	* DlgForm_Compile.cpp [ContainerContents] 1.1.2.10:
+		Удален комментарий
+
+	* gcomp_vis/Unit2.dfm 1.1:
+		file Unit2.dfm was initially added on branch ContainerContents.
+
+	* gcomp_vis/Unit2.pas 1.1:
+		file Unit2.pas was initially added on branch ContainerContents.
+
+	* gcomp_vis/Project1.cfg 1.1:
+		file Project1.cfg was initially added on branch 
+		ContainerContents.
+
+	* gcomp_vis/Project1.dof 1.1:
+		file Project1.dof was initially added on branch 
+		ContainerContents.
+
+	* DlgForms.txt [ContainerContents] 1.1.2.7:
+		Добавлено описание принципов построения заголовка диалога.
+
+	* gcomp_vis/Unit4.dfm 1.1:
+		file Unit4.dfm was initially added on branch ContainerContents.
+
+2004-04-13	adirks
+	* DialogForm.cpp [ContainerContents] 1.1.2.19:
+		Размер шрифта по умолчанию сделан 8.5; удалён закомментированный 
+		код
+
+2004-04-12	fez
+	* DialogForm.cpp [ContainerContents] 1.1.2.18:
+	* DlgForm_Compile.cpp [ContainerContents] 1.1.2.9:
+		Исправлены ошибки компиляции
+
+	* DialogForm.cpp [ContainerContents] 1.1.2.17:
+	* DialogForm.h [ContainerContents] 1.1.2.10:
+	* DlgForm_Compile.cpp [ContainerContents] 1.1.2.8:
+		Скорректированы функции пересчета размеров шрифтов.
+		Этим функциям даны понятные имена.
+
+2004-04-12	adirks
+	* DialogForm.cpp [ContainerContents] 1.1.2.16:
+	* DialogForm.h [ContainerContents] 1.1.2.9:
+	* DlgForm_Tables.cpp [ContainerContents] 1.1.2.6:
+	* Strings.cpp [ContainerContents] 1.1.2.3:
+	* Strings.h [ContainerContents] 1.1.2.3:
+	* gcomp.opt [ContainerContents] 1.1.2.36:
+		Размер шрифта в диалоговых формах сделан с плавающей точкой
+
+2004-04-11	adirks
+	* DLL/GComp.cpp [ContainerContents] 1.1.2.2:
+	* DLL/GComp.rc [ContainerContents] 1.1.2.2:
+	* Task.cpp [ContainerContents] 1.22.2.30:
+	* Task.h [ContainerContents] 1.32.2.24:
+	* TaskHelp.cpp [ContainerContents] 1.11.2.15:
+	* gcomp.cpp [ContainerContents] 1.8.2.23:
+	* gcomp.opt [ContainerContents] 1.1.2.34:
+		Небольшой рефакторинг
+
+	* CommonFunctions.cpp [ContainerContents] 1.1.2.41:
+	* Container.cpp [ContainerContents] 1.1.2.15:
+	* DLL/GComp.cpp [ContainerContents] 1.1.2.3:
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.63:
+	* Storage.cpp [ContainerContents] 1.1.2.53:
+	* Storage.h [ContainerContents] 1.1.2.28:
+	* gcomp.opt [ContainerContents] 1.1.2.35:
+		Рефакторинг класса CStorage
+
+	* DialogForm.cpp [ContainerContents] 1.1.2.15:
+	* DialogForm.h [ContainerContents] 1.1.2.8:
+	* DlgForm_Tables.cpp [ContainerContents] 1.1.2.5:
+		В диалоговых формах оставлены кавычки только в полях Заголовок, Ф
+		ормула, Hint, ShortHint
+
+	* ParserTest.cpp [ContainerContents] 1.4.2.6:
+	* ParserTest.dsp [ContainerContents] 1.3.2.5:
+		Удалены файлы ParserTest
+
+2004-04-10	adirks
+	* DLL/GComp.cpp 1.1:
+		file GComp.cpp was initially added on branch ContainerContents.
+
+	* DLL/GComp.rc 1.1:
+		file GComp.rc was initially added on branch ContainerContents.
+
+	* DLL/GComp.h 1.1:
+		file GComp.h was initially added on branch ContainerContents.
+
+	* MMS_Assemble.cpp [ContainerContents] 1.1.2.1:
+		Сборка MMS из файлов выделена в отдельный файл
+
+	* DLL/GCompDLL.dsp 1.1:
+		file GCompDLL.dsp was initially added on branch 
+		ContainerContents.
+
+	* DialogForm.cpp [ContainerContents] 1.1.2.14:
+	* DialogForm.h [ContainerContents] 1.1.2.7:
+	* MMS.h [ContainerContents] 1.1.2.67:
+	* MMS_Buh.cpp [ContainerContents] 1.1.2.4:
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.62:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.79:
+	* Ordering.cpp [ContainerContents] 1.1.4.3:
+	* Ordering.h [ContainerContents] 1.1.4.2:
+	* PictureGallery.cpp [ContainerContents] 1.1.2.5:
+	* Storage.cpp [ContainerContents] 1.1.2.52:
+	* Storage.h [ContainerContents] 1.1.2.27:
+	* UI.CPP [ContainerContents] 1.1.2.14:
+	* UI.H [ContainerContents] 1.1.2.9:
+	* UI_Compile.cpp [ContainerContents] 1.1.2.12:
+		Таблица выгруженных файлов сделана членом класса CStorage
+
+	* MMS_Assemble.cpp 1.1:
+		file MMS_Assemble.cpp was initially added on branch 
+		ContainerContents.
+
+	* CommonFunctions.cpp [ContainerContents] 1.1.2.40:
+	* DLL/GComp.cpp [ContainerContents] 1.1.2.1:
+	* DLL/GComp.h [ContainerContents] 1.1.2.1:
+	* DLL/GComp.rc [ContainerContents] 1.1.2.1:
+	* DLL/GCompDLL.dsp [ContainerContents] 1.1.2.1:
+	* DLL/resource.h [ContainerContents] 1.1.2.1:
+	* Declarations.h [ContainerContents] 1.1.2.5:
+	* Task.cpp [ContainerContents] 1.22.2.29:
+	* Task.h [ContainerContents] 1.32.2.23:
+	* TaskCompile.cpp [ContainerContents] 1.20.2.37:
+	* TaskDecompile.cpp [ContainerContents] 1.37.2.31:
+	* gcomp.cpp [ContainerContents] 1.8.2.22:
+	* gcomp.dsp [ContainerContents] 1.10.2.18:
+	* gcomp.dsw [ContainerContents] 1.5.2.5:
+	* gcomp.opt [ContainerContents] 1.1.2.33:
+		Основной функционал GComp'а вынесен в DLL
+
+	* DLL/resource.h 1.1:
+		file resource.h was initially added on branch ContainerContents.
+
+2004-04-08	fez
+	* DialogForm.cpp [ContainerContents] 1.1.2.11:
+		Навел красоты
+
+	* DialogForm.cpp [ContainerContents] 1.1.2.10:
+		Поправлена таблица соответствий 1С-вых шрифтов и пунктов.
+		Заполнены пробелы.
+
+	* DlgForms.txt [ContainerContents] 1.1.2.6:
+		Небольшая стилистическая правка
+
+2004-04-08	adirks
+	* DialogForm.cpp [ContainerContents] 1.1.2.13:
+		Удалено отладочное сообщение
+
+	* DialogForm.cpp [ContainerContents] 1.1.2.8:
+		В диалоговых формах все строковые значения заключены в кавычки. П
+		ри чтении из файла проверяется наличие кавычек - для совместимост
+		и с версией 2.0.10.
+
+	* DialogForm.cpp [ContainerContents] 1.1.2.9:
+		Совместимость с версией 2.0.10 пришлось убрать.
+
+	* DialogForm.cpp [ContainerContents] 1.1.2.12:
+	* DialogForm.h [ContainerContents] 1.1.2.6:
+		Исправлена ошибка с кавычками. Кавычки лишний раз убирались при  
+		импорте из MMS
+
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.61:
+		Исправлена ошибка генерации Container.Profile: вместо \n везде ст
+		авилось \r\n
+
+2004-04-06	adirks
+	* TaskDecompile.cpp [ContainerContents] 1.37.2.30:
+		Перенесено формирование файла с версией, а то он каждый раз удаля
+		лся.
+
+2004-04-05	fez
+	* Task.cpp [ContainerContents] 1.22.2.27:
+	* Task.h [ContainerContents] 1.32.2.22:
+	* TaskDecompile.cpp [ContainerContents] 1.37.2.29:
+	* gcomp.cpp [ContainerContents] 1.8.2.21:
+		Информация о номере версии спрятана в класс CTaskParameters
+		Сменен номер версии на 2.0.11.beta
+		Добавлена выгрузка файла с информацией о версии gcomp при декомпиляции (отключается опцией --no-version)
+
+	* Task.cpp [ContainerContents] 1.22.2.28:
+		У опции --no-parse-dialog появился синоним: --no-parse-dialogs
+
+2004-04-05	adirks
+	* MMS.cpp [ContainerContents] 1.1.2.66:
+		Устранена утечка памяти
+
+2004-04-02	adirks
+	* DlgForms.txt [ContainerContents] 1.1.2.5:
+		Немного изменил описание горячих клавиш
+
+	* DialogForm.cpp [ContainerContents] 1.1.2.7:
+	* DlgForm_Compile.cpp [ContainerContents] 1.1.2.7:
+	* DlgForm_Tables.cpp [ContainerContents] 1.1.2.4:
+	* MMS.h [ContainerContents] 1.1.2.66:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.78:
+	* MainMetadataStream.y [ContainerContents] 1.5.2.25:
+	* Storage.cpp [ContainerContents] 1.1.2.51:
+	* Storage.h [ContainerContents] 1.1.2.26:
+	* TaskDecompile.cpp [ContainerContents] 1.37.2.28:
+	* gcomp.opt [ContainerContents] 1.1.2.32:
+		Исправлена ошибка: неправильно разбирались описания контролов диа
+		логов, заголовки которых состояли из одних цифр ( и как следствие
+		 gcomp вылетал при компиляции таких диалогов). Для этого пришлось
+		 немного лексический анализатор MMS_lex() (добавлена опция "не оп
+		ределять наличие и тип идетификаторов"). И в диалоговых классах с
+		двинулись все индексы полей.
+
+	* UI.CPP [ContainerContents] 1.1.2.13:
+	* UI_Compile.cpp [ContainerContents] 1.1.2.11:
+		Поправлена обработка переносов строк в доп. параметрах команд
+
+2004-04-01	adirks
+	* Storage.cpp [ContainerContents] 1.1.2.50:
+		Убрал кавычки из сообщения DEL: , а то в скриптах неудобно
+
+	* PictureGallery.cpp [ContainerContents] 1.1.2.4:
+		Исправлена ошибка компиляции PictureGallery, указанная Хароном
+
+2004-03-31	adirks
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.77:
+		Исправлен Translit() для декомпиляции описаний
+
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.60:
+		Исправлен Translit() для компиляции описаний
+
+2004-03-30	fez
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.57:
+	* gcomp.cpp [ContainerContents] 1.8.2.20:
+		Удалены комментарии
+
+	* CommonFunctions.cpp [ContainerContents] 1.1.2.37:
+		Добавлен TODO
+
+	* CommonFunctions.cpp [ContainerContents] 1.1.2.39:
+	* CommonFunctions.h [ContainerContents] 1.1.2.17:
+	* NameTable.cpp [ContainerContents] 1.1.2.30:
+		Исправлена ошибка: Translit("Шапка") возвращало "Sapka"
+
+	* MMS.cpp [ContainerContents] 1.1.2.65:
+	* MMS.h [ContainerContents] 1.1.2.63:
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.54:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.68:
+	* NameTable.cpp [ContainerContents] 1.1.2.29:
+		Вроде как работает для всех динамических имен
+
+	* TaskHelp.cpp [ContainerContents] 1.11.2.14:
+		Добавлено предупреждение о возможной потере данных.
+
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.56:
+		Translit() добавлен для компиляции описаний
+
+	* Task.cpp [ContainerContents] 1.22.2.26:
+		Еще один cout заменен на вызов Msg()
+
+	* MMS.h [ContainerContents] 1.1.2.64:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.70:
+		Добавлен Translit() для отчетов и обработок
+
+	* MMS.h [ContainerContents] 1.1.2.62:
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.53:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.67:
+	* NameTable.cpp [ContainerContents] 1.1.2.28:
+		Начали писать новую версию Translit()
+		Уже работает для статических имен из CNameTable
+		Для имен документов работает декомпиляция.
+
+	* MMS.h [ContainerContents] 1.1.2.65:
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.58:
+		Наведем красоты
+
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.55:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.72:
+		Translit() добавлен в нужное место ObjectOrder
+
+	* CommonFunctions.cpp [ContainerContents] 1.1.2.36:
+	* MMS_Buh.cpp [ContainerContents] 1.1.2.3:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.66:
+	* Ordering.cpp [ContainerContents] 1.1.4.2:
+	* PictureGallery.cpp [ContainerContents] 1.1.2.3:
+	* Storage.cpp [ContainerContents] 1.1.2.49:
+	* TaskCompile.cpp [ContainerContents] 1.20.2.36:
+	* UI_Compile.cpp [ContainerContents] 1.1.2.10:
+		Избавились от старой версии Translit()
+
+	* UI.CPP [ContainerContents] 1.1.2.12:
+		Translit() добавлен декомпиляцию интерфейсов
+
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.71:
+		Немного изменили формат транслита для мокселей - теперь он не зат
+		рагивает содержимое файла ПорядокОбъектов.ord
+
+	* scripts/show_pics/readme.txt [ContainerContents] 1.1.2.5:
+		Ридми скрипта с картинками приведен в соответствие реалиям
+
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.73:
+		Translit() добавлен для декомпиляции описаний
+
+	* TaskHelp.cpp [ContainerContents] 1.11.2.11:
+		В CTaskHelp все места использования cout заменены на вызов Msg()
+
+	* ReadMe.txt [ContainerContents] 1.1.2.3:
+		Перекодировал ReadMe.txt в cp1251
+
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.74:
+		Накосячил в транслите для отчетов и обработок
+
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.75:
+		Translit() добавлен для декомпиляции форм журналов
+
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.59:
+		Translit() добавлен для компиляции форм журналов и списков справо
+		чников
+
+	* ReadMe.txt [ContainerContents] 1.1.2.2:
+		Обновил ReadMe.txt
+
+	* makedistr.bat [ContainerContents] 1.1.2.2:
+		Добавил обновление ReadMe.txt в пакет сборки релиза
+
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.69:
+		Добавлен Translit() для мокселей при декомпиляции
+
+	* CommonFunctions.cpp [ContainerContents] 1.1.2.35:
+	* CommonFunctions.h [ContainerContents] 1.1.2.16:
+	* NameTable.cpp [ContainerContents] 1.1.2.27:
+	* gcomp.cpp [ContainerContents] 1.8.2.19:
+		Заготовка для транслита.
+
+	* CommonFunctions.cpp [ContainerContents] 1.1.2.38:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.76:
+	* Task.cpp [ContainerContents] 1.22.2.25:
+	* TaskHelp.cpp [ContainerContents] 1.11.2.10:
+		Добавлено TODO и удален лишний include
+
+	* TaskHelp.cpp [ContainerContents] 1.11.2.12:
+		По желаниям трудящихся, добавлен еще один пример
+
+	* TaskHelp.cpp [ContainerContents] 1.11.2.13:
+		Пропустил один слэш внутри строки
+
+2004-03-29	fez
+	* CommonFunctions.cpp [ContainerContents] 1.1.2.34:
+		Extract method
+
+2004-03-29	fez
+	* CommonFunctions.cpp [ContainerContents] 1.1.2.34:
+		Extract method
+
+	* gcomp.opt [ContainerContents] 1.1.2.31:
+		В дерево ClassView добавлена папка Form
+
+2004-03-29	adirks
+	* DialogForm.cpp [ContainerContents] 1.1.2.6:
+	* DlgForm_Compile.cpp [ContainerContents] 1.1.2.6:
+	* Lexer.cpp [ContainerContents] 1.1.2.2:
+	* Lexer.h [ContainerContents] 1.1.2.2:
+	* Strings.cpp [ContainerContents] 1.1.2.2:
+	* Strings.h [ContainerContents] 1.1.2.2:
+	* UI.CPP [ContainerContents] 1.1.2.11:
+	* UI.H [ContainerContents] 1.1.2.8:
+	* UI_Compile.cpp [ContainerContents] 1.1.2.9:
+	* gcomp.opt [ContainerContents] 1.1.2.30:
+		В парсере интерфейсов используется класс CLexer. Пришлось немного
+		 изменить формат файлов (из идентификаторов убал пробелы)
+
+	* Container.cpp [ContainerContents] 1.1.2.14:
+		Контейнер ModuleText_Number1 попадал в Container.Contents немного
+		 неправильно (ошибка, указанная Хароном)
+
+	* StreamInfo.cpp [ContainerContents] 1.10.2.10:
+		Вычисление формата размера скореектирована в соответствии с табли
+		цей, приведённой Александром Гордеенко (ошибка 229)
+
+	* DialogForm.cpp [ContainerContents] 1.1.2.4:
+	* DialogForm.h [ContainerContents] 1.1.2.4:
+	* DlgForm_Compile.cpp [ContainerContents] 1.1.2.4:
+	* DlgForm_Tables.cpp [ContainerContents] 1.1.2.2:
+	* gcomp.opt [ContainerContents] 1.1.2.29:
+		HotKey  в удобочитаемом виде
+
+	* DialogForm.h [ContainerContents] 1.1.2.5:
+	* DlgForm_Tables.cpp [ContainerContents] 1.1.2.3:
+		Расшифрованы флаги значения (Неотрицательный, РазделятьТриады)
+
+	* DialogForm.cpp [ContainerContents] 1.1.2.5:
+	* DlgForm_Compile.cpp [ContainerContents] 1.1.2.5:
+		Поля Маска и СвязанС теперь различаются
+
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.65:
+		Больше не создаются пустые каталоги для форм списков, и для общих
+		 таблиц.
+
+2004-03-28	adirks
+	* Lexer.cpp 1.1:
+		file Lexer.cpp was initially added on branch ContainerContents.
+
+	* DialogForm.cpp [ContainerContents] 1.1.2.3:
+	* DialogForm.h [ContainerContents] 1.1.2.3:
+	* DlgFormFlags.h [ContainerContents] 1.1.2.2:
+	* DlgForm_Compile.cpp [ContainerContents] 1.1.2.3:
+	* DlgForm_Tables.cpp [ContainerContents] 1.1.2.1:
+	* Lexer.cpp [ContainerContents] 1.1.2.1:
+	* Lexer.h [ContainerContents] 1.1.2.1:
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.52:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.64:
+	* TaskCompile.cpp [ContainerContents] 1.20.2.35:
+	* gcomp.dsp [ContainerContents] 1.10.2.17:
+	* gcomp.opt [ContainerContents] 1.1.2.28:
+		Красивая декомпиляция/компиляция диалогов сделана основным режимо
+		м. Большинство ошибок исправлено.
+
+	* DlgForm_Tables.cpp 1.1:
+		file DlgForm_Tables.cpp was initially added on branch 
+		ContainerContents.
+
+	* Lexer.h 1.1:
+		file Lexer.h was initially added on branch ContainerContents.
+
+2004-03-23	adirks
+	* DialogForm.cpp [ContainerContents] 1.1.2.2:
+	* DialogForm.h [ContainerContents] 1.1.2.2:
+	* DlgForm_Compile.cpp [ContainerContents] 1.1.2.2:
+		Исправлены ошибки декомпиляции. Результат компиляции по возможнос
+		ти приведён к исходному содержимому потока (кое-где различия в пр
+		обелах остались)
+
+2004-03-21	adirks
+	* DialogForm.h 1.1:
+		file DialogForm.h was initially added on branch 
+		ContainerContents.
+
+	* DlgForm_Compile.cpp 1.1:
+		file DlgForm_Compile.cpp was initially added on branch 
+		ContainerContents.
+
+	* DlgFormFlags.h 1.1:
+		file DlgFormFlags.h was initially added on branch 
+		ContainerContents.
+
+	* CommonFunctions.cpp [ContainerContents] 1.1.2.33:
+	* CommonFunctions.h [ContainerContents] 1.1.2.15:
+	* DialogForm.cpp [ContainerContents] 1.1.2.1:
+	* DialogForm.h [ContainerContents] 1.1.2.1:
+	* DlgFormFlags.h [ContainerContents] 1.1.2.1:
+	* DlgForm_Compile.cpp [ContainerContents] 1.1.2.1:
+	* DlgForms.txt [ContainerContents] 1.1.2.4:
+	* MMS.cpp [ContainerContents] 1.1.2.64:
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.51:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.63:
+	* UI.CPP [ContainerContents] 1.1.2.10:
+	* UI_Compile.cpp [ContainerContents] 1.1.2.8:
+	* gcomp.dsp [ContainerContents] 1.10.2.16:
+	* gcomp.opt [ContainerContents] 1.1.2.27:
+	* scripts/show_pics/show_all_pics.py [ContainerContents] 1.1.2.18:
+		Декомпиляция/компиляция диалоговых форм в красивом виде. Пока что
+		 не совсем работает.
+
+	* Strings.h 1.1:
+		file Strings.h was initially added on branch ContainerContents.
+
+	* Strings.cpp 1.1:
+		file Strings.cpp was initially added on branch 
+		ContainerContents.
+
+	* DialogForm.cpp 1.1:
+		file DialogForm.cpp was initially added on branch 
+		ContainerContents.
+
+	* Strings.cpp [ContainerContents] 1.1.2.1:
+	* Strings.h [ContainerContents] 1.1.2.1:
+		Выделил строковые функции в отдельный кусок
+
+2004-03-19	fez
+	* scripts/show_pics/show_all_pics.py [ContainerContents] 1.1.2.13:
+		Имя файла больше дважды не выводится
+		Сообщение о потерянном файле при первичном прогоне выводится каждый раз
+		Немного изменен формат вывода
+
+	* scripts/show_pics/show_all_pics.py [ContainerContents] 1.1.2.8:
+		Чуть иначе расставлены пробелы
+
+	* scripts/show_pics/show_all_pics.py [ContainerContents] 1.1.2.10:
+		Исправлена ошибка с пустым Unused pics
+
+	* scripts/show_pics/show_all_pics.py [ContainerContents] 1.1.2.15:
+		Добавлено отступов
+
+	* scripts/show_pics/readme.txt [ContainerContents] 1.1.2.4:
+	* scripts/show_pics/show_all_pics.py [ContainerContents] 1.1.2.3:
+	* scripts/show_pics/show_pics.py [ContainerContents] 1.1.2.4:
+		Удален ключ -c
+
+	* scripts/show_pics/common_1c.py [ContainerContents] 1.1.2.1:
+	* scripts/show_pics/show_all_pics.py [ContainerContents] 1.1.2.2:
+	* scripts/show_pics/show_pics.py [ContainerContents] 1.1.2.3:
+		Исправлены ошибки
+
+	* scripts/show_pics/show_all_pics.py [ContainerContents] 1.1.2.7:
+		Пустые строки заменены на ""
+
+	* scripts/show_pics/dec2hex.py [ContainerContents] 1.1.2.1:
+	* scripts/show_pics/readme.txt [ContainerContents] 1.1.2.3:
+	* scripts/show_pics/show_all_pics.py [ContainerContents] 1.1.2.1:
+	* scripts/show_pics/show_pics.py [ContainerContents] 1.1.2.2:
+		Вторая версия скрипта show_pictures.py
+		Добавлен перевод из 10-ричной системы в 16-ричную
+		Добавлена возможность вывода тупого списка идентификаторов картинок из конфигурации.
+
+	* scripts/show_pics/show_all_pics.py [ContainerContents] 1.1.2.14:
+		Рефакторинг
+
+	* scripts/show_pics/show_all_pics.py [ContainerContents] 1.1.2.9:
+		В конец добавлены итоговая статистика по картинкам
+
+	* scripts/show_pics/show_all_pics.py 1.1:
+		file show_all_pics.py was initially added on branch 
+		ContainerContents.
+
+	* scripts/show_pics/show_all_pics.py [ContainerContents] 1.1.2.6:
+		Убрано немного ноликов
+
+	* scripts/show_pics/show_all_pics.py [ContainerContents] 1.1.2.4:
+		Добавлено отступов и прочей ерунды
+
+	* scripts/show_pics/common_1c.py 1.1:
+		file common_1c.py was initially added on branch 
+		ContainerContents.
+
+	* scripts/show_pics/show_all_pics.py [ContainerContents] 1.1.2.11:
+		Добавлен список LostPics
+		Все списки отсортированы перед печатью
+
+	* scripts/show_pics/dec2hex.py 1.1:
+		file dec2hex.py was initially added on branch ContainerContents.
+
+	* scripts/show_pics/show_all_pics.py [ContainerContents] 1.1.2.16:
+		Добавлен вывод количество лементов в списках
+
+	* scripts/show_pics/common_1c.py [ContainerContents] 1.1.2.2:
+	* scripts/show_pics/dec2hex.py [ContainerContents] 1.1.2.2:
+	* scripts/show_pics/show_all_pics.py [ContainerContents] 1.1.2.17:
+	* scripts/show_pics/show_pics.py [ContainerContents] 1.1.2.5:
+		Все слито в один скрипт
+
+	* scripts/show_pics/show_all_pics.py [ContainerContents] 1.1.2.5:
+		Еще немного отступов
+
+	* scripts/show_pics/show_all_pics.py [ContainerContents] 1.1.2.12:
+		Добавлена ругань на потерянные картинки сразу при проходе
+
+2004-03-18	fez
+	* scripts/show_pics/show_pics.py 1.1:
+		file show_pics.py was initially added on branch 
+		ContainerContents.
+
+	* scripts/show_pics/test.bat 1.1:
+		file test.bat was initially added on branch ContainerContents.
+
+	* scripts/show_pics/readme.txt [ContainerContents] 1.1.2.1:
+	* scripts/show_pics/show_pics.py [ContainerContents] 1.1.2.1:
+	* scripts/show_pics/test.bat [ContainerContents] 1.1.2.1:
+		Добавлен скрипт show_pics.py - для поиска картинок в конфигурации
+		
+
+	* scripts/readme.txt 1.1:
+	* scripts/show_pics/readme.txt 1.1:
+		file readme.txt was initially added on branch ContainerContents.
+
+	* DlgForms.txt [ContainerContents] 1.1.2.3:
+		Добавлено описание взаимосвязи между идентификатором картинки на 
+		форме, и идентификатором картинки в галерее
+
+	* scripts/readme.txt [ContainerContents] 1.1.2.1:
+		Добавлено общее описание каталога scripts
+
+	* DlgForms.txt [ContainerContents] 1.1.2.2:
+		Исправлены синтаксические ошибки
+
+	* gcomp.lst [ContainerContents] 1.1.2.3:
+		В список файлов для дистрибутива добавлены файлы скрипта 
+		show_pics
+
+	* scripts/show_pics/readme.txt [ContainerContents] 1.1.2.2:
+		Добавлена контактная информация
+
+2004-03-15	adirks
+	* CommonFunctions.cpp [ContainerContents] 1.1.2.32:
+		Немного кривовато, но работает с UNC путями
+
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.62:
+		Немножко изменил условие выгрузки Container.Profile
+
+	* Storage.cpp [ContainerContents] 1.1.2.48:
+		Достал меня компилятор со своим warning'ом
+
+2004-03-14	adirks
+	* Task.cpp [ContainerContents] 1.22.2.24:
+		Немножко красоты
+
+	* PictureGallery.cpp [ContainerContents] 1.1.2.2:
+		Исправлена ошибка с абсолютными путями. Путь c:\tmp\Src превращал
+		ся в \tmp\Src
+
+2004-03-13	fez
+	* Task.cpp [ContainerContents] 1.22.2.22:
+		Исправлена ошибка: gcomp отказывался работать в ситуациях, когда 
+		в строке, содержащей имя каталога, последним символом был \.
+
+	* CommonFunctions.cpp [ContainerContents] 1.1.2.24:
+		Закомментирован вроде бы ненужный if
+		Надо бы еще проверить
+
+	* Task.cpp [ContainerContents] 1.22.2.23:
+		Исправлена ошибка компиляции :)
+
+	* CommonFunctions.cpp [ContainerContents] 1.1.2.23:
+		Исправлена ошибка: при указании в ключе -D абсолютного пути, 
+		gcomp ругался на то, что не может создать папку C:
+
+	* TaskHelp.cpp [ContainerContents] 1.11.2.9:
+		В подсказке по gcomp -h опция --no-parse-dialog была неправильно 
+		названа как --no-parce-dialog
+
+	* CommonFunctions.cpp [ContainerContents] 1.1.2.30:
+		Рефакторинг. Два штука.
+
+	* CommonFunctions.cpp [ContainerContents] 1.1.2.25:
+		Удалена лишняя переменная
+
+	* CommonFunctions.cpp [ContainerContents] 1.1.2.31:
+	* CommonFunctions.h [ContainerContents] 1.1.2.14:
+		Еще рефакторинг
+
+	* CommonFunctions.cpp [ContainerContents] 1.1.2.26:
+		Еще немного почистим веником
+
+	* Storage.cpp [ContainerContents] 1.1.2.47:
+		CreateDirectory() всегда возвращает true, а в случае неудачи прос
+		то вываливается. Так что условие тут лишнее.
+
+	* CommonFunctions.cpp [ContainerContents] 1.1.2.28:
+		Небольшой Extract method.
+
+	* TaskDecompile.cpp [ContainerContents] 1.37.2.27:
+		Исправлена ошибка: при указании в ключе -D абсолютного пути, 
+		gcomp ругался на то, что не может создать папку C:" 
+		CommonFunctions.cpp TaskDecompile.cpp MMS_Buh.cpp
+
+	* CommonFunctions.cpp [ContainerContents] 1.1.2.29:
+		Добавлен комментарий
+
+	* gcomp.cpp [ContainerContents] 1.8.2.18:
+		Изменен номер версии 2.0.10.beta
+
+	* CommonFunctions.cpp [ContainerContents] 1.1.2.27:
+		Добавлена пара комментариев
+
+2004-03-13	adirks
+	* UI_Compile.cpp [ContainerContents] 1.1.2.7:
+		Не закрывались файлы
+
+	* Storage.cpp [ContainerContents] 1.1.2.45:
+	* Storage.h [ContainerContents] 1.1.2.25:
+	* gcomp.opt [ContainerContents] 1.1.2.25:
+		Немножко прибрал лишнее
+
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.60:
+		Исправлена ошибка: описания для общих полей документов, граф отбо
+		ра и нумераторов извлекались в корневую папку.
+
+	* Storage.cpp [ContainerContents] 1.1.2.46:
+		Повысим надёжность
+
+	* Container.cpp [ContainerContents] 1.1.2.13:
+	* MMS.h [ContainerContents] 1.1.2.61:
+	* MMS_Buh.cpp [ContainerContents] 1.1.2.2:
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.50:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.61:
+	* NameTable.cpp [ContainerContents] 1.1.2.26:
+	* TaskCompile.cpp [ContainerContents] 1.20.2.34:
+	* TaskDecompile.cpp [ContainerContents] 1.37.2.26:
+	* gcomp.opt [ContainerContents] 1.1.2.26:
+		TypedText storage теперь открывается один раз в самом начале, и с
+		сылка на открытый объект передаётся в дочерние объекты ММС.
+
+2004-03-12	fez
+	* gcomp.lst [ContainerContents] 1.1.2.2:
+		В список файлов в дистрибутиве добавлен DlgForms.txt
+
+2004-03-11	adirks
+	* MMS.h [ContainerContents] 1.1.2.60:
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.49:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.59:
+	* gcomp.opt [ContainerContents] 1.1.2.24:
+		Пофикчен баг с отчётами и обработками, в которых таблица использу
+		ется в режиме ввода данных. Для таких объектов при декомпиляции в
+		ыгружается поток Container.Profile
+
+2004-03-10	fez
+	* TaskCompile.cpp [ContainerContents] 1.20.2.33:
+		Исправлена ошибка, возникавшая при компиляции с опцией --
+		translit
+
+	* TaskHelp.cpp [ContainerContents] 1.11.2.8:
+		Параметр --no-parce-dialog описан в gcomp -h
+
+	* gcomp.cpp [ContainerContents] 1.8.2.17:
+		Изменен номер версии 2.08.beta
+
+2004-03-09	fez
+	* ReadMe.txt [ContainerContents] 1.1.2.1:
+		Вывод gcomp -h добавлен в структуру дистрибутива
+
+	* DlgForms.txt [ContainerContents] 1.1.2.1:
+		Добавлено описание формата потоков экранных форм
+
+	* ReadMe.txt 1.1:
+		file ReadMe.txt was initially added on branch ContainerContents.
+
+	* DlgForms.txt 1.1:
+		file DlgForms.txt was initially added on branch 
+		ContainerContents.
+
+2004-03-09	adirks
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.48:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.58:
+	* Task.cpp [ContainerContents] 1.22.2.21:
+	* Task.h [ContainerContents] 1.32.2.21:
+	* gcomp.opt [ContainerContents] 1.1.2.22:
+		Вместо --parse-dialogs сделали --no-parse-dialog
+
+	* Task.cpp [ContainerContents] 1.22.2.20:
+		--parse_forms переименовал в --parse-dialogs
+
+	* MMS.cpp [ContainerContents] 1.1.2.63:
+	* MainMetadataStream.y [ContainerContents] 1.5.2.24:
+	* gcomp.opt [ContainerContents] 1.1.2.23:
+		В параметрах плана счетов убираем первую маску счёта - этого треб
+		ует формат ММС версии 10009
+
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.57:
+		С опцией --parse-dialogs из диалога убираются куски мусора: {{{}}
+		,{}}
+
+2004-03-08	adirks
+	* UI_Compile.cpp [ContainerContents] 1.1.2.6:
+		При компиляции панелей инструментов неправильно считывалось полож
+		ение (всегда получалось "Сверху")
+
+	* MMS.h [ContainerContents] 1.1.2.59:
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.47:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.56:
+	* MainMetadataStream.y [ContainerContents] 1.5.2.23:
+	* Storage.cpp [ContainerContents] 1.1.2.44:
+	* Task.cpp [ContainerContents] 1.22.2.19:
+	* Task.h [ContainerContents] 1.32.2.20:
+	* TaskCompile.cpp [ContainerContents] 1.20.2.32:
+	* gcomp.opt [ContainerContents] 1.1.2.21:
+		Добавил возможность читать диалоговые формы при помощи парсера (п
+		ри этом отрезается мусор в конце потоков). Опция --parse_forms
+
+	* UI.CPP [ContainerContents] 1.1.2.9:
+		Устранена утечка памяти
+
+2004-03-06	adirks
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.45:
+	* UI.CPP [ContainerContents] 1.1.2.7:
+	* UI.H [ContainerContents] 1.1.2.6:
+	* UI_Compile.cpp [ContainerContents] 1.1.2.4:
+	* gcomp.opt [ContainerContents] 1.1.2.19:
+		Исправлены ошибки формата записи в текстовые файлы.
+		Запись команд и меню в МДшник.
+
+	* Container.cpp [ContainerContents] 1.1.2.12:
+	* Container.h [ContainerContents] 1.1.2.9:
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.46:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.55:
+	* Storage.h [ContainerContents] 1.1.2.24:
+	* Task.cpp [ContainerContents] 1.22.2.18:
+	* Task.h [ContainerContents] 1.32.2.19:
+	* UI.CPP [ContainerContents] 1.1.2.8:
+	* UI.H [ContainerContents] 1.1.2.7:
+	* UI_Compile.cpp [ContainerContents] 1.1.2.5:
+	* gcomp.opt [ContainerContents] 1.1.2.20:
+		Полная декомпиляция/компиляция интерфейсов
+
+2004-03-05	adirks
+	* UI.CPP [ContainerContents] 1.1.2.6:
+	* UI.H [ContainerContents] 1.1.2.5:
+	* UI_Compile.cpp [ContainerContents] 1.1.2.3:
+		Чтение панелей из текстового файла
+
+	* gcomp.opt [ContainerContents] 1.1.2.18:
+		Добавил папочку UserInterfaces
+
+2004-03-04	adirks
+	* Container.cpp [ContainerContents] 1.1.2.11:
+		unsigned char для Русских буквочек
+
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.44:
+	* UI.CPP [ContainerContents] 1.1.2.5:
+	* UI.H [ContainerContents] 1.1.2.4:
+	* UI_Compile.cpp [ContainerContents] 1.1.2.2:
+	* gcomp.opt [ContainerContents] 1.1.2.17:
+		Чтение команд и меню из текстовых файлов
+
+	* Declarations.h [ContainerContents] 1.1.2.4:
+	* NameTable.cpp [ContainerContents] 1.1.2.25:
+		Записи таблицы имён для пользовательских интерфейсов
+
+2004-03-03	fez
+	* makedistr.bat 1.1:
+		file makedistr.bat was initially added on branch 
+		ContainerContents.
+
+	* gcomp.lst [ContainerContents] 1.1.2.1:
+	* makedistr.bat [ContainerContents] 1.1.2.1:
+		Добавлены файлы сборки дистрибутива
+
+	* gcomp.lst 1.1:
+		file gcomp.lst was initially added on branch ContainerContents.
+
+	* gcomp.cpp [ContainerContents] 1.8.2.16:
+		Изменен номер версии 2.07.beta
+
+2004-03-03	adirks
+	* UI_Compile.cpp 1.1:
+		file UI_Compile.cpp was initially added on branch 
+		ContainerContents.
+
+	* UI.CPP [ContainerContents] 1.1.2.4:
+	* UI.H [ContainerContents] 1.1.2.3:
+	* gcomp.dsp [ContainerContents] 1.10.2.15:
+	* gcomp.opt [ContainerContents] 1.1.2.16:
+		Немного изменил формат файла команд - чтобы легче потом читать бы
+		ло
+
+	* UI_Compile.cpp [ContainerContents] 1.1.2.1:
+		Начинаем читать интерфейсы из файлов обратно
+
+2004-03-02	fez
+	* MMS.cpp [ContainerContents] 1.1.2.62:
+	* MMS.h [ContainerContents] 1.1.2.58:
+		Удалены комментарии
+
+	* MMS.cpp [ContainerContents] 1.1.2.61:
+	* MMS.h [ContainerContents] 1.1.2.57:
+		Удалена сортировка объектов по алфавиту.
+
+	* StreamInfo.cpp [ContainerContents] 1.10.2.9:
+		Научились работать с __Picture.2*
+		Это запакованная картинка без размера в непонятно каком формате.
+		Дали таким штукам расширение .dat
+
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.53:
+		Проверим, нужен ли этот CreateDirectory() вообще.
+
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.43:
+		Добавлен TODO
+
+2004-03-02	adirks
+	* NameTable.cpp [ContainerContents] 1.1.2.24:
+		Отработка записей, в которых нет нни каталога, ни имени файла, ни
+		 расширения
+
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.52:
+	* NameTable.cpp [ContainerContents] 1.1.2.23:
+		Все беспризорные описания пишем в корневой каталог
+
+	* UI.CPP [ContainerContents] 1.1.2.2:
+		Немножко изменим формат меню
+
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.54:
+	* Task.cpp [ContainerContents] 1.22.2.17:
+	* Task.h [ContainerContents] 1.32.2.18:
+	* gcomp.opt [ContainerContents] 1.1.2.13:
+		Экспериментальный параметр --process-ui
+
+	* UI.CPP [ContainerContents] 1.1.2.3:
+	* UI.H [ContainerContents] 1.1.2.2:
+	* gcomp.opt [ContainerContents] 1.1.2.15:
+		Структура каталогов интерфейсов соответствует структуре их подчин
+		ённости
+
+	* Intrefaces.cpp [ContainerContents] 1.1.2.5:
+	* Intrefaces.dsp [ContainerContents] 1.1.2.5:
+	* gcomp.dsp [ContainerContents] 1.10.2.14:
+	* gcomp.dsw [ContainerContents] 1.5.2.4:
+	* gcomp.opt [ContainerContents] 1.1.2.14:
+		Удалил временный проект Interfaces
+
+2004-03-01	fez
+	* Container.cpp [ContainerContents] 1.1.2.10:
+	* Container.h [ContainerContents] 1.1.2.8:
+		Уборка веником
+
+2004-02-29	fez
+	* TaskDecompile.cpp [ContainerContents] 1.37.2.25:
+		Добавлено комментариев и прочей ерунды.
+
+2004-02-29	adirks
+	* UI.H 1.1:
+		file UI.H was initially added on branch ContainerContents.
+
+	* UI.CPP 1.1:
+		file UI.CPP was initially added on branch ContainerContents.
+
+	* CommonFunctions.cpp [ContainerContents] 1.1.2.22:
+	* CommonFunctions.h [ContainerContents] 1.1.2.13:
+	* Interfaces.txt [ContainerContents] 1.1.2.3:
+	* Intrefaces.cpp [ContainerContents] 1.1.2.4:
+	* Intrefaces.dsp [ContainerContents] 1.1.2.4:
+	* MMS.cpp [ContainerContents] 1.1.2.60:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.51:
+	* Storage.cpp [ContainerContents] 1.1.2.43:
+	* Storage.h [ContainerContents] 1.1.2.23:
+	* UI.CPP [ContainerContents] 1.1.2.1:
+	* UI.H [ContainerContents] 1.1.2.1:
+	* gcomp.dsp [ContainerContents] 1.10.2.13:
+	* gcomp.opt [ContainerContents] 1.1.2.12:
+		Декомпиляция пользовательских интерфейсов.
+		Пока что оставил и декомпиляцию во внутреннем формате.
+
+2004-02-28	adirks
+	* Interfaces.txt [ContainerContents] 1.1.2.1:
+		Описание формата файлов пользовательских интерфейсов
+
+	* Interfaces.txt 1.1:
+		file Interfaces.txt was initially added on branch 
+		ContainerContents.
+
+	* Intrefaces.cpp [ContainerContents] 1.1.2.2:
+	* Intrefaces.dsp [ContainerContents] 1.1.2.2:
+	* gcomp.opt [ContainerContents] 1.1.2.10:
+		Читает меню и команды
+
+	* Interfaces.txt [ContainerContents] 1.1.2.2:
+	* Intrefaces.cpp [ContainerContents] 1.1.2.3:
+	* Intrefaces.dsp [ContainerContents] 1.1.2.3:
+	* gcomp.opt [ContainerContents] 1.1.2.11:
+		Теперь разбираются и панели инструментов
+
+2004-02-26	adirks
+	* Intrefaces.cpp [ContainerContents] 1.1.2.1:
+	* Intrefaces.dsp [ContainerContents] 1.1.2.1:
+	* gcomp.dsw [ContainerContents] 1.5.2.3:
+	* gcomp.opt [ContainerContents] 1.1.2.9:
+		Начал ковырять интерфейсы. Пока в виде отдельного проекта.
+
+	* Intrefaces.dsp 1.1:
+		file Intrefaces.dsp was initially added on branch 
+		ContainerContents.
+
+	* Intrefaces.cpp 1.1:
+		file Intrefaces.cpp was initially added on branch 
+		ContainerContents.
+
+2004-02-24	adirks
+	* NameTable.cpp [ContainerContents] 1.1.2.22:
+	* gcomp.opt [ContainerContents] 1.1.2.8:
+		Ещё 3 объекта MetadataPart выгружаем в каталоги
+
+2004-02-23	adirks
+	* MMS.h [ContainerContents] 1.1.2.56:
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.42:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.50:
+	* NameTable.cpp [ContainerContents] 1.1.2.21:
+	* gcomp.opt [ContainerContents] 1.1.2.7:
+		Ещё один вариант раскладки по каталогам. Для объектов типа 
+		MetadataPart это достигается изменением лишь в NameTable.
+
+	* MMS_Buh.cpp 1.1:
+		file MMS_Buh.cpp was initially added on branch 
+		ContainerContents.
+
+	* PictureGallery.cpp [ContainerContents] 1.1.2.1:
+		Экспорт/импорт галереи картинок
+
+	* PictureGallery.cpp 1.1:
+		file PictureGallery.cpp was initially added on branch 
+		ContainerContents.
+
+	* CommonFunctions.cpp [ContainerContents] 1.1.2.21:
+	* CommonFunctions.h [ContainerContents] 1.1.2.12:
+	* Container.cpp [ContainerContents] 1.1.2.9:
+	* Container.h [ContainerContents] 1.1.2.7:
+	* MMS.h [ContainerContents] 1.1.2.55:
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.40:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.48:
+	* Storage.cpp [ContainerContents] 1.1.2.42:
+	* TaskCompile.cpp [ContainerContents] 1.20.2.31:
+	* TaskDecompile.cpp [ContainerContents] 1.37.2.24:
+		Немножко подчистил мусор.
+
+	* MMS_Buh.cpp [ContainerContents] 1.1.2.1:
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.41:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.49:
+	* gcomp.dsp [ContainerContents] 1.10.2.12:
+		Отработку параметров бухгалтерии вынес в отдельный файл
+
+	* Container.cpp [ContainerContents] 1.1.2.8:
+	* Container.h [ContainerContents] 1.1.2.6:
+	* MMS.h [ContainerContents] 1.1.2.54:
+	* Storage.cpp [ContainerContents] 1.1.2.41:
+	* Storage.h [ContainerContents] 1.1.2.22:
+	* StreamInfo.cpp [ContainerContents] 1.10.2.8:
+	* StreamInfo.h [ContainerContents] 1.9.2.7:
+	* gcomp.dsp [ContainerContents] 1.10.2.11:
+	* gcomp.opt [ContainerContents] 1.1.2.5:
+		Поток Gallery вытаскивается в виде 3-х файлов: Gallery.head, 
+		Gallery.bmp, Gallery.tail.  Обратно тоже компилируются.
+
+	* gcomp.opt [ContainerContents] 1.1.2.6:
+		Добавил ещё пару папочек
+
+2004-02-22	adirks
+	* MMS.h [ContainerContents] 1.1.2.53:
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.39:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.47:
+	* Storage.cpp [ContainerContents] 1.1.2.40:
+	* StreamInfo.cpp [ContainerContents] 1.10.2.7:
+	* StreamInfo.h [ContainerContents] 1.9.2.6:
+	* gcomp.opt [ContainerContents] 1.1.2.4:
+		Декомпиляция/компиляция картинок (__Picture.*) в формате, пригодн
+		ом для просмотра. Gallery пока остаётся как есть.
+
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.46:
+		Не создавался каталог для описаний
+
+	* CommonFunctions.cpp [ContainerContents] 1.1.2.20:
+	* CommonFunctions.h [ContainerContents] 1.1.2.11:
+	* MMS.cpp [ContainerContents] 1.1.2.59:
+	* MMS.h [ContainerContents] 1.1.2.52:
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.38:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.45:
+	* MainMetadataStream.y [ContainerContents] 1.5.2.22:
+	* Storage.cpp [ContainerContents] 1.1.2.39:
+	* Storage.h [ContainerContents] 1.1.2.21:
+	* TaskCompile.cpp [ContainerContents] 1.20.2.30:
+	* gcomp.dsw [ContainerContents] 1.5.2.2:
+		Описания полей раскладываются по каталогам соответствующих объект
+		ов.
+
+	* NameTable.cpp [ContainerContents] 1.1.2.20:
+	* NameTable.h [ContainerContents] 1.1.2.7:
+		Добавлен деструктор - а то записи таблицы не уничтожались.
+
+	* Container.cpp [ContainerContents] 1.1.2.7:
+		Устранена утечка памяти
+
+2004-02-19	fez
+	* TaskHelp.cpp [ContainerContents] 1.11.2.7:
+		Параметр --translit описан в --help
+
+	* gcomp.cpp [ContainerContents] 1.8.2.15:
+		Изменен номер версии 2.06.beta
+
+	* gcomp.cpp [ContainerContents] 1.8.2.12:
+		Изменен номер версии 2.06.beta.pre2
+
+	* NameTable.cpp [ContainerContents] 1.1.2.18:
+		Удалены комментарии
+
+	* NameTable.cpp [ContainerContents] 1.1.2.19:
+	* Task.cpp [ContainerContents] 1.22.2.16:
+	* gcomp.cpp [ContainerContents] 1.8.2.14:
+		Добавлена поддержка параметра --translit
+		Все имена (и статические тоже) просто транслитятся
+
+	* CommonFunctions.cpp [ContainerContents] 1.1.2.18:
+		Устранение дублирующегося кода.
+
+	* CommonFunctions.cpp [ContainerContents] 1.1.2.19:
+	* Task.cpp [ContainerContents] 1.22.2.15:
+	* Task.h [ContainerContents] 1.32.2.17:
+	* TaskHelp.cpp [ContainerContents] 1.11.2.6:
+	* gcomp.cpp [ContainerContents] 1.8.2.13:
+		CTaskParameters::English заменен на перечисление
+		CTaskParameters::Language.
+		Готовимся к варианту полного транслита
+
+2004-02-17	adirks
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.44:
+		Не будем создавать пустых каталогов (Справочники, Документы, Журн
+		алы, Отчеты, Обработки, АлгоритмыРасчетов, ЖурналыРасчетов)
+
+2004-02-15	adirks
+	* Ordering.cpp [BuhParams] 1.1.2.1:
+	* Ordering.cpp [ContainerContents] 1.1.4.1:
+	* Ordering.h [BuhParams] 1.1.2.1:
+	* Ordering.h [ContainerContents] 1.1.4.1:
+		Добавлен класс CObjectOrdering - для унификации операций с файлом
+		 ПорядокОбъектов.
+
+	* CommonFunctions.cpp [BuhParams] 1.1.2.13.2.1:
+	* CommonFunctions.cpp [ContainerContents] 1.1.2.17:
+	* CommonFunctions.h [BuhParams] 1.1.2.7.2.1:
+	* CommonFunctions.h [ContainerContents] 1.1.2.10:
+	* Declarations.h [BuhParams] 1.1.2.2.2.3:
+	* Declarations.h [ContainerContents] 1.1.2.3:
+	* MMS.cpp [BuhParams] 1.1.2.57.2.5:
+	* MMS.cpp [ContainerContents] 1.1.2.58:
+	* MMS.h [BuhParams] 1.1.2.48.2.6:
+	* MMS.h [ContainerContents] 1.1.2.51:
+	* MMS_Compile.cpp [BuhParams] 1.1.2.31.2.2:
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.36:
+	* MMS_Decompile.cpp [BuhParams] 1.1.2.38.2.5:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.43:
+	* MainMetadataStream.y [BuhParams] 1.5.2.20.2.5:
+	* MainMetadataStream.y [ContainerContents] 1.5.2.21:
+	* NameTable.cpp [BuhParams] 1.1.2.16.2.4:
+	* NameTable.cpp [ContainerContents] 1.1.2.17:
+	* NameTable.h [BuhParams] 1.1.2.5.2.1:
+	* NameTable.h [ContainerContents] 1.1.2.6:
+	* Storage.cpp [BuhParams] 1.1.2.35.2.3:
+	* Storage.cpp [ContainerContents] 1.1.2.37:
+	* Task.h [BuhParams] 1.32.2.15.2.1:
+	* TaskCompile.cpp [BuhParams] 1.20.2.26.2.2:
+	* TaskCompile.cpp [ContainerContents] 1.20.2.29:
+	* TaskDecompile.cpp [BuhParams] 1.37.2.22.2.1:
+	* TaskHelp.cpp [BuhParams] 1.11.2.3.2.1:
+	* gcomp.cpp [BuhParams] 1.8.2.10.2.1:
+	* gcomp.dsp [BuhParams] 1.10.2.9.2.1:
+	* gcomp.dsp [ContainerContents] 1.10.2.10:
+		Доделана детальная разборка параметров бухгалтерии.
+		Добавлен класс CObjectOrdering - для унификации операций с файлом ПорядокОбъектов.
+		Объединился с основной веткой.
+		Во всех функциях, работающих с файлами, поставил вызов Translit().
+
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.37:
+		Как обычно обидел внешние отчёты - не писался ММС
+
+	* gcomp.opt [ContainerContents] 1.1.2.3:
+		Новые классы помещены куда следует (в папочку ММС)
+
+	* Ordering.cpp 1.1:
+		file Ordering.cpp was initially added on branch BuhParams.
+
+	* Ordering.h 1.1:
+		file Ordering.h was initially added on branch BuhParams.
+
+	* Storage.cpp [ContainerContents] 1.1.2.38:
+	* StreamInfo.cpp [ContainerContents] 1.10.2.6:
+	* StreamInfo.h [ContainerContents] 1.9.2.5:
+		При чтении потока из строки не писался размер
+
+2004-02-13	adirks
+	* TaskDecompile.cpp [ContainerContents] 1.37.2.23:
+		ChangeLog при декомпиляции не будем удалять - он нам нужен
+
+	* TaskHelp.cpp [ContainerContents] 1.11.2.5:
+		Была маленькая неточность в хелпе по поводу -DD
+
+	* CommonFunctions.cpp [ContainerContents] 1.1.2.15:
+	* CommonFunctions.h [ContainerContents] 1.1.2.9:
+	* MMS.h [ContainerContents] 1.1.2.50:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.41:
+	* TaskCompile.cpp [ContainerContents] 1.20.2.28:
+		Опция --truncate-mms теперь работает и при декомпиляции.
+
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.35:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.42:
+		Избавился от числовых идентификоторов в именах файлов описаний (к
+		аталог Описания). Оригинальные идентификаторы хранятся в файле По
+		рядокОбъектов.ord.
+
+	* CommonFunctions.cpp [ContainerContents] 1.1.2.16:
+		Расставил табуляции в пустом ММС, чтобы он не отличался от получа
+		емого функцией AsString().
+
+2004-02-10	fez
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.34:
+		Добавлен TODO (в комментарии)
+
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.33:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.40:
+		Оттранслитерованное имя теперь хранится в файле ПорядокОбъектов
+		.ord
+
+	* CommonFunctions.cpp [ContainerContents] 1.1.2.14:
+	* CommonFunctions.h [ContainerContents] 1.1.2.8:
+		Добавлена общая функция Translit()
+
+2004-02-10	adirks
+	* MMS.cpp [BuhParams] 1.1.2.57.2.4:
+	* MMS.h [BuhParams] 1.1.2.48.2.5:
+	* MMS_Decompile.cpp [BuhParams] 1.1.2.38.2.4:
+	* MainMetadataStream.y [BuhParams] 1.5.2.20.2.4:
+	* NameTable.cpp [BuhParams] 1.1.2.16.2.3:
+		Планы счетов выделены в отдельные файлы с расширением pln
+
+	* Declarations.h [BuhParams] 1.1.2.2.2.2:
+	* MMS.cpp [BuhParams] 1.1.2.57.2.3:
+	* MMS.h [BuhParams] 1.1.2.48.2.4:
+	* MainMetadataStream.y [BuhParams] 1.5.2.20.2.3:
+		Парсер и дополнительные классы для детального разбора параметров 
+		бухгалтерии
+
+2004-02-09	fez
+	* Task.h [ContainerContents] 1.32.2.16:
+	* TaskHelp.cpp [ContainerContents] 1.11.2.4:
+		Добавлена русская справка. Она теперь выводится по умолчанию, а с
+		тарая, английская - при ключе --eng
+
+	* gcomp.cpp [ContainerContents] 1.8.2.11:
+		Изменен номер версии
+
+2004-02-06	fez
+	* gcomp.opt 1.1:
+		file gcomp.opt was initially added on branch ContainerContents.
+
+	* gcomp.opt [ContainerContents] 1.1.2.2:
+		test commit
+
+	* gcomp.opt [ContainerContents] 1.1.2.1:
+		Добавлен файлик - там хранится разделение классов по папочкам
+
+2004-02-05	fez
+	* CommonFunctions.cpp 1.2:
+	* CommonFunctions.h 1.2:
+	* Container.cpp 1.2:
+	* Container.h 1.2:
+	* Declarations.h 1.2:
+	* MMS.cpp 1.2:
+	* MMS.h 1.2:
+	* MMS_Compile.cpp 1.2:
+	* MMS_Decompile.cpp 1.2:
+	* MainMetadataStream.y 1.6:
+	* NameTable.cpp 1.2:
+	* NameTable.h 1.2:
+	* ParserTest.cpp 1.5:
+	* ParserTest.dsp 1.4:
+	* Storage.cpp 1.2:
+	* Storage.h 1.2:
+	* StreamInfo.cpp 1.11:
+	* StreamInfo.h 1.10:
+	* Task.cpp 1.24:
+	* Task.h 1.34:
+	* TaskCompile.cpp 1.21:
+	* TaskDecompile.cpp 1.38:
+	* TaskHelp.cpp 1.12:
+	* gcomp.cpp 1.9:
+	* gcomp.dsp 1.11:
+	* gcomp.dsw 1.6:
+		Ветка ContainerContents влита в главный ствол
+
+	* Task.cpp 1.23:
+	* Task.h 1.33:
+		Добавлена опция --version
+
+2004-02-05	adirks
+	* MMS.h [BuhParams] 1.1.2.48.2.2:
+	* MMS_Compile.cpp [BuhParams] 1.1.2.31.2.1:
+	* MMS_Decompile.cpp [BuhParams] 1.1.2.38.2.2:
+	* Storage.cpp [BuhParams] 1.1.2.35.2.2:
+		Изменения из основного ствола
+
+	* TaskCompile.cpp [ContainerContents] 1.20.2.27:
+		Опять косяк со внешними отчетами - в конце пустого ММС осталась з
+		апятая.
+
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.39:
+		Исправлена ошибка декомпиляции формы операции. Код не был приведё
+		н в соответствие с NameTable
+
+	* MMS.h [ContainerContents] 1.1.2.49:
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.32:
+	* Storage.cpp [ContainerContents] 1.1.2.36:
+		Исправлена ошибка при компиляции внешних отчетов - в ert попадал 
+		пустой каталог PictureGallery
+
+	* MMS.cpp [BuhParams] 1.1.2.57.2.2:
+	* MMS.h [BuhParams] 1.1.2.48.2.3:
+	* MMS_Decompile.cpp [BuhParams] 1.1.2.38.2.3:
+	* MainMetadataStream.y [BuhParams] 1.5.2.20.2.2:
+	* NameTable.cpp [BuhParams] 1.1.2.16.2.2:
+	* TaskCompile.cpp [BuhParams] 1.20.2.26.2.1:
+		Немного упорядочена структура каталогов бухгалтерии
+
+	* Declarations.h 1.3:
+		Добавил iostream.h
+
+2004-02-04	fez
+	* Task.cpp [ContainerContents] 1.22.2.14:
+		При компиляции теперь имя файла сборки по умолчанию - 
+		1cv7.new.md
+
+2004-02-04	adirks
+	* Declarations.h [BuhParams] 1.1.2.2.2.1:
+	* MMS.cpp [BuhParams] 1.1.2.57.2.1:
+	* MMS.h [BuhParams] 1.1.2.48.2.1:
+	* MMS_Decompile.cpp [BuhParams] 1.1.2.38.2.1:
+	* MainMetadataStream.y [BuhParams] 1.5.2.20.2.1:
+	* NameTable.cpp [BuhParams] 1.1.2.16.2.1:
+	* Storage.cpp [BuhParams] 1.1.2.35.2.1:
+		Параметры бухгалтерского учёта в развёрнутом виде.
+		Пока только обозначено направление.
+
+2004-02-03	fez
+	* gcomp.cpp [ContainerContents] 1.8.2.10:
+		Изменен номер версии
+
+2004-02-03	adirks
+	* Storage.cpp [ContainerContents] 1.1.2.34:
+		Зачем мы опираемся на контрольный размер, записанный в потоке? Эт
+		о неумно - лучше просто отбрасывать эти байты, и выгружать поток 
+		полностью. Для битых МДшников это будет прекрасным средством лече
+		ния.
+
+	* Storage.cpp [ContainerContents] 1.1.2.35:
+		Выдаётся сообщение об ошибке в контрольной сумме
+
+2004-01-31	adirks
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.37:
+		Более детальная информация о замене в именах mxl
+
+	* TaskCompile.cpp [ContainerContents] 1.20.2.26:
+	* TaskDecompile.cpp [ContainerContents] 1.37.2.22:
+		Вернул сообщение о начале работы при Verbosity > 1
+
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.36:
+		Повысим надёжность
+
+	* Task.h [ContainerContents] 1.32.2.15:
+	* TaskDecompile.cpp [ContainerContents] 1.37.2.21:
+		Убрал переменную MMS из класса. Та она совершенно ни к чему.
+
+	* Declarations.h 1.1:
+		file Declarations.h was initially added on branch 
+		ContainerContents.
+
+	* Declarations.h [ContainerContents] 1.1.2.1:
+		Хедер, в котором собраны основные объявления.
+
+	* CommonFunctions.cpp [ContainerContents] 1.1.2.13:
+	* Container.cpp [ContainerContents] 1.1.2.6:
+	* Container.h [ContainerContents] 1.1.2.5:
+	* MMS.cpp [ContainerContents] 1.1.2.57:
+	* MMS.h [ContainerContents] 1.1.2.47:
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.30:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.35:
+	* NameTable.cpp [ContainerContents] 1.1.2.15:
+	* NameTable.h [ContainerContents] 1.1.2.5:
+	* Storage.cpp [ContainerContents] 1.1.2.33:
+	* Storage.h [ContainerContents] 1.1.2.20:
+	* StreamInfo.cpp [ContainerContents] 1.10.2.5:
+	* StreamInfo.h [ContainerContents] 1.9.2.4:
+	* Task.cpp [ContainerContents] 1.22.2.13:
+	* Task.h [ContainerContents] 1.32.2.14:
+	* TaskCompile.cpp [ContainerContents] 1.20.2.24:
+	* TaskDecompile.cpp [ContainerContents] 1.37.2.19:
+	* gcomp.cpp [ContainerContents] 1.8.2.9:
+	* gcomp.dsp [ContainerContents] 1.10.2.9:
+		Навёл немного порядка в хедерах.
+		Кое-где написал комментариев.
+		Удалил парочку лишних функций.
+
+	* Declarations.h [ContainerContents] 1.1.2.2:
+	* MMS.h [ContainerContents] 1.1.2.48:
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.31:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.38:
+	* NameTable.cpp [ContainerContents] 1.1.2.16:
+		Исправлена ошибка - в МДшник попадали пустые формы счета и операц
+		ии
+
+	* TaskCompile.cpp [ContainerContents] 1.20.2.25:
+	* TaskDecompile.cpp [ContainerContents] 1.37.2.20:
+		У SVN рабочие каталоги называются '.svn'. При декомпиляции/компил
+		яции их надо игнорировать
+
+	* MainMetadataStream.y [ContainerContents] 1.5.2.20:
+		Закомментировал %debug - должно немножечко быстрее стать
+
+2004-01-30	adirks
+	* TaskDecompile.cpp [ContainerContents] 1.37.2.18:
+		При декомпиляции внешних отчетов не выводится сообщение
+		"'%s' extracted into '%s' in %s\n"
+
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.34:
+	* Storage.cpp [ContainerContents] 1.1.2.32:
+		При зачистке ММС во внешних отчетах что-то делается не так. Поэто
+		му уберу это всё пока.
+
+2004-01-29	adirks
+	* MMS.cpp [ContainerContents] 1.1.2.56:
+	* MMS.h [ContainerContents] 1.1.2.46:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.33:
+	* MainMetadataStream.y [ContainerContents] 1.5.2.19:
+		Интеллектуальное обрезание ММС для внешних отчетов. Вроде бы даже
+		 работает.  Оставил немного мусора - так, для интереса :)
+
+2004-01-28	fez
+	* gcomp.cpp [ContainerContents] 1.8.2.7:
+		Исправлена ошибка: не работала опция --version
+
+	* Task.cpp [ContainerContents] 1.22.2.11:
+	* Task.h [ContainerContents] 1.32.2.12:
+	* gcomp.cpp [ContainerContents] 1.8.2.6:
+		Добавлена опция --version
+		Выводит информацию о номере версии и больше ничего не делает
+
+	* TaskHelp.cpp [ContainerContents] 1.11.2.2:
+		Новые опции описаны в помощи по gcomp -h
+
+	* Task.cpp [ContainerContents] 1.22.2.10:
+	* gcomp.cpp [ContainerContents] 1.8.2.3:
+		Парсинг параметров командной строки перенесен из конструктора 
+		CTask в _tmain()
+
+	* NameTable.cpp [ContainerContents] 1.1.2.13:
+	* NameTable.h [ContainerContents] 1.1.2.4:
+	* gcomp.cpp [ContainerContents] 1.8.2.4:
+		--eng заработал. Осталось переписать конструктор английской табли
+		цы имен
+
+	* gcomp.cpp [ContainerContents] 1.8.2.8:
+		Обновлен номер версии
+
+	* Storage.cpp [ContainerContents] 1.1.2.27:
+		Добавлено уточняющее сообщение при обломе парсинга MMS (запаролен
+		ная конфига)
+
+	* NameTable.cpp [ContainerContents] 1.1.2.14:
+	* gcomp.cpp [ContainerContents] 1.8.2.5:
+		Создана английская таблица имен.
+
+	* NameTable.cpp [ContainerContents] 1.1.2.12:
+	* NameTable.h [ContainerContents] 1.1.2.3:
+	* Task.cpp [ContainerContents] 1.22.2.9:
+	* Task.h [ContainerContents] 1.32.2.11:
+	* gcomp.cpp [ContainerContents] 1.8.2.2:
+		Заготовка для ключа --eng
+		Только чего-то пока не работает
+
+2004-01-28	adirks
+	* MainMetadataStream.y [ContainerContents] 1.5.2.18:
+	* Storage.cpp [ContainerContents] 1.1.2.29:
+		Исправлена ошибка декомпиляции пустых Container.Contents
+
+	* Storage.cpp [ContainerContents] 1.1.2.30:
+	* StreamInfo.cpp [ContainerContents] 1.10.2.4:
+	* StreamInfo.h [ContainerContents] 1.9.2.3:
+		Убрал все упоминания о LastZeroBytes
+
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.28:
+	* Storage.cpp [ContainerContents] 1.1.2.28:
+		Исправлена ошибка: при компиляции удваивалось количество нулевых 
+		байт в конце файла. Что пагубно сказывалось на шаблонах mxl.
+
+	* CommonFunctions.cpp [ContainerContents] 1.1.2.12:
+	* CommonFunctions.h [ContainerContents] 1.1.2.7:
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.29:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.32:
+	* Storage.cpp [ContainerContents] 1.1.2.31:
+	* Storage.h [ContainerContents] 1.1.2.19:
+	* Task.cpp [ContainerContents] 1.22.2.12:
+	* Task.h [ContainerContents] 1.32.2.13:
+	* TaskCompile.cpp [ContainerContents] 1.20.2.23:
+	* TaskHelp.cpp [ContainerContents] 1.11.2.3:
+		Опция --no-empty-mxl
+		Работает как при декомпиляции, так и при компиляции
+
+	* TaskCompile.cpp [ContainerContents] 1.20.2.22:
+	* TaskDecompile.cpp [ContainerContents] 1.37.2.17:
+		Немножко изменил формат главного сообщения о ходе работы. Три стр
+		очки - это слишком много.
+
+2004-01-27	adirks
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.31:
+		При декомпиляции внешних отчетов сразу меняем версию ММС и убирае
+		м CRC. Чтобы не прыгало каждый раз туда-сюда.
+
+2004-01-26	adirks
+	* MMS.cpp [ContainerContents] 1.1.2.55:
+	* MMS.h [ContainerContents] 1.1.2.44:
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.26:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.29:
+	* NameTable.cpp [ContainerContents] 1.1.2.11:
+	* TaskCompile.cpp [ContainerContents] 1.20.2.20:
+	* TaskDecompile.cpp [ContainerContents] 1.37.2.16:
+		Декомпиляция внешних отчетов. Компиляция пока не совсем работает
+		.
+
+	* Storage.cpp [ContainerContents] 1.1.2.25:
+		Лишние комментарии
+
+	* MMS.h [ContainerContents] 1.1.2.45:
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.27:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.30:
+	* Storage.cpp [ContainerContents] 1.1.2.26:
+	* StreamInfo.h [ContainerContents] 1.9.2.2:
+	* Task.cpp [ContainerContents] 1.22.2.8:
+	* TaskCompile.cpp [ContainerContents] 1.20.2.21:
+	* TaskHelp.cpp [ContainerContents] 1.11.2.1:
+		Компиляция внешних отчетов. --no-profiles, --truncate-mms работаю
+		т при комниляции.
+
+2004-01-24	adirks
+	* MMS.cpp [ContainerContents] 1.1.2.54:
+	* MMS.h [ContainerContents] 1.1.2.43:
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.25:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.28:
+	* MainMetadataStream.y [ContainerContents] 1.5.2.17:
+	* TaskDecompile.cpp [ContainerContents] 1.37.2.15:
+		Поубирал лишние классы ММС. Навёл порядок в MMS_Decompile.cpp и 
+		MMS_Compile.cpp
+
+2004-01-23	fez
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.22:
+		Функция должна возвращать значение, даже в случае ошибки
+
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.23:
+		Добавлен вывод отладочного сообщения при подмене символов в имени
+		 мокселей.
+
+	* NameTable.cpp [ContainerContents] 1.1.2.9:
+		Немного по другому расставлены строки в конструкторе CNameTable
+
+	* NameTable.cpp [TranslitNames] 1.1.2.10.2.1:
+	* NameTable.h [TranslitNames] 1.1.2.2.2.1:
+	* Task.cpp [TranslitNames] 1.22.2.7.2.1:
+	* Task.h [TranslitNames] 1.32.2.10.2.1:
+	* gcomp.cpp [TranslitNames] 1.8.2.1.2.1:
+		Начало работы над опцией --eng
+
+	* NameTable.cpp [ContainerContents] 1.1.2.10:
+		Шоб ты общался только через ChangeLog !!!
+		:)
+
+	* NameTable.cpp [ContainerContents] 1.1.2.7:
+		Расширение .mdp дано еще и тем кусочкам MMS, что лежат в корне де
+		рева конфигурации (типа констант и перечислений).
+
+2004-01-23	adirks
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.20:
+		Немного повысим надёжность.
+
+	* CommonFunctions.cpp [ContainerContents] 1.1.2.9:
+	* CommonFunctions.h [ContainerContents] 1.1.2.5:
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.18:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.21:
+		При обработке шаблонов mxl убрал name mangling/demangling, все не
+		хорошие символы заменяются на '_', соответствия внутренних имён и
+		 имён файлов хранятся в ПорядокОбъектов.ord
+
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.23:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.25:
+	* TaskCompile.cpp [ContainerContents] 1.20.2.18:
+		Теперь вроде бы все имена берутся из NameTable
+
+	* MMS.h [ContainerContents] 1.1.2.42:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.26:
+	* NameTable.cpp [ContainerContents] 1.1.2.8:
+	* TaskCompile.cpp [ContainerContents] 1.20.2.19:
+		Подправил NameTable. Для расширений есть специальное поле. И подп
+		равил выгрузку, чтобы это учитывалось.
+
+	* CommonFunctions.cpp [ContainerContents] 1.1.2.10:
+	* MMS.h [ContainerContents] 1.1.2.41:
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.21:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.24:
+	* NameTable.cpp [ContainerContents] 1.1.2.6:
+	* NameTable.h [ContainerContents] 1.1.2.2:
+	* TaskCompile.cpp [ContainerContents] 1.20.2.17:
+		Исправлена ещё одна ошибка при работе с именами таблиц mxl.
+		Добавлено записей в таблицу имён.
+
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.19:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.22:
+		Исправлена ошибка при работе с именами таблиц mxl
+
+	* CommonFunctions.cpp [ContainerContents] 1.1.2.11:
+	* CommonFunctions.h [ContainerContents] 1.1.2.6:
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.24:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.27:
+		Немного изменил формат ПорядокОбъектов.ord для шаблонов mxl.
+		При формировании ПорядокОбъектов.ord для всех объектов приняты меры, чтобы не вводить в заблуждение CVS.
+		Урезана парочка лишних функций.
+
+2004-01-22	adirks
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.17:
+		Убрал лишний комментарий
+
+	* MMS.h [ContainerContents] 1.1.2.40:
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.16:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.20:
+	* NameTable.cpp [ContainerContents] 1.1.2.5:
+	* Storage.cpp [ContainerContents] 1.1.2.24:
+		Не компилируются пустые формы списков и чего-то ещё
+
+	* CommonFunctions.cpp [ContainerContents] 1.1.2.8:
+	* CommonFunctions.h [ContainerContents] 1.1.2.4:
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.14:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.18:
+		Сделал чтобы при компиляции/декомпиляции шаблонов таблиц сохранял
+		ся оригинальный суффикс. Хотя может быть и зря.
+
+	* Container.cpp [ContainerContents] 1.1.2.5:
+	* MMS.cpp [ContainerContents] 1.1.2.52:
+	* MMS.h [ContainerContents] 1.1.2.38:
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.13:
+	* NameTable.cpp [ContainerContents] 1.1.2.3:
+	* Storage.cpp [ContainerContents] 1.1.2.23:
+	* Storage.h [ContainerContents] 1.1.2.18:
+	* TaskCompile.cpp [ContainerContents] 1.20.2.16:
+		Не компилируются справочники и документы без форм.
+		Наконец-то убрал утечки памяти. Трудно сказать, все или не все, потому что MSVC их сам делает.
+
+	* MMS.cpp [ContainerContents] 1.1.2.53:
+	* MMS.h [ContainerContents] 1.1.2.39:
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.15:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.19:
+	* MainMetadataStream.y [ContainerContents] 1.5.2.16:
+	* NameTable.cpp [ContainerContents] 1.1.2.4:
+		Сортировка справочников, документов, журналов и т.д. теперь сохра
+		няется. Для этого при декомпиляции создается файл ПорядокОбъектов
+		.ord
+
+	* Task.cpp [ContainerContents] 1.22.2.7:
+		Исправлен косяк с расскими именами файлов (ключ -F)
+
+2004-01-21	adirks
+	* MMS.cpp [ContainerContents] 1.1.2.51:
+	* MMS.h [ContainerContents] 1.1.2.37:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.16:
+	* Task.cpp [ContainerContents] 1.22.2.6:
+	* Task.h [ContainerContents] 1.32.2.10:
+		Немножко красоты
+
+	* MMS.cpp [ContainerContents] 1.1.2.50:
+	* MMS.h [ContainerContents] 1.1.2.35:
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.11:
+	* NameTable.cpp [ContainerContents] 1.1.2.1:
+	* NameTable.h [ContainerContents] 1.1.2.1:
+	* TaskCompile.cpp [ContainerContents] 1.20.2.15:
+	* gcomp.dsp [ContainerContents] 1.10.2.7:
+		Выделил NameTable в отдельный файл
+
+	* NameTable.cpp 1.1:
+		file NameTable.cpp was initially added on branch 
+		ContainerContents.
+
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.17:
+	* gcomp.cpp [ContainerContents] 1.8.2.1:
+		Исправлена ошибка при выгрузке описаний - имена файлов иногда пол
+		учались недопустимыми
+
+	* Storage.cpp [ContainerContents] 1.1.2.21:
+	* Storage.h [ContainerContents] 1.1.2.16:
+		Парочка новых методов
+
+	* MMS.h [ContainerContents] 1.1.2.36:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.14:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.15:
+	* NameTable.cpp [ContainerContents] 1.1.2.2:
+		Выгрузка описаний для всяких объектов типа полей, измерений и т.д
+		. Всё выгружается в каталог Описания.
+
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.12:
+	* Storage.cpp [ContainerContents] 1.1.2.22:
+	* Storage.h [ContainerContents] 1.1.2.17:
+		Компиляция описаний
+
+	* NameTable.h 1.1:
+		file NameTable.h was initially added on branch 
+		ContainerContents.
+
+	* Container.cpp [ContainerContents] 1.1.2.4:
+	* Container.h [ContainerContents] 1.1.2.4:
+	* MMS.h [ContainerContents] 1.1.2.34:
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.10:
+		Изменён способ формирования Container.Contents. После формировани
+		я основной структуры проходимся по МДшнику, и везде где надо соби
+		раем Container.Contents.
+
+2004-01-20	adirks
+	* MMS.cpp [ContainerContents] 1.1.2.46:
+	* MMS.cpp [ContainerContents] 1.1.2.47:
+		Сортировка справочников и документов по наименованию. Хотя вообще
+		-то надо бы сохранять исходный порядок объектов.
+
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.7:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.12:
+	* Storage.cpp [ContainerContents] 1.1.2.19:
+	* Storage.h [ContainerContents] 1.1.2.14:
+		Компиляция наборов интерфейсов и прав.
+		1С уже не падает при загрузке скомпилированного МДшника.
+
+	* MMS.cpp [ContainerContents] 1.1.2.48:
+	* MMS.h [ContainerContents] 1.1.2.32:
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.6:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.11:
+	* ParserTest.dsp [ContainerContents] 1.3.2.4:
+	* Storage.cpp [ContainerContents] 1.1.2.18:
+	* Storage.h [ContainerContents] 1.1.2.13:
+		Декомпиляция наборов интерфейсов и прав. Пока что тупо вытаскивае
+		м потоки.
+
+	* MMS.cpp [ContainerContents] 1.1.2.49:
+	* MMS.h [ContainerContents] 1.1.2.33:
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.9:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.13:
+	* Storage.cpp [ContainerContents] 1.1.2.20:
+	* Storage.h [ContainerContents] 1.1.2.15:
+		Куча мелких поправок. Но всё равно объединение падает.
+
+	* StreamInfo.cpp [ContainerContents] 1.10.2.2:
+	* StreamInfo.cpp [ContainerContents] 1.10.2.3:
+		Исправлена ошибка определения размера временного файла.
+
+2004-01-19	adirks
+	* MMS.cpp [ContainerContents] 1.1.2.43:
+	* MMS.h [ContainerContents] 1.1.2.30:
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.4:
+	* Storage.cpp [ContainerContents] 1.1.2.17:
+		Компиляция журнала и алгоритмов расчета. Параметров бухгалтерии.
+
+	* MMS.cpp [ContainerContents] 1.1.2.42:
+	* MMS.h [ContainerContents] 1.1.2.29:
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.3:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.8:
+		Компиляция отчетов и журналов документов
+
+	* MMS.cpp [ContainerContents] 1.1.2.45:
+	* MMS.h [ContainerContents] 1.1.2.31:
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.5:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.10:
+	* TaskCompile.cpp [ContainerContents] 1.20.2.14:
+		Попытки заставить 1С воспринимать ММС. Пока безуспешные.
+
+	* MMS.h [ContainerContents] 1.1.2.28:
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.2:
+		Компиляция документов
+
+	* MMS.cpp [ContainerContents] 1.1.2.44:
+	* TaskCompile.cpp [ContainerContents] 1.20.2.13:
+		Исправлены ошибки.
+
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.9:
+		Декомпиляция журнала операций
+
+2004-01-18	adirks
+	* MMS.cpp [ContainerContents] 1.1.2.40:
+	* MMS.h [ContainerContents] 1.1.2.26:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.6:
+	* TaskCompile.cpp [ContainerContents] 1.20.2.11:
+	* TaskDecompile.cpp [ContainerContents] 1.37.2.13:
+		Таблица имён используется для декомпиляции всех объектов (добавле
+		ны общие таблицы и библиотека картинок)
+
+	* Container.cpp [ContainerContents] 1.1.2.3:
+	* Container.h [ContainerContents] 1.1.2.3:
+	* MMS.cpp [ContainerContents] 1.1.2.41:
+	* MMS.h [ContainerContents] 1.1.2.27:
+	* MMS_Compile.cpp [ContainerContents] 1.1.2.1:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.7:
+	* Storage.cpp [ContainerContents] 1.1.2.16:
+	* Storage.h [ContainerContents] 1.1.2.12:
+	* TaskCompile.cpp [ContainerContents] 1.20.2.12:
+	* TaskDecompile.cpp [ContainerContents] 1.37.2.14:
+	* gcomp.dsp [ContainerContents] 1.10.2.6:
+		Компиляция справочников
+
+	* MMS_Compile.cpp 1.1:
+		file MMS_Compile.cpp was initially added on branch 
+		ContainerContents.
+
+2004-01-17	adirks
+	* MMS.cpp [ContainerContents] 1.1.2.38:
+	* MMS.h [ContainerContents] 1.1.2.24:
+	* TaskCompile.cpp [ContainerContents] 1.20.2.9:
+		Имена файлов и каталогов берём из таблицы
+
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.3:
+	* TaskCompile.cpp [ContainerContents] 1.20.2.10:
+	* TaskDecompile.cpp [ContainerContents] 1.37.2.12:
+		Таблица имён используется для декомпиляции всех корневых объектов
+		
+
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.5:
+	* Storage.h [ContainerContents] 1.1.2.11:
+	* Task.cpp [ContainerContents] 1.22.2.5:
+	* Task.h [ContainerContents] 1.32.2.9:
+		Поубирал остатки старого кода
+
+	* CommonFunctions.cpp [ContainerContents] 1.1.2.7:
+	* Storage.cpp [ContainerContents] 1.1.2.14:
+	* Storage.h [ContainerContents] 1.1.2.10:
+	* Task.cpp [ContainerContents] 1.22.2.4:
+	* Task.h [ContainerContents] 1.32.2.8:
+	* TaskCompile.cpp [ContainerContents] 1.20.2.7:
+	* TaskDecompile.cpp [ContainerContents] 1.37.2.11:
+		Начинаем собирать ММС из кусочков
+
+	* TaskCompile.cpp [ContainerContents] 1.20.2.8:
+		ММС собран, и даже компилируется
+
+	* MMS.cpp [ContainerContents] 1.1.2.39:
+	* MMS.h [ContainerContents] 1.1.2.25:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.4:
+		Таблица имён используется для декомпиляции всех объектов
+
+	* Storage.cpp [ContainerContents] 1.1.2.13:
+	* Storage.h [ContainerContents] 1.1.2.9:
+	* StreamInfo.cpp [ContainerContents] 1.10.2.1:
+	* StreamInfo.h [ContainerContents] 1.9.2.1:
+	* TaskCompile.cpp [ContainerContents] 1.20.2.6:
+		Методы CStorage для создания потоков
+
+	* Storage.cpp [ContainerContents] 1.1.2.15:
+		Исправлена ошибка - gcomp -d -vv успешно падал
+
+2004-01-15	adirks
+	* MainMetadataStream.y [ContainerContents] 1.5.2.15:
+		Ошибка при декомпиляции МД без последовательностей документов
+
+2004-01-14	adirks
+	* MMS.cpp [ContainerContents] 1.1.2.37:
+	* MMS.h [ContainerContents] 1.1.2.23:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.1:
+	* MMS_Decompile.cpp [ContainerContents] 1.1.2.2:
+	* gcomp.dsp [ContainerContents] 1.10.2.5:
+		Таблица имён объектов. Пока только для текстов из ММС
+
+	* MMS.cpp [ContainerContents] 1.1.2.36:
+	* MMS.h [ContainerContents] 1.1.2.22:
+		Таблица всяческих имён. Пока только начало.
+
+	* MMS.cpp [ContainerContents] 1.1.2.35:
+	* MainMetadataStream.y [ContainerContents] 1.5.2.14:
+		CMMSNodeList и CMMSNode вообще убраны из результатов парсинга.
+
+	* MMS_Decompile.cpp 1.1:
+		file MMS_Decompile.cpp was initially added on branch 
+		ContainerContents.
+
+2004-01-13	adirks
+	* TaskDecompile.cpp [ContainerContents] 1.37.2.10:
+		Библиотека картинок
+
+	* MMS.cpp [ContainerContents] 1.1.2.29:
+	* MainMetadataStream.y [ContainerContents] 1.5.2.10:
+		CMMSNodeList и CMMSNode вообще убраны из результатов парсинга.
+
+	* MMS.cpp [ContainerContents] 1.1.2.26:
+		Убрал ID из каталога справочника (он для отладки был)
+
+	* MMS.cpp [ContainerContents] 1.1.2.31:
+	* MMS.h [ContainerContents] 1.1.2.20:
+	* MainMetadataStream.y [ContainerContents] 1.5.2.12:
+		Алгоритмы расчетов
+
+	* MMS.cpp [ContainerContents] 1.1.2.25:
+	* MMS.h [ContainerContents] 1.1.2.17:
+	* MainMetadataStream.y [ContainerContents] 1.5.2.9:
+	* ParserTest.cpp [ContainerContents] 1.4.2.4:
+		Ещё немножко объектов
+
+	* MMS.cpp [ContainerContents] 1.1.2.30:
+	* MMS.h [ContainerContents] 1.1.2.19:
+	* MainMetadataStream.y [ContainerContents] 1.5.2.11:
+		Журналы расчетов
+
+	* MMS.cpp [ContainerContents] 1.1.2.34:
+		Убрал пробелы из имён файлов
+
+	* MMS.cpp [ContainerContents] 1.1.2.32:
+		Группы расчетов
+		Правила перерасчетов
+
+	* MMS.cpp [ContainerContents] 1.1.2.24:
+	* Storage.cpp [ContainerContents] 1.1.2.12:
+	* Storage.h [ContainerContents] 1.1.2.8:
+	* TaskDecompile.cpp [ContainerContents] 1.37.2.9:
+		Навёл порядок.
+
+	* MMS.cpp [ContainerContents] 1.1.2.27:
+	* MMS.cpp [ContainerContents] 1.1.2.28:
+	* MMS.h [ContainerContents] 1.1.2.18:
+		Оптимизировал метод AsString для CMMSNode
+
+	* MMS.cpp [ContainerContents] 1.1.2.33:
+	* MMS.h [ContainerContents] 1.1.2.21:
+	* MainMetadataStream.y [ContainerContents] 1.5.2.13:
+		Параметры бухгалтерии
+
+2004-01-12	adirks
+	* MMS.cpp [ContainerContents] 1.1.2.23:
+	* MMS.h [ContainerContents] 1.1.2.16:
+	* Storage.cpp [ContainerContents] 1.1.2.11:
+	* Storage.h [ContainerContents] 1.1.2.7:
+	* TaskDecompile.cpp [ContainerContents] 1.37.2.8:
+		При декомпиляции теперь везде используется CStorage
+
+	* MMS.cpp [ContainerContents] 1.1.2.22:
+	* MMS.h [ContainerContents] 1.1.2.15:
+		ConfID переименовал в FirstAvailableID
+
+	* MMS.cpp [ContainerContents] 1.1.2.19:
+	* Storage.cpp [ContainerContents] 1.1.2.8:
+		Правильные переводы строк.
+
+	* CommonFunctions.cpp [ContainerContents] 1.1.2.6:
+	* CommonFunctions.h [ContainerContents] 1.1.2.3:
+	* MMS.cpp [ContainerContents] 1.1.2.20:
+	* Storage.cpp [ContainerContents] 1.1.2.9:
+		Неудачный эксперимент с открытием потоков без промежуточных откры
+		тий IStorage. Но пусть побудет пока.
+
+	* MMS.cpp [ContainerContents] 1.1.2.21:
+	* Storage.cpp [ContainerContents] 1.1.2.10:
+	* Storage.h [ContainerContents] 1.1.2.6:
+		Сделал класс CStorage. Так удобнее, чем функциями.
+
+2004-01-11	adirks
+	* MMS.cpp [ContainerContents] 1.1.2.18:
+	* MMS.h [ContainerContents] 1.1.2.14:
+		Ещё немножко объектов
+
+2004-01-10	adirks
+	* MMS.cpp [ContainerContents] 1.1.2.12:
+	* MMS.h [ContainerContents] 1.1.2.9:
+	* MainMetadataStream.y [ContainerContents] 1.5.2.5:
+	* TaskDecompile.cpp [ContainerContents] 1.37.2.5:
+		Выгрузка шаблонов mxl
+
+	* MMS.cpp [ContainerContents] 1.1.2.17:
+	* MMS.h [ContainerContents] 1.1.2.13:
+	* MainMetadataStream.y [ContainerContents] 1.5.2.8:
+	* Storage.cpp [ContainerContents] 1.1.2.7:
+		Отчеты и обработки
+
+	* CommonFunctions.cpp [ContainerContents] 1.1.2.5:
+	* MMS.cpp [ContainerContents] 1.1.2.15:
+	* Storage.cpp [ContainerContents] 1.1.2.5:
+	* Storage.h [ContainerContents] 1.1.2.4:
+	* Task.h [ContainerContents] 1.32.2.7:
+	* TaskDecompile.cpp [ContainerContents] 1.37.2.7:
+		Зачистка после декомпиляции
+
+	* MMS.cpp [ContainerContents] 1.1.2.16:
+	* MMS.h [ContainerContents] 1.1.2.12:
+	* Storage.cpp [ContainerContents] 1.1.2.6:
+	* Storage.h [ContainerContents] 1.1.2.5:
+		Сравнение содержания для сгенерированных файлов
+
+	* MMS.cpp [ContainerContents] 1.1.2.14:
+	* MMS.h [ContainerContents] 1.1.2.11:
+	* MainMetadataStream.y [ContainerContents] 1.5.2.7:
+	* Storage.cpp [ContainerContents] 1.1.2.4:
+	* Storage.h [ContainerContents] 1.1.2.3:
+	* TaskDecompile.cpp [ContainerContents] 1.37.2.6:
+		Ещё немного простых объектов
+
+	* MMS.cpp [ContainerContents] 1.1.2.13:
+	* MMS.h [ContainerContents] 1.1.2.10:
+	* MainMetadataStream.y [ContainerContents] 1.5.2.6:
+		Константы и регистры
+
+2004-01-09	adirks
+	* MMS.cpp [ContainerContents] 1.1.2.11:
+	* MMS.h [ContainerContents] 1.1.2.8:
+		Формы групп и списков справочников
+
+	* MMS.cpp [ContainerContents] 1.1.2.5:
+		Выгрузка описаний документов
+
+	* MMS.cpp [ContainerContents] 1.1.2.10:
+	* MMS.h [ContainerContents] 1.1.2.7:
+		Рефакторинг дублированного кода
+
+	* CommonFunctions.cpp [ContainerContents] 1.1.2.2:
+	* MMS.cpp [ContainerContents] 1.1.2.6:
+		Даёшь Posix Compatibility!
+
+	* CommonFunctions.cpp [ContainerContents] 1.1.2.4:
+	* CommonFunctions.h [ContainerContents] 1.1.2.2:
+	* MMS.cpp [ContainerContents] 1.1.2.8:
+	* MMS.h [ContainerContents] 1.1.2.5:
+	* ParserTest.dsp [ContainerContents] 1.3.2.3:
+	* TaskCompile.cpp [ContainerContents] 1.20.2.5:
+		Навёл порядок в классах CMMS<xxx>
+
+	* MMS.cpp [ContainerContents] 1.1.2.4:
+	* Storage.cpp [ContainerContents] 1.1.2.2:
+	* Storage.h [ContainerContents] 1.1.2.2:
+	* gcomp.dsp [ContainerContents] 1.10.2.4:
+		Сравнение потоков и файлов
+
+	* MMS.cpp [ContainerContents] 1.1.2.9:
+	* MMS.h [ContainerContents] 1.1.2.6:
+	* MainMetadataStream.y [ContainerContents] 1.5.2.4:
+		Извлекаются справочники
+
+	* CommonFunctions.cpp [ContainerContents] 1.1.2.3:
+	* MMS.cpp [ContainerContents] 1.1.2.7:
+	* MMS.h [ContainerContents] 1.1.2.4:
+	* MainMetadataStream.y [ContainerContents] 1.5.2.3:
+	* ParserTest.cpp [ContainerContents] 1.4.2.3:
+	* Storage.cpp [ContainerContents] 1.1.2.3:
+	* Task.h [ContainerContents] 1.32.2.6:
+	* TaskDecompile.cpp [ContainerContents] 1.37.2.4:
+		Ещё немножко декомпиляции от ММС
+
+2004-01-08	adirks
+	* CommonFunctions.cpp [ContainerContents] 1.1.2.1:
+	* CommonFunctions.h [ContainerContents] 1.1.2.1:
+	* MMS.cpp [ContainerContents] 1.1.2.3:
+	* MMS.h [ContainerContents] 1.1.2.3:
+	* Storage.cpp [ContainerContents] 1.1.2.1:
+	* Storage.h [ContainerContents] 1.1.2.1:
+	* Task.cpp [ContainerContents] 1.22.2.3:
+	* Task.h [ContainerContents] 1.32.2.5:
+	* TaskCompile.cpp [ContainerContents] 1.20.2.4:
+	* TaskDecompile.cpp [ContainerContents] 1.37.2.3:
+	* gcomp.dsp [ContainerContents] 1.10.2.3:
+		Вынес из класов функции общего характера
+
+	* CommonFunctions.cpp 1.1:
+		file CommonFunctions.cpp was initially added on branch 
+		ContainerContents.
+
+	* Storage.cpp 1.1:
+		file Storage.cpp was initially added on branch 
+		ContainerContents.
+
+	* Storage.h 1.1:
+		file Storage.h was initially added on branch ContainerContents.
+
+	* CommonFunctions.h 1.1:
+		file CommonFunctions.h was initially added on branch 
+		ContainerContents.
+
+2004-01-07	adirks
+	* MMS.cpp [ContainerContents] 1.1.2.1:
+	* MMS.h [ContainerContents] 1.1.2.1:
+	* MainMetadataStream.y [ContainerContents] 1.5.2.1:
+	* ParserTest.cpp [ContainerContents] 1.4.2.1:
+	* ParserTest.dsp [ContainerContents] 1.3.2.1:
+	* Task.cpp [ContainerContents] 1.22.2.1:
+	* Task.h [ContainerContents] 1.32.2.3:
+	* TaskCompile.cpp [ContainerContents] 1.20.2.3:
+	* TaskDecompile.cpp [ContainerContents] 1.37.2.1:
+	* gcomp.dsp [ContainerContents] 1.10.2.2:
+	* gcomp.dsw [ContainerContents] 1.5.2.1:
+		Декомпиляция "от ММС": первое приближение.
+		Выгружаются формы, иодули форм и метаданные документов.
+
+	* MMS.cpp [ContainerContents] 1.1.2.2:
+	* MMS.h [ContainerContents] 1.1.2.2:
+	* MainMetadataStream.y [ContainerContents] 1.5.2.2:
+	* ParserTest.cpp [ContainerContents] 1.4.2.2:
+	* ParserTest.dsp [ContainerContents] 1.3.2.2:
+	* Task.cpp [ContainerContents] 1.22.2.2:
+	* Task.h [ContainerContents] 1.32.2.4:
+	* TaskDecompile.cpp [ContainerContents] 1.37.2.2:
+		Общие функции вынесены из класса CTask. TaskParameters пришлось сделать глобальной переменной. Надо бы вообще вынести это всё в отдельный файл.
+		Введен тип CMMS.
+
+	* MMS.h 1.1:
+		file MMS.h was initially added on branch ContainerContents.
+
+	* MMS.cpp 1.1:
+		file MMS.cpp was initially added on branch ContainerContents.
+
+2003-12-27	adirks
+	* Container.cpp [ContainerContents] 1.1.2.2:
+	* Container.h [ContainerContents] 1.1.2.2:
+	* Task.h [ContainerContents] 1.32.2.2:
+	* TaskCompile.cpp [ContainerContents] 1.20.2.2:
+		1С при загрузке конфигурации уже не падает.
+
+	* Container.h 1.1:
+		file Container.h was initially added on branch 
+		ContainerContents.
+
+	* Container.cpp [ContainerContents] 1.1.2.1:
+	* Container.h [ContainerContents] 1.1.2.1:
+	* Task.h [ContainerContents] 1.32.2.1:
+	* TaskCompile.cpp [ContainerContents] 1.20.2.1:
+	* gcomp.dsp [ContainerContents] 1.10.2.1:
+		Программная генерация Container.Contents
+		Первое приближение
+
+	* TaskHelp.cpp 1.11:
+		В help добавлено описание --truncate-mms
+
+	* Container.cpp 1.1:
+		file Container.cpp was initially added on branch 
+		ContainerContents.
+
+	* Task.cpp 1.22:
+	* Task.h 1.32:
+	* TaskCompile.cpp 1.20:
+		Добавлена опция --truncate-mms. По умолчанию ММС не обрезается. Д
+		ля файлов, не являющихся внешними отчетами ММС не обрезается, даж
+		е если указать опцию.
+
+2003-12-26	adirks
+	* Task.cpp 1.21:
+	* Task.h 1.31:
+	* TaskDecompile.cpp 1.37:
+		Поубирал лишние комментарии
+
+2003-12-24	fez
+	* TaskDecompile.cpp 1.35:
+		Оптимизировано копирование потоков Dialog.Stream при декомпиляции
+		.
+
+	* StreamInfo.cpp 1.10:
+	* StreamInfo.h 1.9:
+	* TaskDecompile.cpp 1.36:
+		Исправлен глючок с постоянным обновлением MMS. У него уменьшился 
+		размер после отрыва CRC - а StreamInfo об этом не знал.
+
+	* TaskDecompile.cpp 1.34:
+		Убрана диагностическая печать.
+
+2003-12-24	adirks
+	* TaskDecompile.cpp 1.33:
+		Немножко исправлен процесс обработки ММС. Смещения и размеры вычи
+		сляются, а не заданы жестко.
+
+2003-12-23	fez
+	* TaskDecompile.cpp 1.32:
+		Добавлен небольшой комментарий
+
+	* TaskDecompile.cpp 1.31:
+		Наконец-то обрабатывается MMS. При декомпиляции он выгружается в виде "9-го релиза" - без CRC в подвале.
+		Это позволит мерджить MMS.
+
+	* StreamInfo.cpp 1.9:
+		Удалена строчка отладочной печати
+
+	* Task.h 1.30:
+	* TaskDecompile.cpp 1.30:
+		Подчищены комментарии
+
+	* Task.h 1.29:
+		Хочу отказаться от использования CTask::pTaskParameters и испольо
+		вать вместо него TaskParameters непосредственно.
+
+2003-12-22	fez
+	* StreamInfo.h 1.6:
+	* Task.cpp 1.17:
+	* Task.h 1.21:
+	* TaskCompile.cpp 1.16:
+	* TaskDecompile.cpp 1.24:
+		Везде WCHAR из MFC заменил на wchar_t из stdlib.h
+
+	* TaskCompile.cpp 1.18:
+		Еще одним инклюдом меньше
+
+	* TaskDecompile.cpp 1.26:
+		Удалены строки по заполнению/очистке FullPathInStorage
+		Что-то они нигде не используются :)
+
+	* StreamInfo.cpp 1.7:
+	* Task.cpp 1.20:
+	* TaskCompile.cpp 1.17:
+	* TaskDecompile.cpp 1.28:
+		Удалено немного комментариев
+
+	* Task.cpp 1.18:
+	* Task.h 1.24:
+	* TaskDecompile.cpp 1.27:
+		раз PathInStorage больше нет, то класс
+		CFullPath тоже можно удалить
+
+	* Task.h 1.22:
+	* TaskDecompile.cpp 1.25:
+		Везде OLECHAR из MFC заменил на wchar_t из stdlib.h
+
+	* Task.h 1.23:
+		раз PathInStorage больше нигде не используется - лесом
+
+	* StreamInfo.h 1.8:
+	* Task.h 1.27:
+		Интерфейсы IStream и IStorage теперь берутся из ole2.h
+
+	* StreamInfo.cpp 1.6:
+	* StreamInfo.h 1.5:
+	* Task.h 1.20:
+	* TaskCompile.cpp 1.15:
+	* TaskDecompile.cpp 1.23:
+	* gcomp.dsp 1.9:
+		Попытался отпилить у MMS CRC. Пока чего-то не получается.
+		Решил скомитить, пока не зашло слишком далеко.
+
+	* Task.cpp 1.19:
+	* Task.h 1.25:
+		Одним include стало меньше
+
+	* Task.h 1.28:
+		printf - ы теперь берутся из stdio.h
+
+	* StreamInfo.cpp 1.8:
+	* StreamInfo.h 1.7:
+	* Task.h 1.26:
+	* TaskCompile.cpp 1.19:
+	* TaskDecompile.cpp 1.29:
+	* gcomp.dsp 1.10:
+		Все ULONG переделаны на unsigned long
+
+2003-12-19	fez
+	* Task.h 1.19:
+	* gcomp.cpp 1.8:
+		Удалены файлы парсера. Остатки
+
+	* Container.y 1.6:
+	* ContainerContents.cpp 1.9:
+	* ContainerContents.h 1.8:
+	* MainMetadataStream.y 1.5:
+	* ParserTest.cpp 1.4:
+	* ParserTest.dsp 1.3:
+	* gcomp.dsp 1.8:
+	* gcomp.dsw 1.5:
+		Удалены файла парсера. До версии 0.2 он не понадобится.
+
+	* TaskDecompile.cpp 1.22:
+		CTaskDecompile::GetStreamByName() переименован в
+		CTaskDecompile::GetCleanStream()
+		
+		Данный метод должен возвращать готовый поток для копирования в файл. Внесены соответствующие изменения: длина у потоков теперь отрывается именно здесь.
+
+2003-12-18	fez
+	* TaskHelp.cpp 1.10:
+		Исправлено сообщение в помощи. Смысловая ошибка.
+
+2003-12-18	adirks
+	* Container.y 1.4:
+	* MainMetadataStream.y 1.4:
+	* ParserTest.cpp 1.3:
+		Lexical analyser переориентирован на чтение файла
+
+	* Container.y 1.5:
+	* ContainerContents.cpp 1.8:
+	* ContainerContents.h 1.7:
+		Удален отладочный код
+
+2003-12-16	adirks
+	* Task.cpp 1.16:
+	* Task.h 1.18:
+	* TaskHelp.cpp 1.9:
+		Немножко изменил способ формирования каталога для внешних отчетов
+		, и добавил ключик -DD чтобы запретить самостоятельные действия с
+		 каталогом
+
+	* TaskDecompile.cpp 1.21:
+		Робкие экперименты с CMap
+
+2003-12-15	fez
+	* Task.cpp 1.13:
+	* TaskHelp.cpp 1.7:
+		Удалена возможность указания имен файлов/каталогов мимо ключей -
+		F -D
+
+	* TaskHelp.cpp 1.8:
+		Ключ --no-profiles описан в gcomp -h
+
+	* StreamInfo.cpp 1.5:
+	* StreamInfo.h 1.4:
+	* TaskCompile.cpp 1.14:
+		Dialog.Stream размером 255 байт не дает мне покоя. А точнее - расчет размера для него.
+		Очередная ошибка, теперь уже при компиляции.
+		Еще нужно отрефакторить полученные cut&paste методы
+		CStreamInfo::DetermineFileSizeFormat()
+		CStreamInfo::DetermineSizeFormat()
+
+	* StreamInfo.cpp 1.4:
+		А чего будет, если длина Dialog.Stream ровно 256 байт?
+
+	* Task.cpp 1.15:
+	* Task.h 1.17:
+	* TaskCompile.cpp 1.13:
+	* TaskDecompile.cpp 1.20:
+		Добавлена опция --no-profiles - пропускает при работе файлы Container.Profile
+		Добавлен вывод во второй уровень вербализации при компиляции.
+
+	* Task.h 1.16:
+	* TaskDecompile.cpp 1.18:
+		Пустые каталоги снова не удаляются. Этим занимается клиент cvs.
+
+	* Task.cpp 1.14:
+	* TaskDecompile.cpp 1.19:
+		Уборка веником. Небольшая.
+
+2003-12-13	Администратор
+	* StreamInfo.cpp 1.3:
+	* StreamInfo.h 1.3:
+	* Task.h 1.15:
+		Удалены неиспользующиеся определения и один конструктор.
+
+	* TaskHelp.cpp 1.5:
+		Еще немного добавлено в помощь
+
+	* Task.h 1.10:
+	* TaskDecompile.cpp 1.12:
+		Удалено журналирование в файл. Лучше использовать перенаправление
+		 с stdout
+
+	* Task.cpp 1.12:
+	* TaskCompile.cpp 1.10:
+		Еще несколько cout заменено на Msg()
+
+	* Task.h 1.13:
+	* TaskCompile.cpp 1.8:
+	* TaskDecompile.cpp 1.16:
+		Удалено мальца комментариев. Побаловался с функцией CTask::Msg() 
+		- оптимизировал один из вызовов.
+
+	* Task.h 1.14:
+	* TaskCompile.cpp 1.12:
+		CTaskCompile::MakeCompound() не нужен параметр - его значение мож
+		но взять из pTaskParameters
+
+	* TaskDecompile.cpp 1.13:
+		Еще немного удалено журналирования в файл. Не надо сохранять соот
+		ветствие файлов потокам при выгрузке - эти настройки лучше хранит
+		ь в программе или в ini файле.
+
+	* TaskDecompile.cpp 1.17:
+		Ну их - эти комментарии
+
+	* Task.h 1.11:
+	* TaskDecompile.cpp 1.15:
+		Заданы правила уровней вербализации при работе. Все сообщения рас
+		ставлениы в соответствии с ними
+
+	* TaskCompile.cpp 1.11:
+		*** empty log message ***
+
+	* ParserTest.dsp 1.2:
+	* gcomp.dsw 1.4:
+		Изменения в проекте для нормального компилирования
+
+	* TaskCompile.cpp 1.9:
+		Заменил несколько cout на Msg()
+
+	* Task.cpp 1.11:
+	* Task.h 1.12:
+	* TaskHelp.cpp 1.6:
+		Добавлен молчаливый режим работы
+
+	* TaskDecompile.cpp 1.14:
+		Удалена неиспользуемая переменная
+
+	* TaskHelp.cpp 1.4:
+		Помощь по gcomp -h приведена в соответствие с текущим состоянием
+
+2003-12-11	Leha
+	* ParserTest.cpp 1.2:
+	* gcomp.cpp 1.7:
+		Навёл красоту
+
+	* TaskDecompile.cpp 1.11:
+		Создается тривиальный лог-файл, в котором хранятся соответствия п
+		отоков и фалов
+
+	* ParserTest.cpp 1.1:
+	* ParserTest.dsp 1.1:
+	* gcomp.dsp 1.7:
+		Тест парсера выделен в отдельный проект
+
+2003-12-11	Adirks
+	* Task.cpp 1.9:
+	* Task.h 1.8:
+		Класс для хранения полного пути по кускам
+
+	* ContainerContents.cpp 1.7:
+	* ContainerContents.h 1.5:
+		Функция для поиска нужного контэйнера в дереве
+
+	* gcomp.cpp 1.6:
+	* gcomp.dsw 1.3:
+		Эксперименты с парсером выделены в отдельный проект
+
+2003-12-10	Leha
+	* ContainerContents.cpp 1.5:
+		Ну теперь уж совсем красота
+
+	* ContainerContents.cpp 1.3:
+	* ContainerContents.h 1.3:
+		Убрал всякий мусор.
+		Сделал убиение списков.
+		MMDS поменял на MMS.
+
+	* Task.cpp 1.8:
+	* Task.h 1.7:
+		Функция Msg() предназначена для выдачи сообщений в зависимости от
+		 VerbosityLevel
+
+	* ContainerContents.cpp 1.4:
+		Навел красот в AsString()
+
+	* TaskDecompile.cpp 1.9:
+		Все информационые сообщения идут теперь через Msg()
+
+	* MainMetadataStream.y 1.3:
+		Убрал мусор
+
+	* ContainerContents.cpp 1.6:
+	* ContainerContents.h 1.4:
+		Эксперименты с вычислением CRC
+
+	* MainMetadataStream.y 1.2:
+		Не создается лишних списков
+		MMDS поменял на MMS
+
+2003-12-10	Adirks
+	* ContainerContents.cpp 1.2:
+	* ContainerContents.h 1.2:
+	* MainMetadataStream.y 1.1:
+		Парсер для MMS
+
+	* TaskDecompile.cpp 1.8:
+		Для новых файлов в логе пишем NEW а не UPD
+
+	* Task.cpp 1.7:
+		функция GetHFileByName создает файл в зависимости от флага 
+		ReadOnly
+
+	* gcomp.cpp 1.3:
+		Эксперименты с парсером
+
+	* Container.y 1.3:
+		Префикс функциям парсера
+
+2003-12-09	Leha
+	* Task.h 1.6:
+		Интеллектуальная функция создания каталога - создает все вышестоя
+		щие каталоги, если их нет
+
+	* TaskDecompile.cpp 1.7:
+		Проверка на существование файла при сравнении содержимого.
+		Более интеллектуальное создание каталогов.
+		Местами трансляция русских буквочек AnsiToOem
+
+	* TaskHelp.cpp 1.3:
+		В help message описаны новые параметры командной строки.
+
+	* Task.cpp 1.6:
+		Изменён способ конструирования каталога для внешних отчетов - к исходному каталогу добавляется имя самого отчета.
+		Интеллектуальная функция создания каталога - создает все вышестоящие каталоги, если их нет.
+
+	* Container.y 1.2:
+		Отработка двойной кавычки в строке
+
+	* TaskCompile.cpp 1.7:
+		Местами трансляция русских буквочек AnsiToOem
+
+	* gcomp.cpp 1.2:
+		Эксперименты с парсером (закомментарены)
+
+	* ContainerContents.cpp 1.1:
+	* ContainerContents.h 1.1:
+		Структуры данных для разбора и хранения сдержимого 
+		Container.Contents
+
+2003-12-08	Leha
+	* StreamInfo.cpp 1.2:
+		Работа c файлами везде ведётся через HANDLE, а не CFile.
+		Скорректированы граничные условия, по которым определяются размеры контрольной суммы.
+
+	* StreamInfo.h 1.2:
+	* Task.h 1.4:
+	* TaskCompile.cpp 1.4:
+		Работа c файлами везде ведётся через HANDLE, а не CFile.
+
+	* Task.cpp 1.4:
+		Функция GetHFileByName() перенесена из класса CTaskDecompile в ро
+		дительский класс.
+
+	* Task.cpp 1.5:
+	* Task.h 1.5:
+	* TaskCompile.cpp 1.6:
+	* TaskDecompile.cpp 1.6:
+		Добавлен класс CTaskParameters, который разбирает командную строк
+		у, и хранит все параметры, управляющие работой.
+
+	* TaskDecompile.cpp 1.4:
+		Исправлена проверка флагов файла (некорректно сравнение 
+		FILE_ATTRIBUTE_DIRECTORY == fAttribs  - могут ведь быть и другие 
+		флаги)
+
+	* Container.y 1.1:
+		Описание грамматики для файлов типа Container.Contents.
+
+	* TaskDecompile.cpp 1.5:
+		Добавил информационных мессаг
+
+	* TaskCompile.cpp 1.5:
+		Добавил информационных мессаг
+		Исправлена ошибка типа FILE_ATTRIBUTE_DIRECTORY == fAttribs
+
+	* gcomp.dsp 1.5:
+		В проект добавлены модули грамматического парсера.
+
+2003-12-06	Leha
+	* Task.cpp 1.3:
+	* Task.h 1.3:
+	* TaskCompile.cpp 1.3:
+	* TaskDecompile.cpp 1.3:
+	* gcomp.dsp 1.4:
+		Довольно много исправлений
+		- Можно указать компаунд файл и каталог
+		- Поблочное сравнение при выгрузке
+		- Убирает контрольные суммы при выгрузке
+		- Считает и пишет контр. суммы при загрузке
+		- Для внешних отчетов при загрузке Main Metadata Stream он подменяется на минимальный
+
+	* StreamInfo.cpp 1.1:
+	* StreamInfo.h 1.1:
+		Класс, собирающий иформацию о потоке/файле
+
+2003-11-30	Leha
+	* Task.cpp 1.2:
+	* Task.h 1.2:
+	* TaskCompile.cpp 1.2:
+	* TaskDecompile.cpp 1.2:
+		Имена файлов больше не обрезаются
+
