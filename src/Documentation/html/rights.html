@@ -1,0 +1,1833 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta name="generator" content=
+"HTML Tidy for Windows (vers 1st March 2004), see www.w3.org">
+<meta content="text/html; charset=windows-1251" http-equiv=
+"content-type">
+<title>Rights</title>
+<meta content="Дмитрий Павлюк &lt;dmp@myrealbox.com&gt;" name=
+"author">
+</head>
+<body>
+<h1><a name="title" id="title"></a>Права пользователя (версия 1.2
+бета от 09.06.2004)</h1>
+Данный документ доступент по следующим адрессам:<br>
+<a href=
+"http://sourceforge.net/projects/lproject">http://sourceforge.net/projects/lproject</a><br>
+
+<a href="http://1l.w4b.ru/">http://1l.w4b.ru/</a><br>
+Авторство принадлежит:<br>
+Copyright © 2004 Дмитрий Павлюк &lt;dmp@myrealbox.com&gt;<br>
+<p>Каждый имеет право воспроизводить, распространять и/или вносить
+изменения в настоящий документ в соответствии с условиями GNU Free
+Documentation License, версией 1.2 или любой более поздней версией,
+опубликованной Free Software Foundation;</p>
+<p>Данный документ не содержит неизменяемых разделов, текста,
+помещаемого на первой странице обложки, и текста, помещаемого на
+последней странице обложки.</p>
+<p>Копия GNU Free Documentation License помещена в файл под
+названием " <a href=
+"file:///C:/1L/wx1L/temp/docs/GNU_FDL.html">GNU_FDL.html</a>".<br></p>
+<hr size="2" width="100%">
+<h2><a name="contents" id="contents"></a>Содержание</h2>
+<a href="#contents">Содержание</a><br>
+<a href="#intro">Введение</a><br>
+<a href="#struct">Структура файла</a><br>
+<a href="#blocks">Типы наборов (блоков) прав</a><br>
+<a href="#rights">Типы свойств прав</a><br>
+<a href="#example">Образцы наборов (блоков) прав</a><br>
+<blockquote><a href="#const">Константа</a><br>
+<a href="#ref">Справочник</a><br>
+<a href="#doc">Документ</a><br>
+<a href="#jdoc">Журнал документов</a><br>
+<a href="#jdocall">Журнал документов (все)</a><br>
+<a href="#report">Отчет</a><br>
+<a href="#proc">Обработка</a><br>
+<a href="#planacc">План счетов</a><br>
+<a href="#oper">Операция</a><br>
+<a href="#prov">Проводка</a><br>
+<a href="#toper">Типовая операция</a><br>
+<a href="#register">Регистр</a><br>
+<a href="#jcalc">Журнал расчетов</a><br>
+<a href="#calendar">Календарь</a><br>
+<a href="#config">Конфигурация</a><br></blockquote>
+<br>
+<hr size="2" width="100%">
+<h2><a name="intro" id="intro"></a>Введение</h2>
+Данный документ описывает структуру файлов
+"*.md/UserDef/Page.2/Page.*". Являющимся набором прав того, или
+иного пользователя.<br>
+Файл прав состоит из заголовка, в котором указывает количество
+блоков (наборов) прав идущих после. Каждый блок прав состоит из
+своего заголовка, в котором указывается, тип набора (например
+Справочник или Документ), его индетификационный код (Код МД) в
+потоке метаданных, и количества содержащихся в нем свойств. Если
+"Код МД"=0, то это общий набор для всех по умолчанию.<br>
+Краткие примечания:<br>
+<ul>
+<li>Если в блоке прав не менялись значения по умолчанию, то данный
+блок не сохраняется. Кроме общего блока, он сохраняется
+всегда.<br></li>
+<li>Если один раз изменить некий блок права, то запись о нем
+остается постоянно.</li>
+<li>Новые данные добавляются в конец файла.</li>
+<li>Код МД - идентификационный номер в потоке метаданных. Для общих
+прав он равен 0.</li>
+<li>Количество в блоке свойств не обязательно постоянно.</li>
+</ul>
+<br>
+<hr size="2" width="100%">
+<h2><a class="mozTocH2" name="struct" id="struct"></a>Структура
+файла</h2>
+Заголовок:<br>
+<table border="1" cellspacing="2" cellpadding="2">
+<tbody>
+<tr>
+<td>Смещение<br></td>
+<td>Длина<br></td>
+<td>Значения<br></td>
+<td>Наименование<br></td>
+</tr>
+<tr>
+<td>0x00</td>
+<td>1<br></td>
+<td>6<br></td>
+<td>?<br></td>
+</tr>
+<tr>
+<td>0x01</td>
+<td>4<br></td>
+<td>0<br></td>
+<td>?<br></td>
+</tr>
+<tr>
+<td>0x05</td>
+<td>4<br></td>
+<td>КБ<br></td>
+<td>Кол-во блоков прав<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+Блок (набор) прав, повторяющийся КБ раз:<br>
+<table border="1" cellspacing="2" cellpadding="2">
+<tbody>
+<tr>
+<td>Смещение<br></td>
+<td>Длина<br></td>
+<td>Значения<br></td>
+<td>Наименование<br></td>
+</tr>
+<tr>
+<td>0x00</td>
+<td>4<br></td>
+<td><br></td>
+<td><a href="#blocks">Тип набора прав</a><br></td>
+</tr>
+<tr>
+<td>0x04</td>
+<td>4<br></td>
+<td><br></td>
+<td>Код МД<br></td>
+</tr>
+<tr>
+<td>0x08</td>
+<td>4<br></td>
+<td>КС<br></td>
+<td>Кол-во свойств<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+Свойства прав, повторяющийся КС раз, для каждого блока:<br>
+<table border="1" cellspacing="2" cellpadding="2">
+<tbody>
+<tr>
+<td>Смещение<br></td>
+<td>Длина<br></td>
+<td>Значения<br></td>
+<td>Наименование<br></td>
+</tr>
+<tr>
+<td>0x00</td>
+<td>4<br></td>
+<td><br></td>
+<td><a href="#rights">Тип св-ва прав</a><br></td>
+</tr>
+<tr>
+<td>0x04</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Значение св-ва прав</td>
+</tr>
+</tbody>
+</table>
+<br>
+<hr size="2" width="100%">
+<h2><a name="blocks" id="blocks"></a>Типы наборов прав</h2>
+<table border="1" cellspacing="2" cellpadding="2">
+<tbody>
+<tr>
+<td>Значение<br></td>
+<td>Наименование<br></td>
+</tr>
+<tr>
+<td>0x01<br></td>
+<td>Константа<br></td>
+</tr>
+<tr>
+<td>0x03<br></td>
+<td>Справочник<br></td>
+</tr>
+<tr>
+<td>0x06</td>
+<td>Регистр<br></td>
+</tr>
+<tr>
+<td>0x09<br></td>
+<td>Документ<br></td>
+</tr>
+<tr>
+<td>0x0b</td>
+<td>Журнал документов<br></td>
+</tr>
+<tr>
+<td>0x10</td>
+<td>Отчет<br></td>
+</tr>
+<tr>
+<td>0x11<br></td>
+<td>Конфигурация<br></td>
+</tr>
+<tr>
+<td>0x12<br></td>
+<td>Календарь<br></td>
+</tr>
+<tr>
+<td>0x17<br></td>
+<td>Журнал расчетов<br></td>
+</tr>
+<tr>
+<td>0x18</td>
+<td>Обработка</td>
+</tr>
+<tr>
+<td>0x19</td>
+<td>План счетов<br></td>
+</tr>
+<tr>
+<td>0x1a<br></td>
+<td>Операция<br></td>
+</tr>
+<tr>
+<td>0x1b<br></td>
+<td>Проводка<br></td>
+</tr>
+<tr>
+<td>0x1c<br></td>
+<td>Типовая операция</td>
+</tr>
+</tbody>
+</table>
+<br>
+<hr size="2" width="100%">
+<h2><a name="rights" id="rights"></a>Типы свойств прав</h2>
+<table border="1" cellspacing="2" cellpadding="2">
+<tbody>
+<tr>
+<td>Значение</td>
+<td>Наименование</td>
+</tr>
+<tr>
+<td>0x00</td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x01</td>
+<td>Чтение</td>
+</tr>
+<tr>
+<td>0x02</td>
+<td>Использование</td>
+</tr>
+<tr>
+<td>0x03</td>
+<td>Любые изменения</td>
+</tr>
+<tr>
+<td>0x04</td>
+<td>Корректировка</td>
+</tr>
+<tr>
+<td>0x05</td>
+<td>Ввод нового</td>
+</tr>
+<tr>
+<td>0x06</td>
+<td>Удаление</td>
+</tr>
+<tr>
+<td>0x07</td>
+<td>Изменение проведенных документов</td>
+</tr>
+<tr>
+<td>0x08</td>
+<td>Проведение документа</td>
+</tr>
+<tr>
+<td>0x09</td>
+<td>Проведение документа задним числом<br></td>
+</tr>
+<tr>
+<td>0x0a</td>
+<td>Управление оперативными итогами</td>
+</tr>
+<tr>
+<td>0x0b</td>
+<td>Административные функции</td>
+</tr>
+<tr>
+<td>0x0c</td>
+<td>Просмотр полного журнала</td>
+</tr>
+<tr>
+<td>0x0d</td>
+<td>Просмотр журнала "Прочие"</td>
+</tr>
+<tr>
+<td>0x0e</td>
+<td>Выбор</td>
+</tr>
+<tr>
+<td>0x0f</td>
+<td>Просмотр подчиненных документов</td>
+</tr>
+<tr>
+<td>0x10</td>
+<td>Монитор<br></td>
+</tr>
+<tr>
+<td>0x11<br></td>
+<td>Изменение документов без перепроведения</td>
+</tr>
+<tr>
+<td>0x12</td>
+<td>Использование в качестве OLE Automation сервера</td>
+</tr>
+<tr>
+<td>0x13</td>
+<td>Расчет</td>
+</tr>
+<tr>
+<td>0x14</td>
+<td>Изменение расчетного периода</td>
+</tr>
+<tr>
+<td>0x15</td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x16</td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x17</td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x18</td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x19</td>
+<td>Удаление помеченных объектов</td>
+</tr>
+<tr>
+<td>0x1a</td>
+<td>Пометка на удаление</td>
+</tr>
+<tr>
+<td>0x1b</td>
+<td>Использование любых Внешних Отчетов и Обработок</td>
+</tr>
+<tr>
+<td>0x1c</td>
+<td>Снятие пометки на удаление<br></td>
+</tr>
+<tr>
+<td>0x1d</td>
+<td>Использование функций в табло и формульном
+калькуляторе<br></td>
+</tr>
+<tr>
+<td>0x1e</td>
+<td>Поиск ссылок на объекты</td>
+</tr>
+<tr>
+<td>0x1f</td>
+<td>Использование общих Внешних Отчетов и Обработок</td>
+</tr>
+<tr>
+<td>0x20<br></td>
+<td>Ввод операции без проверки проводок<br></td>
+</tr>
+<tr>
+<td>0x21</td>
+<td>Редактирование списка корректных проводок<br></td>
+</tr>
+<tr>
+<td>0x22</td>
+<td>Использование табло счетов<br></td>
+</tr>
+<tr>
+<td>0x23</td>
+<td>Управление бухгалтескими итогами</td>
+</tr>
+<tr>
+<td>0x24</td>
+<td>Просмотр списка</td>
+</tr>
+<tr>
+<td>0x25</td>
+<td>Редактирование операции документа</td>
+</tr>
+<tr>
+<td>0x26<br></td>
+<td>Просмотр списка корректных проводок</td>
+</tr>
+<tr>
+<td>0x27<br></td>
+<td>Выключение проводок операции<br></td>
+</tr>
+<tr>
+<td>0x28</td>
+<td>Включение проводок операции</td>
+</tr>
+<tr>
+<td>0x29</td>
+<td>Групповое проведение документов</td>
+</tr>
+<tr>
+<td>0x2a</td>
+<td>Сохранение/Выгрузка данных</td>
+</tr>
+<tr>
+<td>0x2b</td>
+<td>Монопольный режим</td>
+</tr>
+<tr>
+<td>0x2c</td>
+<td>Автообмен в распределенной ИБ (?)</td>
+</tr>
+<tr>
+<td>0x2d</td>
+<td>Редактировать празники</td>
+</tr>
+<tr>
+<td>0x2e</td>
+<td>Использование Web-расширения (?)</td>
+</tr>
+</tbody>
+</table>
+<br>
+<hr size="2" width="100%">
+<h2><a name="example" id="example"></a>Образцы блоков прав</h2>
+<h3><a name="const" id="const"></a>Константа</h3>
+Длина блока = 28.<br>
+<table border="1" cellspacing="2" cellpadding="2">
+<tbody>
+<tr>
+<td>Смещение<br></td>
+<td>Длина<br></td>
+<td>Значения<br></td>
+<td>Наименование<br></td>
+</tr>
+<tr>
+<td>0x00</td>
+<td>4<br></td>
+<td>0x01<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x04</td>
+<td>4<br></td>
+<td><br></td>
+<td>Код МД<br></td>
+</tr>
+<tr>
+<td>0x08</td>
+<td>4<br></td>
+<td>0x02<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x0c</td>
+<td>4<br></td>
+<td>0x01<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x10</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Чтение<br></td>
+</tr>
+<tr>
+<td>0x14</td>
+<td>4<br></td>
+<td>0x04<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x18<br></td>
+<td>4<br></td>
+<td>0-Нет, 1-Да<br></td>
+<td>Корректировка</td>
+</tr>
+</tbody>
+</table>
+<br>
+<hr size="2" width="100%">
+<h3><a name="ref" id="ref"></a>Справочник</h3>
+Длина блока = 68.<br>
+<table border="1" cellspacing="2" cellpadding="2">
+<tbody>
+<tr>
+<td>Смещение<br></td>
+<td>Длина<br></td>
+<td>Значения<br></td>
+<td>Наименование<br></td>
+</tr>
+<tr>
+<td>0x00</td>
+<td>4<br></td>
+<td>0x03<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x04</td>
+<td>4<br></td>
+<td><br></td>
+<td>Код МД<br></td>
+</tr>
+<tr>
+<td>0x08</td>
+<td>4<br></td>
+<td>0x07<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x0c</td>
+<td>4<br></td>
+<td>0x01<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x10</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Чтение<br></td>
+</tr>
+<tr>
+<td>0x14</td>
+<td>4<br></td>
+<td>0x03<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x18</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Любые изменения<br></td>
+</tr>
+<tr>
+<td>0x1c</td>
+<td>4<br></td>
+<td>0x05<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x20</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Ввод нового</td>
+</tr>
+<tr>
+<td>0x24</td>
+<td>4<br></td>
+<td>0x06<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x28</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Удаление<br></td>
+</tr>
+<tr>
+<td>0x2c</td>
+<td>4<br></td>
+<td>0x1a<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x30</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Пометка на удаление</td>
+</tr>
+<tr>
+<td>0x34</td>
+<td>4<br></td>
+<td>0x1c<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x38</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Снятие пометки на удаление</td>
+</tr>
+<tr>
+<td>0x3c</td>
+<td>4<br></td>
+<td>0x04<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x40<br></td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Корректировка</td>
+</tr>
+</tbody>
+</table>
+<br>
+<hr size="2" width="100%">
+<h3><a name="doc" id="doc"></a>Документ</h3>
+Длина блока = 108.<br>
+<table border="1" cellspacing="2" cellpadding="2">
+<tbody>
+<tr>
+<td>Смещение<br></td>
+<td>Длина<br></td>
+<td>Значения<br></td>
+<td>Наименование<br></td>
+</tr>
+<tr>
+<td>0x00</td>
+<td>4<br></td>
+<td>0x09<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x04</td>
+<td>4<br></td>
+<td><br></td>
+<td>Код МД<br></td>
+</tr>
+<tr>
+<td>0x08</td>
+<td>4<br></td>
+<td>0x0c<br></td>
+<td>=12<br></td>
+</tr>
+<tr>
+<td>0x0c</td>
+<td>4<br></td>
+<td>0x01<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x10</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Чтение<br></td>
+</tr>
+<tr>
+<td>0x14</td>
+<td>4<br></td>
+<td>0x03<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x18</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Любые изменения<br></td>
+</tr>
+<tr>
+<td>0x1c</td>
+<td>4<br></td>
+<td>0x05<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x20</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Ввод нового</td>
+</tr>
+<tr>
+<td>0x24</td>
+<td>4<br></td>
+<td>0x06<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x28</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Удаление<br></td>
+</tr>
+<tr>
+<td>0x2c</td>
+<td>4<br></td>
+<td>0x1a<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x30</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Пометка на удаление</td>
+</tr>
+<tr>
+<td>0x34</td>
+<td>4<br></td>
+<td>0x1c<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x38</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Снятие пометки на удаление</td>
+</tr>
+<tr>
+<td>0x3c</td>
+<td>4<br></td>
+<td>0x04<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x40<br></td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Корректировка</td>
+</tr>
+<tr>
+<td>0x44</td>
+<td>4<br></td>
+<td>0x0e<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x48</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Выбор<br></td>
+</tr>
+<tr>
+<td>0x4c</td>
+<td>4<br></td>
+<td>0x0f</td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x50</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Просмотр подчиненных документов</td>
+</tr>
+<tr>
+<td>0x54</td>
+<td>4<br></td>
+<td>0x08</td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x58</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Проведение документа</td>
+</tr>
+<tr>
+<td>0x5c</td>
+<td>4<br></td>
+<td>0x07</td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x60</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Изменение проведенных документов<br></td>
+</tr>
+<tr>
+<td>0x64</td>
+<td>4<br></td>
+<td>0x11</td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x68</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Изменение документов без перепроведения<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+Только для докумета "Операция"<br>
+Длина блока = 116.<br>
+<table border="1" cellspacing="2" cellpadding="2">
+<tbody>
+<tr>
+<td>Смещение<br></td>
+<td>Длина<br></td>
+<td>Значения<br></td>
+<td>Наименование<br></td>
+</tr>
+<tr>
+<td>0x6c</td>
+<td>4<br></td>
+<td>0x25<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x70</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Редактирование операции документа</td>
+</tr>
+</tbody>
+</table>
+<br>
+В некоторых случаях (?) может быть и так<br>
+Длина блока = 116.<br>
+<table border="1" cellspacing="2" cellpadding="2">
+<tbody>
+<tr>
+<td>Смещение<br></td>
+<td>Длина<br></td>
+<td>Значения<br></td>
+<td>Наименование<br></td>
+</tr>
+<tr>
+<td>0x6c</td>
+<td>4<br></td>
+<td>0x09<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x70</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Проведение документа задним числом</td>
+</tr>
+</tbody>
+</table>
+<br>
+<hr size="2" width="100%">
+<h3><a name="jdoc" id="jdoc"></a>Журнал документов</h3>
+Длина блока = 20.<br>
+<table border="1" cellspacing="2" cellpadding="2">
+<tbody>
+<tr>
+<td>Смещение<br></td>
+<td>Длина<br></td>
+<td>Значения<br></td>
+<td>Наименование<br></td>
+</tr>
+<tr>
+<td>0x00</td>
+<td>4<br></td>
+<td>0x0b<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x04</td>
+<td>4<br></td>
+<td><br></td>
+<td>Код МД<br></td>
+</tr>
+<tr>
+<td>0x08</td>
+<td>4<br></td>
+<td>0x01<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x0c</td>
+<td>4<br></td>
+<td>0x01<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x10</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Чтение<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<hr size="2" width="100%">
+<h3><a name="jdocall" id="jdocall"></a>Журнал документов
+(все)<br></h3>
+Длина блока = 36.<br>
+<table border="1" cellspacing="2" cellpadding="2">
+<tbody>
+<tr>
+<td>Смещение<br></td>
+<td>Длина<br></td>
+<td>Значения<br></td>
+<td>Наименование<br></td>
+</tr>
+<tr>
+<td>0x00</td>
+<td>4<br></td>
+<td>0x0b<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x04</td>
+<td>4<br></td>
+<td><br></td>
+<td>Код МД<br></td>
+</tr>
+<tr>
+<td>0x08</td>
+<td>4<br></td>
+<td>0x03<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x0c</td>
+<td>4<br></td>
+<td>0x01<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x10</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Чтение<br></td>
+</tr>
+<tr>
+<td>0x14</td>
+<td>4<br></td>
+<td>0x0c<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x18</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Просмотр полного журнала</td>
+</tr>
+<tr>
+<td>0x1c</td>
+<td>4<br></td>
+<td>0x0d<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x20</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Просмотр журнала "Прочие"<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<hr size="2" width="100%">
+<h3><a name="report" id="report"></a>Отчет</h3>
+Длина блока = 20.<br>
+<table border="1" cellspacing="2" cellpadding="2">
+<tbody>
+<tr>
+<td>Смещение<br></td>
+<td>Длина<br></td>
+<td>Значения<br></td>
+<td>Наименование<br></td>
+</tr>
+<tr>
+<td>0x00</td>
+<td>4<br></td>
+<td>0x10<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x04</td>
+<td>4<br></td>
+<td><br></td>
+<td>Код МД<br></td>
+</tr>
+<tr>
+<td>0x08</td>
+<td>4<br></td>
+<td>0x01<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x0c</td>
+<td>4<br></td>
+<td>0x02<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x10</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Использование</td>
+</tr>
+</tbody>
+</table>
+<br>
+<hr size="2" width="100%">
+<h3><a name="proc" id="proc"></a>Обработка</h3>
+Длина блока = 20.<br>
+<table border="1" cellspacing="2" cellpadding="2">
+<tbody>
+<tr>
+<td>Смещение<br></td>
+<td>Длина<br></td>
+<td>Значения<br></td>
+<td>Наименование<br></td>
+</tr>
+<tr>
+<td>0x00</td>
+<td>4<br></td>
+<td>0x18<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x04</td>
+<td>4<br></td>
+<td><br></td>
+<td>Код МД<br></td>
+</tr>
+<tr>
+<td>0x08</td>
+<td>4<br></td>
+<td>0x01<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x0c</td>
+<td>4<br></td>
+<td>0x02<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x10</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Использование</td>
+</tr>
+</tbody>
+</table>
+<br>
+<hr size="2" width="100%">
+<h3><a name="planacc" id="planacc"></a>План счетов<br></h3>
+Длина блока = 68.<br>
+<table border="1" cellspacing="2" cellpadding="2">
+<tbody>
+<tr>
+<td>Смещение<br></td>
+<td>Длина<br></td>
+<td>Значения<br></td>
+<td>Наименование<br></td>
+</tr>
+<tr>
+<td>0x00</td>
+<td>4<br></td>
+<td>0x19<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x04</td>
+<td>4<br></td>
+<td><br></td>
+<td>Код МД<br></td>
+</tr>
+<tr>
+<td>0x08</td>
+<td>4<br></td>
+<td>0x07<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x0c</td>
+<td>4<br></td>
+<td>0x01<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x10</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Чтение<br></td>
+</tr>
+<tr>
+<td>0x14</td>
+<td>4<br></td>
+<td>0x03<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x18</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Любые изменения<br></td>
+</tr>
+<tr>
+<td>0x1c</td>
+<td>4<br></td>
+<td>0x05<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x20</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Ввод нового</td>
+</tr>
+<tr>
+<td>0x24</td>
+<td>4<br></td>
+<td>0x06<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x28</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Удаление<br></td>
+</tr>
+<tr>
+<td>0x2c</td>
+<td>4<br></td>
+<td>0x1a<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x30</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Пометка на удаление</td>
+</tr>
+<tr>
+<td>0x34</td>
+<td>4<br></td>
+<td>0x1c<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x38</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Снятие пометки на удаление</td>
+</tr>
+<tr>
+<td>0x3c</td>
+<td>4<br></td>
+<td>0x04<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x40<br></td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Корректировка</td>
+</tr>
+</tbody>
+</table>
+<br>
+<hr size="2" width="100%">
+<h3><a name="oper" id="oper"></a>Операция<br></h3>
+Длина блока = 52.<br>
+<table border="1" cellspacing="2" cellpadding="2">
+<tbody>
+<tr>
+<td>Смещение<br></td>
+<td>Длина<br></td>
+<td>Значения<br></td>
+<td>Наименование<br></td>
+</tr>
+<tr>
+<td>0x00</td>
+<td>4<br></td>
+<td>0x1a<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x04</td>
+<td>4<br></td>
+<td><br></td>
+<td>Код МД<br></td>
+</tr>
+<tr>
+<td>0x08</td>
+<td>4<br></td>
+<td>0x05<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x0c</td>
+<td>4<br></td>
+<td>0x01<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x10</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Чтение<br></td>
+</tr>
+<tr>
+<td>0x14</td>
+<td>4<br></td>
+<td>0x24<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x18</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Просмотр списка<br></td>
+</tr>
+<tr>
+<td>0x1c</td>
+<td>4<br></td>
+<td>0x20<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x20</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Ввод операции без проверки проводок</td>
+</tr>
+<tr>
+<td>0x24</td>
+<td>4<br></td>
+<td>0x28<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x28</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Включение проводок операции</td>
+</tr>
+<tr>
+<td>0x2c</td>
+<td>4<br></td>
+<td>0x27<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x30</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Выключение проводок операции</td>
+</tr>
+</tbody>
+</table>
+<br>
+<hr size="2" width="100%">
+<h3><a name="prov" id="prov"></a>Проводка<br></h3>
+Длина блока = 36.<br>
+<table border="1" cellspacing="2" cellpadding="2">
+<tbody>
+<tr>
+<td>Смещение<br></td>
+<td>Длина<br></td>
+<td>Значения<br></td>
+<td>Наименование<br></td>
+</tr>
+<tr>
+<td>0x00</td>
+<td>4<br></td>
+<td>0x1b<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x04</td>
+<td>4<br></td>
+<td><br></td>
+<td>Код МД<br></td>
+</tr>
+<tr>
+<td>0x08</td>
+<td>4<br></td>
+<td>0x03<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x0c</td>
+<td>4<br></td>
+<td>0x24</td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x10</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Просмотр списка</td>
+</tr>
+<tr>
+<td>0x14</td>
+<td>4<br></td>
+<td>0x26<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x18</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Просмотр списка корректных проводок</td>
+</tr>
+<tr>
+<td>0x1c</td>
+<td>4<br></td>
+<td>0x21<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x20</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Редактирование списка корректных проводок</td>
+</tr>
+</tbody>
+</table>
+<br>
+<hr size="2" width="100%">
+<h3><a name="toper" id="toper"></a>Типовая операция<br></h3>
+Длина блока = 68.<br>
+<table border="1" cellspacing="2" cellpadding="2">
+<tbody>
+<tr>
+<td>Смещение<br></td>
+<td>Длина<br></td>
+<td>Значения<br></td>
+<td>Наименование<br></td>
+</tr>
+<tr>
+<td>0x00</td>
+<td>4<br></td>
+<td>0x1c<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x04</td>
+<td>4<br></td>
+<td><br></td>
+<td>Код МД<br></td>
+</tr>
+<tr>
+<td>0x08</td>
+<td>4<br></td>
+<td>0x06<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x0c</td>
+<td>4<br></td>
+<td>0x01<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x10</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Чтение<br></td>
+</tr>
+<tr>
+<td>0x14</td>
+<td>4<br></td>
+<td>0x03<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x18</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Любые изменения<br></td>
+</tr>
+<tr>
+<td>0x1c</td>
+<td>4<br></td>
+<td>0x05<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x20</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Ввод нового</td>
+</tr>
+<tr>
+<td>0x24</td>
+<td>4<br></td>
+<td>0x06<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x28</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Удаление<br></td>
+</tr>
+<tr>
+<td>0x3c</td>
+<td>4<br></td>
+<td>0x04<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x40<br></td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Корректировка</td>
+</tr>
+<tr>
+<td>0x44</td>
+<td>4<br></td>
+<td>0x2<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x48</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Использование</td>
+</tr>
+</tbody>
+</table>
+<br>
+<hr size="2" width="100%">
+<h3><a name="register" id="register"></a>Регистр<br></h3>
+Длина блока = 20.<br>
+<table border="1" cellspacing="2" cellpadding="2">
+<tbody>
+<tr>
+<td>Смещение<br></td>
+<td>Длина<br></td>
+<td>Значения<br></td>
+<td>Наименование<br></td>
+</tr>
+<tr>
+<td>0x00</td>
+<td>4<br></td>
+<td>0x06<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x04</td>
+<td>4<br></td>
+<td><br></td>
+<td>Код МД<br></td>
+</tr>
+<tr>
+<td>0x08</td>
+<td>4<br></td>
+<td>0x01<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x0c</td>
+<td>4<br></td>
+<td>0x01<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x10</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Чтение<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<hr size="2" width="100%">
+<h3><a name="jcalc" id="jcalc"></a>Журнал расчетов<br></h3>
+Длина блока = 44.<br>
+<table border="1" cellspacing="2" cellpadding="2">
+<tbody>
+<tr>
+<td>Смещение<br></td>
+<td>Длина<br></td>
+<td>Значения<br></td>
+<td>Наименование<br></td>
+</tr>
+<tr>
+<td>0x00</td>
+<td>4<br></td>
+<td>0x17<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x04</td>
+<td>4<br></td>
+<td><br></td>
+<td>Код МД<br></td>
+</tr>
+<tr>
+<td>0x08</td>
+<td>4<br></td>
+<td>0x04<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x0c</td>
+<td>4<br></td>
+<td>0x01<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x10</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Чтение<br></td>
+</tr>
+<tr>
+<td>0x14</td>
+<td>4<br></td>
+<td>0x03<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x18</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Любые изменения<br></td>
+</tr>
+<tr>
+<td>0x1c</td>
+<td>4<br></td>
+<td>0x13<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x20</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Расчет</td>
+</tr>
+<tr>
+<td>0x24</td>
+<td>4<br></td>
+<td>0x14<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x28</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Изменение расчетного периода<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<hr size="2" width="100%">
+<h3><a name="calendar" id="calendar"></a>Календарь<br></h3>
+Длина блока = 44.<br>
+<table border="1" cellspacing="2" cellpadding="2">
+<tbody>
+<tr>
+<td>Смещение<br></td>
+<td>Длина<br></td>
+<td>Значения<br></td>
+<td>Наименование<br></td>
+</tr>
+<tr>
+<td>0x00</td>
+<td>4<br></td>
+<td>0x12<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x04</td>
+<td>4<br></td>
+<td><br></td>
+<td>Код МД<br></td>
+</tr>
+<tr>
+<td>0x08</td>
+<td>4<br></td>
+<td>0x03<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x0c</td>
+<td>4<br></td>
+<td>0x01<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x10</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Чтение<br></td>
+</tr>
+<tr>
+<td>0x14</td>
+<td>4<br></td>
+<td>0x03<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x18</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Любые изменения<br></td>
+</tr>
+<tr>
+<td>0x1c</td>
+<td>4<br></td>
+<td>0x2d<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x20</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Редактировать празники<br></td>
+</tr>
+</tbody>
+</table>
+<br>
+<hr size="2" width="100%">
+<h3><a name="config" id="config"></a>Конфигурация (?)<br></h3>
+Длина блока = 140.<br>
+<table border="1" cellspacing="2" cellpadding="2">
+<tbody>
+<tr>
+<td>Смещение<br></td>
+<td>Длина<br></td>
+<td>Значения<br></td>
+<td>Наименование<br></td>
+</tr>
+<tr>
+<td>0x00</td>
+<td>4<br></td>
+<td>0x11<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x04</td>
+<td>4<br></td>
+<td><br></td>
+<td>Код МД<br></td>
+</tr>
+<tr>
+<td>0x08</td>
+<td>4<br></td>
+<td>0x10<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x0c</td>
+<td>4<br></td>
+<td>0x0b<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x10</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Административные функции</td>
+</tr>
+<tr>
+<td>0x14</td>
+<td>4<br></td>
+<td>0x2a<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x18</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Сохранение/Выгрузка данных<br></td>
+</tr>
+<tr>
+<td>0x1c</td>
+<td>4<br></td>
+<td>0x0a<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x20</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Управление оперативными итогами</td>
+</tr>
+<tr>
+<td>0x24</td>
+<td>4<br></td>
+<td>0x23<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x28</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Управление бухгалтескими итогами<br></td>
+</tr>
+<tr>
+<td>0x2c</td>
+<td>4<br></td>
+<td>0x10<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x30</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Монитор</td>
+</tr>
+<tr>
+<td>0x34</td>
+<td>4<br></td>
+<td>0x12<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x38</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Использование в качестве OLE Automation сервера<br></td>
+</tr>
+<tr>
+<td>0x3c</td>
+<td>4<br></td>
+<td>0x19<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x40</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Удаление помеченных объектов</td>
+</tr>
+<tr>
+<td>0x44</td>
+<td>4<br></td>
+<td>0x1e<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x48</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Поиск ссылок на объекты<br></td>
+</tr>
+<tr>
+<td>0x4c</td>
+<td>4<br></td>
+<td>0x1b<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x50</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Использование любых Внешних Отчетов и Обработок</td>
+</tr>
+<tr>
+<td>0x54</td>
+<td>4<br></td>
+<td>0x1f<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x58</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Использование общих Внешних Отчетов и Обработок<br></td>
+</tr>
+<tr>
+<td>0x5c</td>
+<td>4<br></td>
+<td>0x1d<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x60</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Использование функций в табло и формульном калькуляторе</td>
+</tr>
+<tr>
+<td>0x64</td>
+<td>4<br></td>
+<td>0x29<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x68</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Групповое проведение документов<br></td>
+</tr>
+<tr>
+<td>0x6c</td>
+<td>4<br></td>
+<td>0x22<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x70</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Использование табло счетов</td>
+</tr>
+<tr>
+<td>0x74</td>
+<td>4<br></td>
+<td>0x2b<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x78</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Монопольный режим<br></td>
+</tr>
+<tr>
+<td>0x7c</td>
+<td>4<br></td>
+<td>0x2c<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x80</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Автообмен в распределенной ИБ (?)</td>
+</tr>
+<tr>
+<td>0x84</td>
+<td>4<br></td>
+<td>0x2e<br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>0x88</td>
+<td>4<br></td>
+<td>0-Нет, 1-Да</td>
+<td>Использование Web-расширения (?)</td>
+</tr>
+</tbody>
+</table>
+<br>
+<hr size="2" width="100%">
+<br>
+</body>
+</html>
